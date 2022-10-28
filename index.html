@@ -156,9 +156,11 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        描述​	SWeblogic中存在一个SSRF漏洞，利用该漏洞可以发送任意HTTP请求，进而攻击内网中redis、fastcgi等脆弱组件。
-影响版本weblogic 10.0.2 – 10.3.6.0
-漏洞检测​	访问http://192.168.3...
+                        描述​	由于WebLogic 存在默认密码weblogic:Oracle@123或者弱口令， 所以我们可以登录到后台通过部署war包getshell。
+影响版本
+
+
+漏洞检测​	访问http://192.168.3.80:7001/console/l...
                     
                 </div>
 

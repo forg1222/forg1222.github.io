@@ -178,7 +178,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>348 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>338 字</span>
         </span>
     
     
@@ -191,8 +191,10 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><p>​	SWeblogic中存在一个SSRF漏洞，利用该漏洞可以发送任意HTTP请求，进而攻击内网中redis、fastcgi等脆弱组件。</p>
-<h1 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h1><p>weblogic 10.0.2 – 10.3.6.0</p>
+            <h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><p>​	由于WebLogic 存在默认密码<code>weblogic:Oracle@123</code>或者弱口令， 所以我们可以登录到后台通过部署war包getshell。</p>
+<h1 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h1><ul>
+<li></li>
+</ul>
 <h1 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h1><p>​	访问<a class="link" target="_blank" rel="noopener" href="http://192.168.3.80:7001/console/login/LoginForm.jsp%E5%AD%98%E5%9C%A8%E4%BB%A5%E4%B8%8B%E9%A1%B5%E9%9D%A2%E3%80%82%E8%8B%A5%E7%99%BB%E5%BD%95%E5%AD%98%E5%9C%A8%E5%BC%B1%E5%8F%A3%E4%BB%A4%EF%BC%8C%E5%88%99%E8%A1%A8%E7%A4%BA%E6%BC%8F%E6%B4%9E%E5%AD%98%E5%9C%A8%E3%80%82">http://192.168.3.80:7001/console/login/LoginForm.jsp存在以下页面。若登录存在弱口令，则表示漏洞存在。<i class="fas fa-external-link-alt"></i></a></p>
 <p><img src="/2022/10/28/Weblogic-Weak-password-Backend-Getshell/image-20221028160743773.png" alt="image-20221028160743773"></p>
 <h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>使用vulnhub环境来复现该漏洞。</p>
@@ -224,7 +226,7 @@
 <p><img src="/2022/10/28/Weblogic-Weak-password-Backend-Getshell/image-20221028160246052.png" alt="image-20221028160246052"></p>
 <p><img src="/2022/10/28/Weblogic-Weak-password-Backend-Getshell/image-20221028160304925.png" alt="image-20221028160304925"></p>
 <p><img src="/2022/10/28/Weblogic-Weak-password-Backend-Getshell/image-20221028160311703.png" alt="image-20221028160311703"></p>
-<h1 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h1><p>（1）对默认的用户名&#x2F;口令进行修改，防止攻击者利用初始口令进行暴力破解。</p>
+<h1 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h1><p>1、对默认的用户名&#x2F;口令进行修改，防止攻击者利用初始口令进行暴力破解。</p>
 <p>2、系统设置强密码策略，建议用户密码采用10位以上数字加大小写字母。</p>
 <p>3、对密码暴力猜解行为进行图灵验证，一旦发现用户口令破解行为及时对账户进行限时封停处理。</p>
 

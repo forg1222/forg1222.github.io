@@ -178,7 +178,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>264 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>205 字</span>
         </span>
     
     
@@ -218,10 +218,8 @@
 <p>蚁剑连接</p>
 <p><img src="/2022/10/21/JBoss-Weak-password-Backend-Getshell/image-20221021154923512.png" alt="image-20221021154923512"></p>
 <p><img src="/2022/10/21/JBoss-Weak-password-Backend-Getshell/image-20221021155039279.png" alt="image-20221021155039279"></p>
-<h1 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h1><p>1、将JBoss后台添加权限，控制访问者对敏感路径访问</p>
-<p>2、若不使用控制平台管理，建议关闭jmx-console和web-console，提高安全性。删除jmx-console.war和web-console.war，在以下路径。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jboss\server\all\deploy\jmx-console.war</span><br><span class="line">jboss\server\default\deploy\jmx-console.war</span><br></pre></td></tr></table></figure>
-
+<h1 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h1><p>1、设置admin密码</p>
+<p>2、升级Websphere版本</p>
 
         </div>
 

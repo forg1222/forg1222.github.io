@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            vulnhub-w1r3s1 |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vulnhub-w1r3s1</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-08-05 17:20:01</span>
+        <span class="mobile">2022-08-05 17:20</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/vulnhub/">vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.5k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="获取靶机IP"><a href="#获取靶机IP" class="headerlink" title="获取靶机IP"></a>获取靶机IP</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP  192.168.2.0/24</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-11 09:22 CST</span><br><span class="line"></span><br><span class="line">Nmap scan report for 192.168.2.152</span><br><span class="line">Host is up (0.0083s latency).</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="端口服务扫描"><a href="#端口服务扫描" class="headerlink" title="端口服务扫描"></a>端口服务扫描</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- -T5  192.168.2.152</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) </span><br><span class="line">Warning: 192.168.2.152 giving up on port because retransmission cap hit (2).</span><br><span class="line">Nmap scan report for 192.168.2.152</span><br><span class="line">Host is up (0.010s latency).</span><br><span class="line">Not shown: 55528 filtered tcp ports (no-response), 10003 closed tcp ports (conn-refused)</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line">21/tcp   open  ftp</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">80/tcp   open  http</span><br><span class="line">3306/tcp open  mysql</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 21,22,80,3306 -sV -A -T5  192.168.2.152</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) </span><br><span class="line">Nmap scan report for 192.168.2.152</span><br><span class="line">Host is up (0.0068s latency).</span><br><span class="line"></span><br><span class="line">PORT     STATE SERVICE VERSION</span><br><span class="line">21/tcp   open  ftp     vsftpd 2.0.8 or later</span><br><span class="line">| ftp-anon: Anonymous FTP login allowed (FTP code 230)</span><br><span class="line">| drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 content</span><br><span class="line">| drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 docs</span><br><span class="line">|_drwxr-xr-x    2 ftp      ftp          4096 Jan 28  2018 new-employees</span><br><span class="line">| ftp-syst: </span><br><span class="line">|   STAT: </span><br><span class="line">| FTP server status:</span><br><span class="line">|      Connected to ::ffff:192.168.2.153</span><br><span class="line">|      Logged in as ftp</span><br><span class="line">|      TYPE: ASCII</span><br><span class="line">|      No session bandwidth limit</span><br><span class="line">|      Session timeout in seconds is 300</span><br><span class="line">|      Control connection is plain text</span><br><span class="line">|      Data connections will be plain text</span><br><span class="line">|      At session startup, client count was 3</span><br><span class="line">|      vsFTPd 3.0.3 - secure, fast, stable</span><br><span class="line">|_End of status</span><br><span class="line">22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   2048 07:e3:5a:5c:c8:18:65:b0:5f:6e:f7:75:c7:7e:11:e0 (RSA)</span><br><span class="line">|   256 03:ab:9a:ed:0c:9b:32:26:44:13:ad:b0:b0:96:c3:1e (ECDSA)</span><br><span class="line">|_  256 3d:6d:d2:4b:46:e8:c9:a3:49:e0:93:56:22:2e:e3:54 (ED25519)</span><br><span class="line">80/tcp   open  http    Apache httpd 2.4.18 ((Ubuntu))</span><br><span class="line">|_http-title: Apache2 Ubuntu Default Page: It works</span><br><span class="line">|_http-server-header: Apache/2.4.18 (Ubuntu)</span><br><span class="line">3306/tcp open  mysql   MySQL (unauthorized)</span><br><span class="line">Service Info: Host: W1R3S.inc; OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 12.28 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://192.168.2.152/ -x 403   </span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.2                                                                                            </span><br><span class="line"> (_||| _) (/_(_|| (_| )                                                                                                     </span><br><span class="line">                                                                                                                            </span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 30 | Wordlist size: 10927</span><br><span class="line"></span><br><span class="line">Output File: /home/kali/.dirsearch/reports/192.168.2.152/-_22-08-11_10-29-07.txt</span><br><span class="line"></span><br><span class="line">Error Log: /home/kali/.dirsearch/logs/errors-22-08-11_10-29-07.log</span><br><span class="line"></span><br><span class="line">Target: http://192.168.2.152/</span><br><span class="line"></span><br><span class="line">[10:29:07] Starting: </span><br><span class="line">[10:29:12] 301 -  322B  - /administrator  -&gt;  http://192.168.2.152/administrator/</span><br><span class="line">[10:29:12] 302 -    7KB - /administrator/  -&gt;  installation/                </span><br><span class="line">[10:29:12] 302 -    7KB - /administrator/index.php  -&gt;  installation/       </span><br><span class="line">[10:29:16] 200 -   11KB - /index.html                                       </span><br><span class="line">[10:29:16] 301 -  319B  - /javascript  -&gt;  http://192.168.2.152/javascript/ </span><br><span class="line">[10:29:23] 301 -    0B  - /wordpress/  -&gt;  http://localhost/wordpress/      </span><br><span class="line">[10:29:23] 200 -    2KB - /wordpress/wp-login.php                           </span><br><span class="line">                                                                             </span><br><span class="line">Task Completed                                                                                                              </span><br><span class="line">                 </span><br></pre></td></tr></table></figure>
+
+<h2 id="ftp匿名登录"><a href="#ftp匿名登录" class="headerlink" title="ftp匿名登录"></a>ftp匿名登录</h2><p>​	通过nmap扫描发现存在ftp匿名登录，然后登录之后把所有文件的下载下来，然后挨个看每个里面的内容。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">ftp 192.168.2.152</span><br><span class="line">Connected to 192.168.2.152.</span><br><span class="line">220 Welcome to W1R3S.inc FTP service.</span><br><span class="line">Name (192.168.2.152:kali): anonymous       </span><br><span class="line">331 Please specify the password.</span><br><span class="line">Password: </span><br><span class="line">230 Login successful.</span><br><span class="line">Remote system type is UNIX.</span><br><span class="line">Using binary mode to transfer files.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">229 Entering Extended Passive Mode (|||45870|)</span><br><span class="line">150 Here comes the directory listing.</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 content</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 docs</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 28  2018 new-employees</span><br><span class="line">226 Directory send OK.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">cd</span> content</span></span><br><span class="line">250 Directory successfully changed.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">229 Entering Extended Passive Mode (|||45488|)</span><br><span class="line">150 Here comes the directory listing.</span><br><span class="line">-rw-r--r--    1 ftp      ftp            29 Jan 23  2018 01.txt</span><br><span class="line">-rw-r--r--    1 ftp      ftp           165 Jan 23  2018 02.txt</span><br><span class="line">-rw-r--r--    1 ftp      ftp           582 Jan 23  2018 03.txt</span><br><span class="line">226 Directory send OK.</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash">get 01.txt</span></span><br><span class="line">local: 01.txt remote: 01.txt</span><br><span class="line">229 Entering Extended Passive Mode (|||48220|)</span><br><span class="line">150 Opening BINARY mode data connection for 01.txt (29 bytes).</span><br><span class="line"><span class="meta prompt_">100% </span><span class="language-bash">|*******************************************************************************|    29        2.52 KiB/s    00:00 ETA</span></span><br><span class="line">226 Transfer complete.</span><br><span class="line">29 bytes received in 00:00 (1.63 KiB/s)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash">get 02.txt</span></span><br><span class="line">local: 02.txt remote: 02.txt</span><br><span class="line">229 Entering Extended Passive Mode (|||47208|)</span><br><span class="line">150 Opening BINARY mode data connection for 02.txt (165 bytes).</span><br><span class="line"><span class="meta prompt_">100% </span><span class="language-bash">|*******************************************************************************|   165        3.34 MiB/s    00:00 ETA</span></span><br><span class="line">226 Transfer complete.</span><br><span class="line">165 bytes received in 00:00 (13.15 KiB/s)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash">get 03.txt</span></span><br><span class="line">local: 03.txt remote: 03.txt</span><br><span class="line">229 Entering Extended Passive Mode (|||43815|)</span><br><span class="line">150 Opening BINARY mode data connection for 03.txt (582 bytes).</span><br><span class="line"><span class="meta prompt_">100% </span><span class="language-bash">|*******************************************************************************|   582        4.40 MiB/s    00:00 ETA</span></span><br><span class="line">226 Transfer complete.</span><br><span class="line">582 bytes received in 00:00 (84.45 KiB/s)</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">cd</span> ..</span></span><br><span class="line">250 Directory successfully changed.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">229 Entering Extended Passive Mode (|||41195|)</span><br><span class="line">150 Here comes the directory listing.</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 content</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 docs</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 28  2018 new-employees</span><br><span class="line">226 Directory send OK.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">cd</span> docs</span></span><br><span class="line">250 Directory successfully changed.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">229 Entering Extended Passive Mode (|||43374|)</span><br><span class="line">150 Here comes the directory listing.</span><br><span class="line">-rw-r--r--    1 ftp      ftp           138 Jan 23  2018 worktodo.txt</span><br><span class="line">226 Directory send OK.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash">get worktodo.txt</span></span><br><span class="line">local: worktodo.txt remote: worktodo.txt</span><br><span class="line">229 Entering Extended Passive Mode (|||41926|)</span><br><span class="line">150 Opening BINARY mode data connection for worktodo.txt (138 bytes).</span><br><span class="line"><span class="meta prompt_">100% </span><span class="language-bash">|*******************************************************************************|   138       72.88 KiB/s    00:00 ETA</span></span><br><span class="line">226 Transfer complete.</span><br><span class="line">138 bytes received in 00:00 (14.45 KiB/s)</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">cd</span> ..</span></span><br><span class="line">250 Directory successfully changed.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">229 Entering Extended Passive Mode (|||40756|)</span><br><span class="line">150 Here comes the directory listing.</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 content</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 docs</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 28  2018 new-employees</span><br><span class="line">226 Directory send OK.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">cd</span> new-employees</span></span><br><span class="line">250 Directory successfully changed.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">229 Entering Extended Passive Mode (|||45320|)</span><br><span class="line">150 Here comes the directory listing.</span><br><span class="line">-rw-r--r--    1 ftp      ftp           155 Jan 28  2018 employee-names.txt</span><br><span class="line">226 Directory send OK.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash">get employee-names.txt</span></span><br><span class="line">local: employee-names.txt remote: employee-names.txt</span><br><span class="line">229 Entering Extended Passive Mode (|||46214|)</span><br><span class="line">150 Opening BINARY mode data connection for employee-names.txt (155 bytes).</span><br><span class="line"><span class="meta prompt_">100% </span><span class="language-bash">|*******************************************************************************|   155       14.17 KiB/s    00:00 ETA</span></span><br><span class="line">226 Transfer complete.</span><br><span class="line">155 bytes received in 00:00 (8.88 KiB/s)</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">cd</span> ..</span></span><br><span class="line">250 Directory successfully changed.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">229 Entering Extended Passive Mode (|||49315|)</span><br><span class="line">150 Here comes the directory listing.</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 content</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 23  2018 docs</span><br><span class="line">drwxr-xr-x    2 ftp      ftp          4096 Jan 28  2018 new-employees</span><br><span class="line">226 Directory send OK.</span><br><span class="line"><span class="meta prompt_">ftp&gt; </span><span class="language-bash"><span class="built_in">exit</span></span></span><br><span class="line">221 Goodbye.</span><br></pre></td></tr></table></figure>
+
+<p>​	第一个密文不知道是什么加密，使用hash-identifier进行解密。可能是md5，然后去</p>
+<p><code>https://www.somd5.com/</code>解密。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash-identifier 01ec2d8fc11c493b25029fb1f47f39ce</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811104021277.png" alt="image-20220811104021277"></p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811104539355.png" alt="image-20220811104539355"></p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811104735619.png" alt="image-20220811104735619"></p>
+<p>​	第二个加密字符串：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;SXQgaXMgZWFzeSwgYnV0IG5vdCB0aGF0IGVhc3kuLg==&quot; | base64 --decode</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811104032424.png" alt="image-20220811104032424"></p>
+<p>​	其他的文件：</p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811104930561.png" alt="image-20220811104930561"></p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811105030384.png" alt="image-20220811105030384"></p>
+<h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><p>​	ftp服务下载下来的文件没发现什么可以利用的信息，然后就去搜索了一下dirsearch发现的路径:</p>
+<p><code>http://192.168.2.152/administrator/installation/</code></p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811105434251.png" alt="image-20220811105434251"></p>
+<p>​	随意填写后点击next，发现这里显示已经修改了Configuration.php，此时在想，在数据库账号密码不正确的情况下也能修改配置文件的话，这里想试试能不能通过改变传入的参数来插入自己的代码。</p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811105746709.png" alt="image-20220811105746709"></p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811110258867.png" alt="image-20220811110258867"></p>
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>​	多次尝试无果后Google该cms的公开漏洞。</p>
+<p><code>https://www.exploit-db.com/exploits/25971</code></p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811112816762.png" alt="image-20220811112816762"></p>
+<p>​	<img src="/2022/08/05/vulnhub-w1r3s1/image-20220811113109443.png" alt="image-20220811113109443"></p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811114915172.png" alt="image-20220811114915172"></p>
+<h2 id="破解shadow"><a href="#破解shadow" class="headerlink" title="破解shadow"></a>破解shadow</h2><p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811115717520.png" alt="image-20220811115717520"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john shadow.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811114821217.png" alt="image-20220811114821217"></p>
+<p>​	www-data用户登录不了，使用w1r3s用户登录。</p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811115048219.png" alt="image-20220811115048219"></p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811120006227.png" alt="image-20220811120006227"></p>
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><p>​	登录用户w1r3s用户后，输入id发现有<code>sudo</code>权限，直接使用sudo su获取最高权限。</p>
+<p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811120323250.png" alt="image-20220811120323250"></p>
+<h2 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h2><p><img src="/2022/08/05/vulnhub-w1r3s1/image-20220811120351085.png" alt="image-20220811120351085"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/vulnhub/">#vulnhub</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/08/06/vulnhub-lordOfTheRoot/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-lordOfTheRoot(x)</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/04/vulnhub-troll1/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">vulnhub-troll1</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%9D%B6%E6%9C%BAIP"><span class="nav-number">2.1.</span> <span class="nav-text">获取靶机IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%9C%8D%E5%8A%A1%E6%89%AB%E6%8F%8F"><span class="nav-number">2.2.</span> <span class="nav-text">端口服务扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="nav-number">2.3.</span> <span class="nav-text">目录扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ftp%E5%8C%BF%E5%90%8D%E7%99%BB%E5%BD%95"><span class="nav-number">2.4.</span> <span class="nav-text">ftp匿名登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">3.1.</span> <span class="nav-text">文件包含</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%B4%E8%A7%A3shadow"><span class="nav-number">3.2.</span> <span class="nav-text">破解shadow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flag"><span class="nav-number">4.1.</span> <span class="nav-text">flag</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

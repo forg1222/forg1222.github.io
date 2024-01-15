@@ -331,7 +331,7 @@
 
 <p><img src="/2023/09/20/fbi/image-20240116023603296.png" alt="image-20240116023603296"></p>
 <p><img src="/2023/09/20/fbi/image-20240116023608795.png" alt="image-20240116023608795"></p>
-<p>反向没反应，开启10.10.11.129入站的端口3344，成功上线。</p>
+<p>反向没反应，开启<code>10.10.11.129</code>入站的端口<code>3344</code>，成功上线。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell netsh advfirewall firewall add rule name=open3344 protocol=TCP localport=3344 <span class="built_in">dir</span>=<span class="keyword">in</span> action=allow</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2023/09/20/fbi/image-20240116023619896.png" alt="image-20240116023619896"></p>

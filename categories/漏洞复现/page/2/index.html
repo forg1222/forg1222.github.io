@@ -165,90 +165,90 @@
             <i class="fas fa-folder"></i>&nbsp;漏洞复现
         </div>
         <div class="category-post-list">
-            
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[10]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/28/Weblogic-Weak-password-Backend-Getshell/"
-                        >Weblogic-Weak-password-Backend-Getshell</a>
-                        <span class="article-date">10-28</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/28/CVE-2014-4210-Weblogic-SSRF/"
-                        >CVE-2014-4210-Weblogic-SSRF</a>
-                        <span class="article-date">10-28</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/27/CVE-2014-6271-Shellshock-RCE/"
-                        >CVE-2014-6271-Shellshock-RCE</a>
-                        <span class="article-date">10-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/27/CVE-2020-14882-Weblogic-RCE/"
-                        >CVE-2020-14882-Weblogic-RCE</a>
-                        <span class="article-date">10-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/27/CVE-2019-2725-Weblogic-Deserialization/"
-                        >CVE-2019-2725-Weblogic-Deserialization</a>
-                        <span class="article-date">10-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/26/CVE-2018-2894-WebLogic-File-Upload/"
-                        >CVE-2018-2894-WebLogic-File-Upload</a>
-                        <span class="article-date">10-26</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/26/CVE-2018-2628-WebLogic-Deserialization/"
-                        >CVE-2018-2628-WebLogic-Deserialization</a>
-                        <span class="article-date">10-26</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/25/CVE-2017-3506-WebLogic-XMLDecoder-Deserialization/"
-                        >CVE-2017-3506-WebLogic-XMLDecoder-Deserialization</a>
-                        <span class="article-date">10-25</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/25/CVE-2017-10271-WebLogic-XMLDecoder-Deserialization/"
-                        >CVE-2017-10271-WebLogic-XMLDecoder-Deserialization</a>
-                        <span class="article-date">10-25</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/10/24/JBoss-JMX-Console-Unauthorized/"
-                        >JBoss-JMX-Console-Unauthorized</a>
-                        <span class="article-date">10-24</span>
-                    </li>
-                
-            </ul>
-        </section>
-    
-</div>
+            $archive-year-font-size = 1.8rem;
+$archive-year-count-font-size = 1.2rem;
+$article-title-font-size = 1.2rem;
+$article-date-font-size = 1rem;
+
+.archive-list-container {
+
+  .archive-item {
+    margin-bottom: $component-spacing-value;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .archive-item-header {
+      margin-bottom: 10px;
+
+      .archive-year {
+        font-size: $archive-year-font-size;
+
+        +keep-tablet() {
+          font-size: $archive-year-font-size - 0.2rem;
+        }
+
+        color: var(--second-text-color);
+        font-weight: 600;
+        margin-right: 6px;
+      }
+
+
+      .archive-year-post-count {
+        font-size: $archive-year-count-font-size;
+        font-weight: 500;
+        color: var(--second-text-color);
+
+        +keep-tablet() {
+          font-size: $archive-year-count-font-size * 0.9;
+        }
+      }
+
+    }
+
+
+    .article-list {
+
+      padding-left: 10px;
+
+      +keep-tablet() {
+        padding-left: 0;
+      }
+
+      .article-item {
+        font-size: 1rem;
+        margin-top: 18px;
+
+        +keep-tablet() {
+          margin-top: 16px;
+        }
+
+        +keep-mobile() {
+          margin-top: 14px;
+        }
+
+        &:hover {
+          a.article-title, .article-date {
+            color: var(--primary-color);
+          }
+        }
+
+
+        a.article-title {
+          color: var(--default-text-color);
+        }
+
+        .article-date {
+          font-size: $article-date-font-size;
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+
 
         </div>
     </div>

